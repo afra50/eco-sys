@@ -1,0 +1,27 @@
+1. PODZIAŁ PRACY
+    KRZYSIEK
+        - Logo, favicon, og image
+        - Kontakt - Formularz kontaktowy + wysyłka
+        - Panel do logowania admin + obsługa tego
+        - Polityka prywatności
+        - Statyczne strony: Home, Wentylacje, Klimatyzacje, Pompy, Wod-kan ogrzewanie podłogowe, Farmy fotowoltaiczne, O nas
+
+    EMILA
+        - Stworzenie projektu, struktury całej + repo
+        - Autoryzacja - tokeny, ciastka, middleware, protectedroute, endpoint do logowania
+        - Zabezpieczenie i konfiguracja backendu
+        - Integracja backend - baza - plik db.js + zmienne env
+        - Integracja front - backend - plik API.js + zmienne env
+        - Domena + Hosting
+        - SEO, pliki do Googla itp
+        - Kompresja zdjęć + Endpointy do Uploadu, Pobierania, Usuwania zdjęć
+        - Baza danych
+
+    JULA
+        - Variables, app, wgranie czcionek
+        - Chat + backend
+        - Galeria - pobieranie i wyświetlanie na froncie (korzystając z API Emili).
+        - Galeria Admin (tylko Front): Galeria admin + obsługa zdjęć na froncie
+        - Panel admina widok
+        - alert, confirmdialog, scrolltotop
+        - Header, Button, forms, stopka
