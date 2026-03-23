@@ -7,10 +7,10 @@
         - Statyczne strony: Home, Wentylacje, Klimatyzacje, Pompy, Wod-kan ogrzewanie podłogowe, Farmy fotowoltaiczne, O nas
 
     EMILA
-        - Stworzenie projektu, struktury całej + repo
+        - Stworzenie projektu, struktury całej
         - Autoryzacja - tokeny, ciastka, middleware, protectedroute, endpoint do logowania
         - Zabezpieczenie i konfiguracja backendu
-        - Integracja backend - baza - plik db.js + zmienne env
+        - Integracja backend - baza - zmienne env
         - Integracja front - backend - plik API.js + zmienne env
         - Domena + Hosting
         - SEO, pliki do Googla itp
