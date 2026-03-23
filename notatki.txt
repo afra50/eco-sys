@@ -12,7 +12,7 @@
         - Integracja backend - baza - zmienne env
         - Integracja front - backend - plik API.js
         - Domena + Hosting
-        - SEO, pliki do Googla itp
+        - index.html, seo, sitemap, googlesearch, manifest.json, og.jpg, JSON-LD
         - Kompresja zdjęć + Endpointy do Uploadu, Pobierania, Usuwania zdjęć
         - Baza danych
 
