@@ -1,0 +1,374 @@
+@use "../variables" as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: $color-white;
+  // Usunięty miękki cień, w zamian ostra, techniczna linia oddzielająca
+  border-bottom: 1px solid rgba($color-primary, 0.15);
+  padding: 12px 0;
+  transition: all 0.3s ease;
+
+  &__container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  // --- LOGO ---
+  &__logo {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+
+    img {
+      height: 65px;
+      display: block;
+      transition: opacity 0.2s;
+
+      &:hover {
+        opacity: 0.85;
+      }
+
+      @media (max-width: 768px) {
+        height: 50px;
+      }
+    }
+  }
+
+  // --- NAWIGACJA DESKTOP ---
+  &__menu {
+    display: flex;
+    gap: clamp(20px, 3vw, 40px);
+    align-items: center;
+    list-style: none;
+
+    &-item {
+      position: relative;
+      padding: 25px 0;
+
+      @media (min-width: 992px) {
+        &:hover .header__dropdown {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+        }
+        &:hover .chevron {
+          transform: rotate(180deg);
+          color: $color-secondary;
+        }
+      }
+    }
+
+    &-link-wrapper {
+      cursor: pointer;
+    }
+
+    &-link {
+      font-family: $font-main;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: $color-primary;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding-bottom: 5px;
+      transition: color 0.2s linear; // Zmieniono na bardziej "surowe" przejście
+      position: relative;
+
+      .chevron {
+        font-size: 0.7rem;
+        transition: transform 0.2s linear;
+        color: rgba($color-primary, 0.5);
+      }
+
+      // --- Ostra, techniczna linia podkreślenia ---
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: $color-secondary;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      &:hover,
+      &.active {
+        color: $color-secondary;
+
+        &::after {
+          transform: scaleX(1);
+          transform-origin: left;
+        }
+
+        .chevron {
+          color: $color-secondary;
+        }
+      }
+    }
+  }
+
+  // --- DROPDOWN (Płaski, techniczny, z ostrymi krawędziami) ---
+  &__dropdown {
+    position: absolute;
+    top: 100%;
+    left: -20px;
+    background-color: $color-white;
+    min-width: 260px;
+
+    // Brak border-radius, twarde obramowanie zamiast rozmytego cienia
+    border: 1px solid rgba($color-primary, 0.1);
+    border-top: 3px solid $color-secondary;
+
+    padding: 0; // Wyzerowany padding dla bardziej blokowego układu
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(5px); // Krótszy, ostrzejszy przeskok
+    transition: all 0.2s ease-in-out;
+    list-style: none;
+
+    li {
+      // Usunięty margin, elementy przylegają do siebie jak w systemach
+      border-bottom: 1px solid rgba($color-primary, 0.05);
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    li a {
+      display: block;
+      padding: 14px 25px;
+      font-family: $font-main;
+      font-size: 0.95rem;
+      color: $color-text-main;
+
+      // KLUCZ: Ramka ma 4px cały czas, ale domyślnie jest przezroczysta.
+      // Zero "skakania" szerokości.
+      border-left: 4px solid transparent;
+
+      // Dajemy płynne przejście na wszystko (kolor, tło, padding, kolor ramki)
+      transition: all 0.25s ease-in-out;
+
+      &:hover,
+      &.active {
+        color: $color-secondary;
+        background-color: rgba($color-primary, 0.03);
+
+        // Tylko podświetlamy istniejącą ramkę
+        border-left-color: $color-secondary;
+
+        // Opcjonalnie: tekst gładko i technicznie "odjeżdża" w prawo
+        padding-left: 30px;
+      }
+    }
+  }
+
+  // --- AKCJE (Kontakt) ---
+  &__actions {
+    display: flex;
+    align-items: center;
+  }
+
+  &__contact-desktop {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+
+    @media (max-width: 992px) {
+      display: none;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: $font-heading;
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: $color-primary;
+      transition: color 0.2s;
+
+      &:last-child {
+        font-family: $font-main;
+        font-size: 0.85rem;
+        font-weight: 400;
+        color: $color-text-muted;
+      }
+
+      .icon {
+        color: $color-secondary;
+        font-size: 0.9rem;
+      }
+
+      &:hover {
+        color: $color-secondary;
+      }
+    }
+  }
+
+  &__burger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: $color-primary;
+    cursor: pointer;
+  }
+
+  &__mobile-contact {
+    display: none;
+  }
+
+  // --- MOBILE RESPONSIVE ---
+  @media (max-width: 992px) {
+    padding: 10px 0;
+
+    &__burger {
+      display: block;
+    }
+
+    &__nav {
+      position: fixed;
+      top: 70px;
+      left: -100%;
+      width: 100%;
+      height: calc(100vh - 70px);
+      background-color: $color-white;
+      padding: 30px 20px;
+      overflow-y: auto;
+      transition: left 0.3s ease-in-out;
+      display: flex;
+      flex-direction: column;
+
+      &--active {
+        left: 0;
+      }
+
+      .header__menu {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        width: 100%;
+
+        &-item {
+          width: 100%;
+          padding: 0;
+          border-bottom: 1px solid rgba($color-primary, 0.1);
+        }
+
+        &-link-wrapper {
+          // Usunęliśmy padding stąd, żeby nie było podwójnego odstępu
+          display: block;
+          width: 100%;
+        }
+
+        &-link {
+          font-size: 1.2rem;
+          justify-content: space-between;
+          width: 100%;
+
+          // KLUCZOWE: Padding dodajemy bezpośrednio do linku.
+          // Teraz każdy element ma równy, duży odstęp.
+          padding: 18px 0;
+          display: flex;
+
+          &::after {
+            display: none; // Wyłączamy animację dolnej kreski na mobile
+          }
+
+          .chevron.rotate {
+            transform: rotate(180deg);
+            color: $color-secondary;
+          }
+        }
+      }
+
+      .header__dropdown {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        padding: 0;
+
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+
+        &.open {
+          max-height: 400px;
+          padding-bottom: 15px;
+        }
+
+        li {
+          border-bottom: none;
+        }
+
+        li a {
+          display: block;
+          // Większy padding dla podkategorii - łatwiej trafić palcem
+          padding: 14px 15px;
+          font-family: $font-main;
+          font-size: 1rem;
+          color: $color-text-muted;
+
+          // Stała ramka z lewej strony
+          border-left: 3px solid transparent;
+          margin-left: 5px;
+          background-color: transparent;
+          transition:
+            border-left-color 0.2s ease,
+            color 0.2s ease,
+            background-color 0.2s ease;
+
+          // Domyślna, subtelna linia ułatwiająca czytanie hierarchii
+          border-left-color: rgba($color-primary, 0.1);
+
+          &:hover,
+          &.active {
+            color: $color-primary;
+            background-color: rgba($color-primary, 0.02);
+
+            // Po aktywacji linia zmienia kolor na akcentowy (np. czerwony/zielony)
+            border-left-color: $color-secondary;
+
+            // Usunięta zmiana paddingu, żeby tekst stał sztywno!
+          }
+        }
+      }
+
+      .header__mobile-contact {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: auto;
+        padding-top: 40px;
+
+        a {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-family: $font-main;
+          color: $color-primary;
+          font-weight: 500;
+          font-size: 1.1rem;
+
+          svg {
+            color: $color-secondary;
+          }
+        }
+      }
+    }
+  }
+}

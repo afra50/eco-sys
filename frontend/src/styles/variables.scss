@@ -1,0 +1,21 @@
+// --- BRAND COLORS (Pobrane z logo Eco-Sys) ---
+$color-primary: #15395b; // Cieplejszy, elegancki granat
+$color-secondary: #cc1b2c; // Klasyczna, mocna czerwień z "wiatraka"
+$color-accent: #41ad49; // Soczysta zieleń (zostawiamy w rezerwie, ale nie wciskamy na siłę)
+
+// --- NEUTRALS ---
+$color-white: #ffffff;
+$color-bg-light: #f8f9fa; // Delikatne tło dla sekcji
+$color-bg-dark: #1a1a1a; // Ciemne tło (np. stopka)
+$color-text-main: #333333; // Czytelny ciemnoszary do tekstów
+$color-text-muted: #666666; // Pomocnicze opisy
+$color-border: #e0e0e0; // Linie dzielące, ramki
+
+// --- STATUS COLORS ---
+$color-success: $color-accent;
+$color-error: #ff4d4d;
+
+// --- TYPOGRAPHY SETTINGS ---
+$font-main: "Inter", sans-serif; // Lekki, nowoczesny standard do wszystkiego
+$font-heading:
+  "Oswald", sans-serif; // Mocne, techniczne nagłówki (zostawiamy dla tytułów sekcji na stronie)

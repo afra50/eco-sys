@@ -1,4 +1,4 @@
-1. PODZIAŁ PRACY
+I. PODZIAŁ PRACY
     KRZYSIEK
         - Logo, favicon, og image
         - Kontakt - Formularz kontaktowy + wysyłka
@@ -24,3 +24,12 @@
         - Panel admina widok
         - alert, confirmdialog, scrolltotop
         - Header, Button, forms, stopka
+
+
+
+II. NOTATKI
+    1. Zakładki dla przemysłu i dla klienta (chyba w tym mają się zawrzeć Wentylacje Klimatyzje, Pompy ciepła, Wod-Kan Ogrzewanie podłogowe, Farmy fotowoltaiczne), Galeria, Kontakt, o nas (tutaj byśmy dali informację o siedzibie i dane kontaktowe)
+    2. W zakładkach stały tekst
+    3. Chatbot
+    4. Kalkulator ofert - osobna wycena 
+    5. Formularz kontaktowy
