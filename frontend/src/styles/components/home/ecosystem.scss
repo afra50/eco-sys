@@ -1,0 +1,116 @@
+@use "../../variables" as *;
+
+.ecosystem {
+	padding: 4rem 0;
+	background-color: $color-white;
+	overflow: hidden;
+
+	&__container {
+		max-width: 1300px;
+		margin: 0 auto;
+		padding: 0 20px;
+		display: flex;
+		flex-direction: column;
+		gap: 2.5rem;
+
+		@media (min-width: 992px) {
+			flex-direction: row;
+			align-items: center;
+			gap: 4rem;
+		}
+	}
+
+	&__content {
+		flex: 1;
+
+		@media (min-width: 992px) {
+			flex: 0 0 40%;
+		}
+	}
+
+	&__title {
+		font-family: $font-heading;
+		font-size: clamp(1.5rem, 3vw, 2rem);
+		color: $color-primary;
+		margin-bottom: 0.8rem;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+
+	&__subtitle {
+		font-family: $font-main;
+		font-size: 0.95rem;
+		color: rgba($color-primary, 0.7);
+		margin-bottom: 2rem;
+		line-height: 1.5;
+	}
+
+	&__list {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	&__item {
+		display: flex;
+		align-items: flex-start;
+		gap: 1.2rem;
+
+		&:hover {
+			.ecosystem__icon {
+				background-color: $color-secondary;
+				color: $color-white;
+			}
+		}
+	}
+
+	&__icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 48px;
+		height: 48px;
+		background-color: $color-bg-light;
+		color: $color-secondary;
+		border-radius: 0;
+		flex-shrink: 0;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+		transition: all 0.3s ease;
+	}
+
+	&__text {
+		h3 {
+			font-family: $font-heading;
+			font-size: 1.05rem;
+			color: $color-primary;
+			margin-bottom: 0.3rem;
+			font-weight: 700;
+			text-transform: uppercase;
+		}
+
+		p {
+			font-family: $font-main;
+			font-size: 0.85rem;
+			color: rgba($color-primary, 0.7);
+			line-height: 1.4;
+		}
+	}
+
+	&__image {
+		flex: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		@media (min-width: 992px) {
+			justify-content: flex-end;
+		}
+
+		img {
+			width: 100%;
+			max-width: 850px;
+			height: auto;
+			image-rendering: -webkit-optimize-contrast;
+		}
+	}
+}
