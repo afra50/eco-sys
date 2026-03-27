@@ -12,7 +12,11 @@ const rateLimit = require("express-rate-limit");
 const slowDown = require("express-slow-down");
 const winston = require("winston");
 
-// --- KONFIGURACJA LOGGERA (Winston) ---
+// --- IMPORT TRAS ---
+const authRoutes = require("./routes/authRoutes");
+const galleryRoutes = require("./routes/galleryRoutes");
+
+// --- KONFIGURACJA LOGGERA ---
 const logger = winston.createLogger({
   level: "info",
   format: winston.format.combine(
@@ -30,25 +34,18 @@ const logger = winston.createLogger({
 const app = express();
 
 // --- 1. PROXY & BEZPIECZEŃSTWO ---
-app.set("trust proxy", 1); // Ważne, jeśli serwer stoi za proxy (np. Nginx, Heroku)
+app.set("trust proxy", 1);
+app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
+app.disable("x-powered-by");
+app.use(compression());
+app.use(morgan("common"));
 
-app.use(
-  helmet({
-    crossOriginResourcePolicy: { policy: "cross-origin" },
-  }),
-);
-
-app.disable("x-powered-by"); // Ukrywa informację, że używasz Expressa
-app.use(compression()); // Kompresuje odpowiedzi Gzip
-app.use(morgan("common")); // Loguje zapytania w formacie Apache common
-
-// --- 2. KONTROLA RUCHU (Rate Limiting) ---
+// --- 2. KONTROLA RUCHU ---
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minut
+  windowMs: 15 * 60 * 1000,
   max: 300,
   message: { error: "Zbyt wiele zapytań, spróbuj ponownie za 15 minut." },
 });
-
 const speedLimiter = slowDown({
   windowMs: 15 * 60 * 1000,
   delayAfter: 150,
@@ -62,28 +59,26 @@ app.use("/api/", speedLimiter);
 app.use(
   cors({
     origin: ["http://localhost:5173", "http://localhost:3000"],
-    credentials: true, // Obsługa ciasteczek/JWT
+    credentials: true, // Kluczowe dla przesyłania ciastek auth_token
   }),
 );
 
 app.use(express.json());
-app.use(cookieParser());
+app.use(cookieParser()); // Kluczowe dla odczytu ciastek w authRoutes
 
-// Serwowanie plików statycznych (np. zdjęcia produktów)
 app.use("/api/uploads", express.static(path.join(__dirname, "uploads")));
 
 // --- 4. TRASY (ROUTES) ---
 
-// Health Check
+// Testowy endpoint
 app.get("/api/health", (req, res) => {
   res.status(200).json({ status: "ok", message: "Serwer działa poprawnie" });
 });
 
-// Tutaj zaimportuj swoje trasy:
-// const authRoutes = require("./routes/authRoutes");
-// app.use("/api/auth", authRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/gallery", galleryRoutes);
 
-// --- 5. OBSŁUGA BŁĘDU 404 (NIE ZNALEZIONO) ---
+// --- 5. OBSŁUGA BŁĘDU 404 ---
 app.use((req, res, next) => {
   res.status(404).json({
     success: false,
@@ -91,28 +86,22 @@ app.use((req, res, next) => {
   });
 });
 
-// --- 6. GLOBALNY HANDLER BŁĘDÓW 500 (INTERNAL SERVER ERROR) ---
+// --- 6. GLOBALNY HANDLER BŁĘDÓW ---
 app.use((err, req, res, next) => {
-  // Logowanie błędu do pliku/konsoli
   logger.error(
     `${err.status || 500} - ${err.message} - ${req.originalUrl} - ${req.method}`,
   );
 
-  // Specyficzna obsługa błędów Multer
   if (err instanceof multer.MulterError) {
-    return res.status(400).json({
-      success: false,
-      code: "UPLOAD_ERROR",
-      message: err.message,
-    });
+    return res
+      .status(400)
+      .json({ success: false, code: "UPLOAD_ERROR", message: err.message });
   }
 
-  // Odpowiedź końcowa
   const statusCode = err.status || 500;
   res.status(statusCode).json({
     success: false,
     message: statusCode === 500 ? "Wewnętrzny błąd serwera" : err.message,
-    // Stack trace widoczny tylko w trybie deweloperskim
     error:
       process.env.NODE_ENV === "development" ? err.stack : "Coś poszło nie tak",
   });
