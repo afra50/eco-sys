@@ -13,7 +13,7 @@ const Hero = () => {
 			productTitle: "Oszczędne ogrzewanie", // NOWE: Dedykowany tytuł
 			productDesc:
 				"Ciepło i komfort w Twoim domu przez cały rok dzięki hybrydowej technologii.", // NOWE: Dedykowany opis
-			productLink: "/produkty/pompy-ciepla", // NOWE: Dedykowany link
+			productLink: "/pompy-ciepla", // POPRAWIONE: czysty link
 			// Pamiętaj, aby zapisać wygenerowany obraz w public/images/hero-pompa.jpg
 			img: "/images/hero-pompa.jpg",
 		},
@@ -23,7 +23,7 @@ const Hero = () => {
 			productTitle: "Darmowy prąd ze słońca",
 			productDesc:
 				"Zainwestuj w panele fotowoltaiczne i zyskaj niezależność energetyczną.",
-			productLink: "/produkty/fotowoltaika",
+			productLink: "/fotowoltaika", // POPRAWIONE: czysty link
 			img: "/images/hero-foto.jpg",
 		},
 		{
@@ -32,7 +32,7 @@ const Hero = () => {
 			productTitle: "Komfort i świeżość",
 			productDesc:
 				"Nowoczesna klimatyzacja i wentylacja dopasowana do potrzeb Twojej rodziny.",
-			productLink: "/produkty/klimatyzacja",
+			productLink: "/klimatyzacja", // POPRAWIONE: czysty link
 			img: "/images/hero-klima.jpg",
 		},
 	];
@@ -80,7 +80,7 @@ const Hero = () => {
 							{/* JEDEN, główny przycisk, dedykowany do produktu */}
 							<div className="hero-slider__actions">
 								<Button to={slide.productLink} variant="primary">
-									Zobacz produkty
+									Dowiedz się więcej
 								</Button>
 							</div>
 						</div>
