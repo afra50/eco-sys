@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Check, Wind, Thermometer, Settings, Wrench } from "lucide-react";
-import { Link } from "react-router-dom";
 import "../styles/pages/airconditioning.scss";
+import Button from "../components/ui/Button";
 
 const AirConditioning = () => {
+	// --- GŁÓWNY HERO SLIDER ---
 	const [currentSlide, setCurrentSlide] = useState(0);
-
 	const slides = [
 		{
 			url: "/images/klimatyzacja-dom.webp",
@@ -24,6 +24,47 @@ const AirConditioning = () => {
 		return () => clearInterval(timer);
 	}, [slides.length]);
 
+	// --- MINI-SLIDER: KLIMATYZACJA DLA DOMU ---
+	const [currentHomeSlide, setCurrentHomeSlide] = useState(0);
+	const homeSlides = [
+		"/images/klim-1.webp",
+		"/images/klim-2.webp",
+		"/images/klim-3.webp",
+		"/images/klim-4.webp",
+		"/images/klim-5.webp",
+	];
+
+	useEffect(() => {
+		const homeTimer = setInterval(() => {
+			setCurrentHomeSlide((prev) =>
+				prev === homeSlides.length - 1 ? 0 : prev + 1,
+			);
+		}, 4000);
+		return () => clearInterval(homeTimer);
+	}, [homeSlides.length]);
+
+	// --- MINI-SLIDER: KLIMATYZACJA PRZEMYSŁOWA (VRF) ---
+	const [currentVrfSlide, setCurrentVrfSlide] = useState(0);
+	const vrfSlides = [
+		"/images/vrf-zdjecie-1.webp",
+		"/images/vrf-zdjecie-2.webp",
+		"/images/vrf-zdjecie-3.webp",
+		"/images/vrf-zdjecie-4.webp",
+		"/images/vrf-zdjecie-5.webp",
+		"/images/vrf-zdjecie-6.webp",
+		"/images/vrf-zdjecie-7.webp",
+	];
+
+	useEffect(() => {
+		const vrfTimer = setInterval(() => {
+			setCurrentVrfSlide((prev) =>
+				prev === vrfSlides.length - 1 ? 0 : prev + 1,
+			);
+		}, 4000);
+		return () => clearInterval(vrfTimer);
+	}, [vrfSlides.length]);
+
+	// --- TEKSTY ---
 	const homeAdvantages = [
 		"Skuteczne chłodzenie latem i dogrzewanie w okresach przejściowych",
 		"Systemy Split (1 na 1) oraz Multi-Split (wiele jednostek do jednego agregatu)",
@@ -75,7 +116,20 @@ const AirConditioning = () => {
 
 			<section className="airconditioning_section airconditioning_section_light">
 				<div className="airconditioning_container airconditioning_split">
-					<div className="airconditioning_image_box">{/* Puste miejsce */}</div>
+					<div className="airconditioning_image_box">
+						{/* --- NOWY MINI-SLIDER: DOM --- */}
+						<div className="airconditioning_mini_slider">
+							{homeSlides.map((img, index) => (
+								<img
+									key={index}
+									src={img}
+									alt={`Klimatyzacja Domowa ${index + 1}`}
+									className={`airconditioning_mini_slide ${index === currentHomeSlide ? "active" : ""}`}
+								/>
+							))}
+						</div>
+					</div>
+
 					<div className="airconditioning_text_box">
 						<h2 className="airconditioning_section_title">
 							Klimatyzacja dla Domu
@@ -101,12 +155,19 @@ const AirConditioning = () => {
 			<section className="airconditioning_section airconditioning_section_dark">
 				<div className="airconditioning_container airconditioning_split airconditioning_split_reverse">
 					<div className="airconditioning_image_box">
-						<img
-							src="/images/klimatyzacja-vrf.webp"
-							alt="Agregaty przemysłowe VRF na dachu"
-							className="airconditioning_fluid_image"
-						/>
+						{/* --- MINI-SLIDER: VRF --- */}
+						<div className="airconditioning_mini_slider">
+							{vrfSlides.map((img, index) => (
+								<img
+									key={index}
+									src={img}
+									alt={`Klimatyzacja Przemysłowa ${index + 1}`}
+									className={`airconditioning_mini_slide ${index === currentVrfSlide ? "active" : ""}`}
+								/>
+							))}
+						</div>
 					</div>
+
 					<div className="airconditioning_text_box">
 						<h2 className="airconditioning_section_title">
 							Klimatyzacja Przemysłowa (VRF)
@@ -181,9 +242,7 @@ const AirConditioning = () => {
 						Skontaktuj się z naszymi doradcami. Przeanalizujemy Twoje potrzeby i
 						dobierzemy najbardziej efektywne urządzenie dla Twojego obiektu.
 					</p>
-					<Link to="/kontakt" className="airconditioning_cta_btn">
-						Skontaktuj się z nami
-					</Link>
+					<Button to="/kontakt">Skontaktuj się z nami</Button>
 				</div>
 			</section>
 		</div>

@@ -319,33 +319,41 @@
 		line-height: 1.6;
 	}
 
-	&_cta_btn {
-		display: block;
+	/* --- UNIWERSALNY MINI-SLIDER --- */
+	&_mini_slider {
+		position: relative;
 		width: 100%;
-		max-width: 320px;
-		margin: 0 auto;
-		box-sizing: border-box;
-		background-color: $color-secondary;
-		color: $color-white;
-		font-family: $font-heading;
-		font-weight: 600;
-		font-size: 1rem;
-		padding: 1.1rem 1.5rem;
-		text-decoration: none;
-		text-transform: uppercase;
-		letter-spacing: 1px;
-		transition: filter 0.3s ease;
+		aspect-ratio: 4 / 3;
+		overflow: hidden;
 
-		@media (min-width: 576px) {
-			display: inline-block;
-			width: auto;
-			max-width: none;
-			padding: 1.2rem 3.5rem;
+		// Zjebini Fix: Najprostszy i najbezpieczniejszy sposób na świecie
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			z-index: 2;
+
+			/* Wewnętrzny cień w kolorze tła sekcji robi efekt "zmycia" */
+			/* 40px to szerokość rozmycia, możesz to zwiększyć/zmniejszyć */
+			box-shadow: inset 0 0 5px 5px $color-bg-light;
+
+			/* Ważne: żeby cień nie blokował ewentualnych kliknięć w obrazek */
+			pointer-events: none;
 		}
+	}
 
-		&:hover {
-			filter: brightness(0.9);
-			color: $color-white;
+	&_mini_slide {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		opacity: 0;
+		z-index: 1;
+		transition: opacity 1s ease-in-out;
+
+		&.active {
+			opacity: 1;
 		}
 	}
 }
