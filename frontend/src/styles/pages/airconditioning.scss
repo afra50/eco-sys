@@ -1,0 +1,351 @@
+@use "../variables" as *;
+
+.airconditioning {
+	background-color: $color-bg-light;
+	overflow-x: hidden;
+
+	&_container {
+		max-width: 1300px;
+		margin: 0 auto;
+		padding: 0 15px;
+		position: relative;
+		z-index: 2;
+		width: 100%;
+
+		@media (min-width: 768px) {
+			padding: 0 20px;
+		}
+	}
+
+	&_fluid_image {
+		width: 100%;
+		height: auto;
+		display: block;
+		object-fit: cover;
+	}
+
+	/* --- HERO --- */
+	&_hero {
+		position: relative;
+		height: 55vh;
+		min-height: 450px;
+		max-height: 800px;
+		color: $color-white;
+		background-color: $color-primary; // Sztywne tło lewej strony
+		overflow: hidden;
+
+		@media (min-width: 2600px) {
+			height: 45vh;
+			max-height: 900px;
+		}
+	}
+
+	&_hero_container {
+		height: 100%;
+		display: flex;
+		align-items: center;
+		padding-top: 4rem;
+		padding-bottom: 4rem;
+	}
+
+	&_hero_content {
+		max-width: 630px;
+		text-align: left;
+	}
+
+	&_slider {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+		z-index: 1;
+
+		@media (min-width: 992px) {
+			width: 65%; // Zatrzymuje zdjęcie po prawej stronie. Nie rozciąga się!
+		}
+	}
+
+	&_slide {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: right center; // Zawsze doklejone do prawej krawędzi
+		opacity: 0;
+		transition: opacity 1.5s ease-in-out;
+
+		&.active {
+			opacity: 1;
+		}
+	}
+
+	&_overlay {
+		position: absolute;
+		inset: 0;
+		// Płynne wejście w 100% kolor z lewej strony
+		background: linear-gradient(
+			to right,
+			rgba($color-primary, 1) 0%,
+			rgba($color-primary, 0.8) 20%,
+			rgba($color-primary, 0.1) 60%,
+			transparent 100%
+		);
+
+		@media (max-width: 991px) {
+			background: linear-gradient(
+				to right,
+				rgba($color-primary, 1) 0%,
+				rgba($color-primary, 0.9) 50%,
+				transparent 100%
+			);
+		}
+	}
+
+	&_title {
+		font-family: $font-heading;
+		font-size: clamp(2.2rem, 8vw, 4.5rem);
+		margin-bottom: 0.5rem;
+		font-weight: 800;
+		text-transform: uppercase;
+		line-height: 1.1;
+	}
+
+	&_subtitle {
+		font-family: $font-heading;
+		font-size: clamp(1.2rem, 4vw, 1.8rem);
+		color: $color-secondary;
+		margin-bottom: 1.5rem;
+		font-weight: 600;
+
+		@media (min-width: 992px) {
+			margin-bottom: 2rem;
+		}
+	}
+
+	&_desc {
+		font-family: $font-main;
+		font-size: 1rem;
+		line-height: 1.6;
+		color: rgba($color-white, 0.9);
+
+		@media (min-width: 992px) {
+			font-size: 1.1rem;
+			line-height: 1.7;
+		}
+	}
+
+	/* --- SEKCJE --- */
+	&_section {
+		padding: 3rem 0;
+
+		@media (min-width: 992px) {
+			padding: 6rem 0;
+		}
+	}
+
+	&_section_light {
+		background-color: $color-bg-light;
+	}
+
+	&_section_dark {
+		background-color: $color-white;
+	}
+
+	&_split {
+		display: flex;
+		flex-direction: column;
+		gap: 2.5rem;
+		align-items: center;
+
+		@media (min-width: 992px) {
+			flex-direction: row;
+			gap: 5rem;
+		}
+	}
+
+	&_split_reverse {
+		@media (min-width: 992px) {
+			flex-direction: row-reverse;
+		}
+	}
+
+	&_image_box {
+		flex: 1;
+		width: 100%;
+	}
+
+	&_text_box {
+		flex: 1;
+		width: 100%;
+	}
+
+	&_section_title {
+		font-family: $font-heading;
+		font-size: clamp(1.6rem, 7vw, 2.2rem);
+		color: $color-primary;
+		margin-bottom: 1.5rem;
+		font-weight: 700;
+		position: relative;
+		padding-bottom: 1rem;
+
+		&::after {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 60px;
+			height: 4px;
+			background-color: $color-secondary;
+		}
+	}
+
+	&_section_desc {
+		font-family: $font-main;
+		font-size: 1rem;
+		color: rgba($color-primary, 0.75);
+		margin-bottom: 2rem;
+		line-height: 1.6;
+	}
+
+	&_list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.2rem;
+	}
+
+	&_item {
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+	}
+
+	&_icon {
+		color: $color-secondary;
+		flex-shrink: 0;
+		margin-top: 3px;
+	}
+
+	&_list_text {
+		font-family: $font-main;
+		font-size: 1rem;
+		color: $color-primary;
+		line-height: 1.5;
+	}
+
+	/* --- STANDARDY --- */
+	&_standards {
+		padding: 4rem 0;
+		background-color: $color-primary;
+		color: $color-white;
+		text-align: center;
+	}
+
+	&_standards_title {
+		font-family: $font-heading;
+		font-size: clamp(1.8rem, 7vw, 2.8rem);
+		margin-bottom: 3.5rem;
+		font-weight: 700;
+	}
+
+	&_standards_grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+
+		@media (min-width: 576px) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@media (min-width: 1024px) {
+			grid-template-columns: repeat(4, 1fr);
+			gap: 2.5rem;
+		}
+	}
+
+	&_standard_card {
+		padding: 2rem 1.5rem;
+		background-color: rgba(255, 255, 255, 0.05);
+		transition: background-color 0.3s ease;
+
+		&:hover {
+			background-color: rgba(255, 255, 255, 0.08);
+		}
+
+		h3 {
+			font-family: $font-heading;
+			font-size: 1.2rem;
+			margin: 1.5rem 0 1rem;
+			color: $color-secondary;
+		}
+
+		p {
+			font-family: $font-main;
+			font-size: 0.95rem;
+			line-height: 1.5;
+			color: rgba($color-white, 0.8);
+		}
+	}
+
+	&_standard_icon {
+		color: $color-white;
+	}
+
+	/* --- CTA --- */
+	&_cta {
+		padding: 5rem 0;
+		background-color: $color-bg-light;
+		text-align: center;
+	}
+
+	&_cta_title {
+		font-family: $font-heading;
+		font-size: clamp(1.6rem, 7vw, 2.5rem);
+		color: $color-primary;
+		margin-bottom: 1.5rem;
+		font-weight: 700;
+	}
+
+	&_cta_desc {
+		font-family: $font-main;
+		font-size: 1.1rem;
+		color: rgba($color-primary, 0.7);
+		max-width: 650px;
+		margin: 0 auto 3rem;
+		line-height: 1.6;
+	}
+
+	&_cta_btn {
+		display: block;
+		width: 100%;
+		max-width: 320px;
+		margin: 0 auto;
+		box-sizing: border-box;
+		background-color: $color-secondary;
+		color: $color-white;
+		font-family: $font-heading;
+		font-weight: 600;
+		font-size: 1rem;
+		padding: 1.1rem 1.5rem;
+		text-decoration: none;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		transition: filter 0.3s ease;
+
+		@media (min-width: 576px) {
+			display: inline-block;
+			width: auto;
+			max-width: none;
+			padding: 1.2rem 3.5rem;
+		}
+
+		&:hover {
+			filter: brightness(0.9);
+			color: $color-white;
+		}
+	}
+}
