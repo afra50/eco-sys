@@ -1,5 +1,5 @@
 import { Check } from "lucide-react";
-import "../styles/pages/heatpumps.scss"; // <--- MAŁYMI LITERAMI
+import "../styles/pages/heatpumps.scss";
 
 const HeatPumps = () => {
 	const airAdvantages = [
@@ -21,86 +21,140 @@ const HeatPumps = () => {
 	];
 
 	return (
-		<div className="heat-pumps">
-			<section className="heat-pumps__intro">
-				<div className="heat-pumps__container heat-pumps__intro-wrapper">
-					<div className="heat-pumps__intro-text">
-						<h1 className="heat-pumps__title">Jak działa pompa ciepła?</h1>
-						<p className="heat-pumps__intro-desc">
+		<div className="heatpumps">
+			{/* --- HERO --- */}
+			<section className="heatpumps_hero">
+				<div className="heatpumps_image_wrapper">
+					<img
+						src="/images/pompa-hero.webp"
+						alt="Nowoczesna pompa ciepła przy budynku"
+						className="heatpumps_hero_image"
+					/>
+					<div className="heatpumps_overlay"></div>
+				</div>
+
+				<div className="heatpumps_container heatpumps_hero_container">
+					<div className="heatpumps_hero_content">
+						<h1 className="heatpumps_title">Pompy Ciepła</h1>
+						<p className="heatpumps_subtitle">Energia z Natury</p>
+						<p className="heatpumps_desc">
+							Zmień sposób ogrzewania na bardziej wydajny i ekologiczny.
+							Oferujemy profesjonalny dobór, montaż oraz serwis pomp ciepła,
+							które zapewnią Ci komfort cieplny przez cały rok.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			{/* --- INTRO --- */}
+			<section className="heatpumps_intro">
+				<div className="heatpumps_container heatpumps_intro_wrapper">
+					<div className="heatpumps_intro_text">
+						<h2 className="heatpumps_section_title">
+							Jak działa pompa ciepła?
+						</h2>
+						<p className="heatpumps_intro_desc">
 							Pompy ciepła są ekologicznym sposobem ogrzania domu. To odnawialne
 							źródło energii pozwala nie tylko skutecznie dbać o środowisko i
 							redukować emisję CO2, ale przede wszystkim obniżyć koszty
 							ogrzewania nawet do 70%.
 						</p>
 					</div>
-					<div className="heat-pumps__video">
+					<div className="heatpumps_video">
 						<iframe
 							src="https://www.youtube.com/embed/Hr_qrZSGEpA?si=UuBu5eLxO8EzBZWL"
 							title="Jak działa pompa ciepła"
 							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-							allowFullScreen></iframe>
+							allowFullScreen
+							className="heatpumps_video_iframe"></iframe>
 					</div>
 				</div>
 			</section>
 
-			<section className="heat-pumps__types">
-				<div className="heat-pumps__container heat-pumps__types-grid">
-					<div className="heat-pumps__type-card">
-						<h2 className="heat-pumps__type-title">Powietrzna pompa ciepła</h2>
-						<p className="heat-pumps__type-desc">
+			{/* --- RODZAJE POMP --- */}
+			<section className="heatpumps_types">
+				<div className="heatpumps_container heatpumps_types_grid">
+					<div className="heatpumps_type_card">
+						<h3 className="heatpumps_type_title">Powietrzna pompa ciepła</h3>
+						<p className="heatpumps_type_desc">
 							Jej działanie opiera się na poborze energii aerotermalnej
 							zgromadzonej w powietrzu. Pracuje podobnie do klimatyzatora, z tą
 							różnicą, że niezawodnie ogrzewa również wodę użytkową.
 						</p>
 
-						<ul className="heat-pumps__type-list">
+						<ul className="heatpumps_type_list">
 							{airAdvantages.map((adv, i) => (
-								<li key={i} className="heat-pumps__list-item">
-									<Check size={20} className="heat-pumps__list-icon" />
-									<span className="heat-pumps__list-text">{adv}</span>
+								<li key={i} className="heatpumps_list_item">
+									<Check size={20} className="heatpumps_list_icon" />
+									<span className="heatpumps_list_text">{adv}</span>
 								</li>
 							))}
 						</ul>
 						<img
 							src="/images/pompa-powietrzna.jpg"
 							alt="Schemat pompy powietrznej"
-							className="heat-pumps__type-image"
+							className="heatpumps_type_image"
 						/>
 					</div>
 
-					<div className="heat-pumps__type-card">
-						<h2 className="heat-pumps__type-title">Gruntowa pompa ciepła</h2>
-						<p className="heat-pumps__type-desc">
+					<div className="heatpumps_type_card">
+						<h3 className="heatpumps_type_title">Gruntowa pompa ciepła</h3>
+						<p className="heatpumps_type_desc">
 							Wykorzystuje energię geotermalną. Dzięki wykonaniu odpowiednich
 							odwiertów, urządzenie pobiera ciepło z gruntu, stając się
 							całkowicie niezależnym od warunków na zewnątrz.
 						</p>
 
-						<ul className="heat-pumps__type-list">
+						<ul className="heatpumps_type_list">
 							{groundAdvantages.map((adv, i) => (
-								<li key={i} className="heat-pumps__list-item">
-									<Check size={20} className="heat-pumps__list-icon" />
-									<span className="heat-pumps__list-text">{adv}</span>
+								<li key={i} className="heatpumps_list_item">
+									<Check size={20} className="heatpumps_list_icon" />
+									<span className="heatpumps_list_text">{adv}</span>
 								</li>
 							))}
 						</ul>
 						<img
 							src="/images/pompa-gruntowa.jpg"
 							alt="Schemat pompy gruntowej"
-							className="heat-pumps__type-image"
+							className="heatpumps_type_image"
 						/>
 					</div>
 				</div>
 			</section>
 
-			<section className="heat-pumps__partners">
-				<div className="heat-pumps__container">
-					<h2 className="heat-pumps__partners-title">Współpracujemy z</h2>
-					<div className="heat-pumps__partners-grid">
-						<div className="heat-pumps__partner-logo">LOGO 1</div>
-						<div className="heat-pumps__partner-logo">LOGO 2</div>
-						<div className="heat-pumps__partner-logo">LOGO 3</div>
-						<div className="heat-pumps__partner-logo">LOGO 4</div>
+			{/* --- PARTNERZY --- */}
+			<section className="heatpumps_partners">
+				<div className="heatpumps_container">
+					<h2 className="heatpumps_partners_title">Współpracujemy z</h2>
+					<div className="heatpumps_partners_grid">
+						<div className="heatpumps_partner_logo">
+							<img
+								src="/images/logo1.png"
+								alt="Partner 1"
+								className="heatpumps_partner_image"
+							/>
+						</div>
+						<div className="heatpumps_partner_logo">
+							<img
+								src="/images/logo2.png"
+								alt="Partner 2"
+								className="heatpumps_partner_image"
+							/>
+						</div>
+						<div className="heatpumps_partner_logo">
+							<img
+								src="/images/logo3.png"
+								alt="Partner 3"
+								className="heatpumps_partner_image"
+							/>
+						</div>
+						<div className="heatpumps_partner_logo">
+							<img
+								src="/images/logo4.png"
+								alt="Partner 4"
+								className="heatpumps_partner_image"
+							/>
+						</div>
 					</div>
 				</div>
 			</section>
