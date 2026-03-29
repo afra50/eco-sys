@@ -1,0 +1,287 @@
+@use "../variables" as *;
+
+.footer {
+  background-color: $color-primary;
+  color: $color-white;
+  padding-top: 4rem;
+
+  &__container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  &__top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba($color-white, 0.1);
+
+    @media (max-width: 1100px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 3.5rem; // Trochę większy odstęp między sekcjami na mobile
+      text-align: center; // Główna zmiana dla wyśrodkowania
+    }
+  }
+
+  &__col {
+    &--about {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+
+      @media (max-width: 768px) {
+        align-items: center; // Centrowanie na mobile
+      }
+    }
+
+    &--contact {
+      @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  }
+
+  &__logo {
+    display: inline-block;
+
+    img {
+      height: 65px;
+      filter: brightness(0) invert(1);
+      opacity: 0.9;
+      transition: opacity 0.3s;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__desc {
+    font-family: $font-main;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba($color-white, 0.7);
+    max-width: 400px;
+  }
+
+  &__socials {
+    display: flex;
+    gap: 12px;
+
+    @media (max-width: 768px) {
+      justify-content: center; // Centrowanie ikon na mobile
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 4px;
+      background-color: rgba($color-white, 0.05);
+      color: $color-white;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: $color-secondary;
+      }
+    }
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: 1.25rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+    color: $color-white;
+    position: relative;
+    padding-bottom: 10px;
+    display: inline-block; // Potrzebne do wyśrodkowania kreski
+
+    // Czerwona kreska podkreślająca tytuły kolumn
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background-color: $color-secondary;
+
+      @media (max-width: 768px) {
+        left: 50%;
+        transform: translateX(-50%); // Centrowanie kreski na mobile
+      }
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem; // Zmniejszony bazowy gap, bo linki mają teraz padding
+
+    li {
+      @media (max-width: 768px) {
+        display: flex;
+        justify-content: center;
+      }
+    }
+
+    li a {
+      font-family: $font-main;
+      font-size: 0.95rem;
+      color: rgba($color-white, 0.7);
+      transition: all 0.2s ease;
+
+      // Zwiększamy obszar klikalny!
+      display: inline-block;
+      padding: 8px 0;
+
+      position: relative;
+
+      // Zmieniona mechanika strzałki
+      &::before {
+        content: "›";
+        position: absolute;
+        left: -15px; // Strzałka zaczyna trochę dalej w lewo
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0;
+        color: $color-secondary;
+        transition: all 0.2s ease;
+        font-size: 1.2rem;
+        font-weight: bold;
+
+        @media (max-width: 768px) {
+          display: none; // Ukrywamy strzałkę na mobile (przy wyśrodkowanym tekście wyglądałaby dziwnie)
+        }
+      }
+
+      &:hover {
+        color: $color-white;
+        // Na desktopie przesuwamy tekst lekko w prawo robiąc miejsce na strzałkę
+        padding-left: 15px;
+
+        @media (max-width: 768px) {
+          padding-left: 0; // Na mobile nie przesuwamy
+          color: $color-secondary; // Tylko zmieniamy kolor na akcent
+        }
+
+        &::before {
+          opacity: 1;
+          left: 0; // Strzałka wjeżdża na lewą krawędź
+        }
+      }
+
+      // Większy padding góra-dół na mobile dla fat-fingers
+      @media (max-width: 768px) {
+        padding: 12px 20px;
+      }
+    }
+  }
+
+  &__contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; // Trochę więcej miejsca na kliknięcie
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+
+      @media (max-width: 768px) {
+        flex-direction: column; // Ikonka nad tekstem
+        align-items: center;
+        gap: 8px;
+        text-align: center;
+      }
+
+      .icon {
+        color: $color-secondary;
+        font-size: 1.2rem;
+        margin-top: 3px;
+
+        @media (max-width: 768px) {
+          margin-top: 0;
+          font-size: 1.5rem; // Większa ikona na mobile
+        }
+      }
+
+      .info {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        font-family: $font-main;
+        font-size: 0.95rem;
+        color: rgba($color-white, 0.8);
+
+        a {
+          // Obszar klikalny dla maila/telefonu
+          display: inline-block;
+          padding: 5px 0;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: $color-white;
+          }
+
+          @media (max-width: 768px) {
+            padding: 8px 15px; // Większy przycisk na mobile
+          }
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    font-family: $font-main;
+    font-size: 0.85rem;
+    color: rgba($color-white, 0.5);
+
+    @media (max-width: 768px) {
+      flex-direction: column-reverse; // Prawa autorskie na sam dół
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    &-links {
+      display: flex;
+      gap: 1.5rem;
+
+      @media (max-width: 768px) {
+        flex-direction: column; // Linki pod sobą na mobile
+        gap: 0.5rem;
+      }
+
+      a {
+        transition: color 0.2s ease;
+        padding: 5px; // Lepszy obszar klikalny
+
+        @media (max-width: 768px) {
+          padding: 10px;
+        }
+
+        &:hover {
+          color: $color-white;
+        }
+      }
+    }
+  }
+}

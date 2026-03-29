@@ -14,15 +14,11 @@ I. PODZIAŁ PRACY
         - node env production + ciastka secure true
 
     JULA
-        - Variables, app, wgranie czcionek
         - Chat + backend
         - Galeria - pobieranie i wyświetlanie na froncie (korzystając z API Emili).
         - Galeria Admin (tylko Front): Galeria admin + obsługa zdjęć na froncie
         - Panel admina widok
-        - alert, confirmdialog, scrolltotop, loader
-        - Header, Button, forms, stopka
-        -do Headera(dla klienta) wrzucić fotowoltaike.
-
+        - alert, confirmdialog, scrolltotop, loader, forms
 
 
 II. NOTATKI
