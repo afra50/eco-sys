@@ -7,14 +7,11 @@ I. PODZIAŁ PRACY
         - Statyczne strony: Wentylacje, Wod-kan ogrzewanie podłogowe, O nas
 
     EMILA
-        - Autoryzacja - tokeny, ciastka, middleware, protectedroute, endpoint do logowania
+        - protectedroute - jak bedzie loader to podmienic na inna wersje z, dodac do routes
         - Zabezpieczenie i konfiguracja backendu
-        - Integracja backend - baza - zmienne env
-        - Integracja front - backend - plik API.js
-        - Domena + Hosting
+        - Hosting
         - index.html, seo, sitemap, googlesearch, manifest.json, og.jpg, JSON-LD
-        - Kompresja zdjęć + Endpointy do Uploadu, Pobierania, Usuwania zdjęć
-        - Baza danych
+        - node env production + ciastka secure true
 
     JULA
         - Variables, app, wgranie czcionek
@@ -22,7 +19,7 @@ I. PODZIAŁ PRACY
         - Galeria - pobieranie i wyświetlanie na froncie (korzystając z API Emili).
         - Galeria Admin (tylko Front): Galeria admin + obsługa zdjęć na froncie
         - Panel admina widok
-        - alert, confirmdialog, scrolltotop
+        - alert, confirmdialog, scrolltotop, loader
         - Header, Button, forms, stopka
         -do Headera(dla klienta) wrzucić fotowoltaike.
 
@@ -31,6 +28,6 @@ I. PODZIAŁ PRACY
 II. NOTATKI
     1. Zakładki dla przemysłu i dla klienta (chyba w tym mają się zawrzeć Wentylacje Klimatyzje, Pompy ciepła, Wod-Kan Ogrzewanie podłogowe, Farmy fotowoltaiczne), Galeria, Kontakt, o nas (tutaj byśmy dali informację o siedzibie i dane kontaktowe)
     2. W zakładkach stały tekst
-    3. Chatbot
+    3. Chatbot (integracja w api.js)
     4. Kalkulator ofert - osobna wycena 
     5. Formularz kontaktowy
