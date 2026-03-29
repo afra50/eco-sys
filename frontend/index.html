@@ -1,29 +1,88 @@
 <!doctype html>
-<html lang="en">
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-  <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <meta name="apple-mobile-web-app-title" content="Eco-Sys" />
-  <link rel="manifest" href="/site.webmanifest" />
-  <meta property="og:title" content="ECO-SYS | Pompy ciepła, Fotowoltaika, Klimatyzacja" />
-  <meta property="og:description"
-    content="Nowoczesne systemy grzewcze i OZE we Wrocławiu. Postaw na dom bez rachunków z ECO-SYS." />
-  <meta property="og:image" content="/og-image.jpg" />
-  <meta property="og:url" content="https://eco-sys.pl/" />
-  <meta property="og:type" content="website" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="ECO-SYS" />
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="/og-image.jpg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>frontend</title>
-</head>
+    <title>ECO-SYS | Pompy ciepła, Fotowoltaika, Klimatyzacja</title>
+    <meta
+      name="description"
+      content="Nowoczesne systemy grzewcze i OZE we Wrocławiu. Postaw na dom bez rachunków z ECO-SYS. Profesjonalny montaż pomp ciepła i fotowoltaiki."
+    />
+    <meta
+      name="keywords"
+      content="pompy ciepła, fotowoltaika, klimatyzacja, OZE, ogrzewanie, Wrocław, ECO-SYS, systemy grzewcze, panele słoneczne"
+    />
+    <meta name="author" content="ECO-SYS" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://eco-sys.pl/" />
 
-<body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
-</body>
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://eco-sys.pl/" />
+    <meta
+      property="og:title"
+      content="ECO-SYS | Pompy ciepła, Fotowoltaika, Klimatyzacja"
+    />
+    <meta
+      property="og:description"
+      content="Nowoczesne systemy grzewcze i OZE we Wrocławiu. Postaw na dom bez rachunków z ECO-SYS."
+    />
+    <meta property="og:image" content="https://eco-sys.pl/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="pl_PL" />
 
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="ECO-SYS | Pompy ciepła, Fotowoltaika, Klimatyzacja"
+    />
+    <meta
+      name="twitter:description"
+      content="Nowoczesne systemy grzewcze i OZE we Wrocławiu. Postaw na dom bez rachunków z ECO-SYS."
+    />
+    <meta name="twitter:image" content="https://eco-sys.pl/og-image.jpg" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "ECO-SYS",
+        "url": "https://eco-sys.pl",
+        "image": "https://eco-sys.pl/og-image.jpg",
+        "description": "Nowoczesne systemy grzewcze i OZE. Pompy ciepła, fotowoltaika, klimatyzacja.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Wrocław",
+          "addressCountry": "PL"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "email": "kontakt@eco-sys.pl"
+        }
+      }
+    </script>
+
+    <link
+      rel="sitemap"
+      type="application/xml"
+      title="Sitemap"
+      href="/sitemap.xml"
+    />
+
+    <link rel="manifest" href="/manifest.json" />
+  </head>
+
+  <body>
+    <noscript>Musisz włączyć JavaScript, aby uruchomić tę aplikację.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
