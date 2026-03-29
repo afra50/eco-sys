@@ -2,26 +2,30 @@ import React from "react";
 import Home from "./pages/Home";
 import HeatPumps from "./pages/HeatPumps";
 import AirConditioning from "./pages/AirConditioning";
-import Photovoltaics from "./pages/photovoltaics";
+import Photovoltaics from "./pages/Photovoltaics";
 import { Navigate } from "react-router-dom";
 import FloorHeating from "./pages/FloorHeating";
 
+import Login from "./pages/admin/Login";
+
 const routes = [
-	// --- CZĘŚĆ PUBLICZNA ---
-	{ path: "/", element: <Home /> },
-	{ path: "/pompy-ciepla", element: <HeatPumps /> },
-	{ path: "/klimatyzacja", element: <AirConditioning /> },
-	{ path: "/fotowoltaika", element: <Photovoltaics /> },
-	{
-		path: "/przemysl/farmy-fotowoltaiczne",
-		element: <Navigate to="/fotowoltaika" replace />,
-	},
-	{ path: "/dla-klienta/ogrzewanie-podlogowe", element: <FloorHeating /> },
-	// { path: "/o-nas", element: <AboutUs /> },
-	// { path: "kontakt", element: <Contact /> },
-	// --- ROUTY ADMINA ---
-	// // --- 404 ---
-	// { path: "*", element: <NotFound /> },
+  // --- CZĘŚĆ PUBLICZNA ---
+  { path: "/", element: <Home /> },
+  { path: "/pompy-ciepla", element: <HeatPumps /> },
+  { path: "/klimatyzacja", element: <AirConditioning /> },
+  { path: "/fotowoltaika", element: <Photovoltaics /> },
+  {
+    path: "/przemysl/farmy-fotowoltaiczne",
+    element: <Navigate to="/fotowoltaika" replace />,
+  },
+  { path: "/dla-klienta/ogrzewanie-podlogowe", element: <FloorHeating /> },
+  // { path: "/o-nas", element: <AboutUs /> },
+  // { path: "kontakt", element: <Contact /> },
+
+  // --- ROUTY ADMINA ---
+  { path: "/admin/login", element: <Login /> },
+  // // --- 404 ---
+  // { path: "*", element: <NotFound /> },
 ];
 
 export default routes;

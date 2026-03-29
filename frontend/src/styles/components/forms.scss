@@ -1,0 +1,165 @@
+@use "../variables" as *;
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+
+  &__label {
+    font-family: $font-heading;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: $color-primary;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  // Grupowanie stylów dla wszystkich typów pól wprowadzania
+  &__input,
+  &__textarea,
+  &__select {
+    font-family: $font-main;
+    font-size: 1rem;
+    color: $color-text-main;
+    padding: 14px 15px;
+    background-color: $color-white;
+    width: 100%; // Pełna szerokość
+
+    // Techniczny wygląd - 1px obramowania, lewe na 4px
+    border: 1px solid rgba($color-primary, 0.2);
+    border-left: 4px solid rgba($color-primary, 0.2);
+    border-radius: 0;
+    transition: all 0.3s ease;
+
+    &::placeholder {
+      color: rgba($color-primary, 0.4);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $color-secondary;
+    }
+
+    &:disabled {
+      background-color: rgba($color-primary, 0.05);
+      cursor: not-allowed;
+    }
+  }
+
+  // Specyficzne dla wieloliniowego pola tekstowego (Wiadomość)
+  &__textarea {
+    resize: vertical; // Pozwala tylko na rozciąganie w dół
+    min-height: 120px; // Minimalna wysokość na starcie
+  }
+
+  // Specyficzne dla listy rozwijanej (jeśli zrobisz "Wybierz temat")
+  &__select {
+    cursor: pointer;
+    appearance: none; // Wyłącza brzydką natywną strzałkę
+    // Dodajemy własną, minimalistyczną strzałkę SVG
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
+    padding-right: 40px; // Żeby tekst nie wchodził na strzałkę
+  }
+}
+
+// --- WŁASNY, TECHNICZNY CHECKBOX (np. RODO) ---
+.form-checkbox {
+  display: flex;
+  align-items: flex-start; // Gdyby tekstu było dużo (2 linijki)
+  gap: 12px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  position: relative;
+
+  // 1. Ukrywamy prawdziwego checkboxa, ale go nie usuwamy (dla czytników ekranu i fokusu)
+  &__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    // Kiedy checkbox jest ZAZNACZONY, zmieniamy nasz sztuczny kwadracik
+    &:checked + .form-checkbox__mark {
+      background-color: $color-secondary;
+      border-color: $color-secondary;
+
+      // Pokazujemy "ptaszka"
+      &::after {
+        opacity: 1;
+        transform: rotate(45deg) scale(1);
+      }
+    }
+
+    // Dostępność z klawiatury (Focus Tabem)
+    &:focus-visible + .form-checkbox__mark {
+      outline: 2px solid $color-secondary;
+      outline-offset: 2px;
+    }
+  }
+
+  // 2. Nasz sztuczny, ostry kwadracik
+  &__mark {
+    flex-shrink: 0; // Zapobiega zgnieceniu, gdy tekstu jest dużo
+    width: 22px;
+    height: 22px;
+    border: 1px solid rgba($color-primary, 0.3);
+    border-radius: 0; // Ostre rogi!
+    background-color: $color-white;
+    position: relative;
+    transition: all 0.2s ease;
+    margin-top: 2px; // Minimalne obniżenie, aby był na równi z tekstem
+
+    // Rysujemy "ptaszka" przy pomocy borderów (domyślnie niewidoczny i pomniejszony)
+    &::after {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 2px;
+      width: 6px;
+      height: 12px;
+      border: solid $color-white;
+      border-width: 0 2px 2px 0;
+      opacity: 0;
+      transform: rotate(45deg) scale(0.5);
+      transition: all 0.2s ease;
+    }
+  }
+
+  // 3. Tekst zgody
+  &__text {
+    font-family: $font-main;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: rgba($color-text-main, 0.8);
+    user-select: none; // Żeby tekst nie zaznaczał się na niebiesko przy szybkim klikaniu
+
+    // Styl dla linków wewnątrz zgody (np. "Politykę Prywatności")
+    a {
+      color: $color-primary;
+      font-weight: 500;
+      text-decoration: underline;
+      text-decoration-color: $color-secondary;
+      text-underline-offset: 3px;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $color-secondary;
+      }
+    }
+  }
+}
+
+// --- BŁĘDY WALIDACJI ---
+.form-error {
+  font-family: $font-main;
+  font-size: 0.9rem;
+  color: $color-secondary;
+  background-color: rgba($color-secondary, 0.05);
+  padding: 10px 15px;
+  border-left: 3px solid $color-secondary;
+  margin-bottom: 20px;
+}
