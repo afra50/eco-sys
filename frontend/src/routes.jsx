@@ -1,30 +1,53 @@
 import React from "react";
+import { Navigate } from "react-router-dom";
+
+// --- Importy stron publicznych ---
 import Home from "./pages/Home";
 import HeatPumps from "./pages/HeatPumps";
 import AirConditioning from "./pages/AirConditioning";
 import Photovoltaics from "./pages/Photovoltaics";
-import { Navigate } from "react-router-dom";
 import FloorHeating from "./pages/FloorHeating";
+// import NotFound from "./pages/NotFound";
 
+// --- Importy Admina ---
 import Login from "./pages/admin/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const routes = [
-  // --- CZĘŚĆ PUBLICZNA ---
+  // ==========================================
+  // 🌍 CZĘŚĆ PUBLICZNA
+  // ==========================================
   { path: "/", element: <Home /> },
   { path: "/pompy-ciepla", element: <HeatPumps /> },
   { path: "/klimatyzacja", element: <AirConditioning /> },
   { path: "/fotowoltaika", element: <Photovoltaics /> },
-  {
-    path: "/przemysl/farmy-fotowoltaiczne",
-    element: <Navigate to="/fotowoltaika" replace />,
-  },
   { path: "/dla-klienta/ogrzewanie-podlogowe", element: <FloorHeating /> },
-  // { path: "/o-nas", element: <AboutUs /> },
-  // { path: "kontakt", element: <Contact /> },
 
-  // --- ROUTY ADMINA ---
+  // ==========================================
+  // 🔐 CZĘŚĆ ADMINA
+  // ==========================================
   { path: "/admin/login", element: <Login /> },
-  // // --- 404 ---
+
+  {
+    path: "/admin",
+    element: (
+      <ProtectedRoute>
+        {/* Tu w przyszłości będzie Twój AdminLayout */}
+        <div>
+          <h1>Panel Admina - jesteś zalogowana!</h1>
+        </div>
+      </ProtectedRoute>
+    ),
+    children: [
+      // { index: true, element: <AdminGallery /> },
+      // ❌ 404 DLA ADMINA (Wewnątrz panelu)
+      // { path: "*", element: <NotFound /> },
+    ],
+  },
+
+  // ==========================================
+  // ❌ 404 GLOBALNE (Dla części publicznej)
+  // ==========================================
   // { path: "*", element: <NotFound /> },
 ];
 

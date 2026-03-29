@@ -27,6 +27,12 @@ const processQueue = (error, token = null) => {
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
+    // 1. OCHRONA PRZED WYŁĄCZONYM SERWEREM (Zabezpieczenie przed pętlą!)
+    if (!error.response) {
+      console.error("Network/Server error. Is the backend running?");
+      return Promise.reject(error); // Przerwij od razu, nie próbuj odświeżać tokena.
+    }
+
     const originalRequest = error.config;
 
     // Jeśli błąd to 401 (Unauthorized) i nie ponawialiśmy jeszcze tego zapytania

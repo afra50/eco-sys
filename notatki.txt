@@ -1,13 +1,12 @@
 I. PODZIAŁ PRACY
     KRZYSIEK
-       
+        - not found
         - Kontakt - Formularz kontaktowy + wysyłka
-        - Panel do logowania admin + obsługa tego
         - Polityka prywatności
         - Statyczne strony: Wentylacje, Wod-kan ogrzewanie podłogowe, O nas
 
     EMILA
-        - protectedroute - jak bedzie loader to podmienic na inna wersje z, dodac do routes
+        - protectedroute - jak bedzie loader to podmienic na inna wersje z
         - Zabezpieczenie i konfiguracja backendu
         - Hosting, .htaccess, wyl. cacheowanie
         - sitemap do poprawy, googlesearch
