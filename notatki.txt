@@ -9,8 +9,8 @@ I. PODZIAŁ PRACY
     EMILA
         - protectedroute - jak bedzie loader to podmienic na inna wersje z, dodac do routes
         - Zabezpieczenie i konfiguracja backendu
-        - Hosting
-        - index.html, seo, sitemap, googlesearch, manifest.json, og.jpg, JSON-LD
+        - Hosting, .htaccess, wyl. cacheowanie
+        - sitemap do poprawy, googlesearch
         - node env production + ciastka secure true
 
     JULA
