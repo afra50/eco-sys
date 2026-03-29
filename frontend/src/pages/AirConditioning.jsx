@@ -3,16 +3,34 @@ import { Check, Wind, Thermometer, Settings, Wrench } from "lucide-react";
 import "../styles/pages/airconditioning.scss";
 import Button from "../components/ui/Button";
 
+// --- IMPORTY ZDJĘĆ Z FOLDERU SRC ---
+import heroSlide1 from "../images/klimatyzacja-dom.webp";
+import heroSlide2 from "../images/klimatyzacja-vrf.webp";
+
+import klim1 from "../images/klim-1.webp";
+import klim2 from "../images/klim-2.webp";
+import klim3 from "../images/klim-3.webp";
+import klim4 from "../images/klim-4.webp";
+import klim5 from "../images/klim-5.webp";
+
+import vrf1 from "../images/vrf-zdjecie-1.webp";
+import vrf2 from "../images/vrf-zdjecie-2.webp";
+import vrf3 from "../images/vrf-zdjecie-3.webp";
+import vrf4 from "../images/vrf-zdjecie-4.webp";
+import vrf5 from "../images/vrf-zdjecie-5.webp";
+import vrf6 from "../images/vrf-zdjecie-6.webp";
+import vrf7 from "../images/vrf-zdjecie-7.webp";
+
 const AirConditioning = () => {
 	// --- GŁÓWNY HERO SLIDER ---
 	const [currentSlide, setCurrentSlide] = useState(0);
 	const slides = [
 		{
-			url: "/images/klimatyzacja-dom.webp",
+			url: heroSlide1,
 			alt: "Klimatyzacja domowa premium w nowoczesnym salonie (wersja XXL)",
 		},
 		{
-			url: "/images/klimatyzacja-vrf.webp",
+			url: heroSlide2,
 			alt: "Klimatyzacja przemysłowa VRF na dachu",
 		},
 	];
@@ -26,13 +44,7 @@ const AirConditioning = () => {
 
 	// --- MINI-SLIDER: KLIMATYZACJA DLA DOMU ---
 	const [currentHomeSlide, setCurrentHomeSlide] = useState(0);
-	const homeSlides = [
-		"/images/klim-1.webp",
-		"/images/klim-2.webp",
-		"/images/klim-3.webp",
-		"/images/klim-4.webp",
-		"/images/klim-5.webp",
-	];
+	const homeSlides = [klim1, klim2, klim3, klim4, klim5];
 
 	useEffect(() => {
 		const homeTimer = setInterval(() => {
@@ -45,15 +57,7 @@ const AirConditioning = () => {
 
 	// --- MINI-SLIDER: KLIMATYZACJA PRZEMYSŁOWA (VRF) ---
 	const [currentVrfSlide, setCurrentVrfSlide] = useState(0);
-	const vrfSlides = [
-		"/images/vrf-zdjecie-1.webp",
-		"/images/vrf-zdjecie-2.webp",
-		"/images/vrf-zdjecie-3.webp",
-		"/images/vrf-zdjecie-4.webp",
-		"/images/vrf-zdjecie-5.webp",
-		"/images/vrf-zdjecie-6.webp",
-		"/images/vrf-zdjecie-7.webp",
-	];
+	const vrfSlides = [vrf1, vrf2, vrf3, vrf4, vrf5, vrf6, vrf7];
 
 	useEffect(() => {
 		const vrfTimer = setInterval(() => {

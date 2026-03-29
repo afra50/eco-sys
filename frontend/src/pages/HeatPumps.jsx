@@ -1,6 +1,17 @@
 import { Check } from "lucide-react";
 import "../styles/pages/heatpumps.scss";
 
+// --- IMPORTY ZDJĘĆ Z FOLDERU SRC ---
+import heroImage from "../images/pompa-hero.webp";
+import pompaPowietrznaImg from "../images/pompa-powietrzna.jpg";
+import pompaGruntowaImg from "../images/pompa-gruntowa.jpg";
+
+// Jak będziesz miał logotypy, odkomentuj to:
+// import logo1 from "../images/logo1.png";
+// import logo2 from "../images/logo2.png";
+// import logo3 from "../images/logo3.png";
+// import logo4 from "../images/logo4.png";
+
 const HeatPumps = () => {
 	const airAdvantages = [
 		"Obniżenie kosztów ogrzewania (do 70%)",
@@ -26,7 +37,7 @@ const HeatPumps = () => {
 			<section className="heatpumps_hero">
 				<div className="heatpumps_image_wrapper">
 					<img
-						src="/images/pompa-hero.webp"
+						src={heroImage}
 						alt="Nowoczesna pompa ciepła przy budynku"
 						className="heatpumps_hero_image"
 					/>
@@ -91,7 +102,7 @@ const HeatPumps = () => {
 							))}
 						</ul>
 						<img
-							src="/images/pompa-powietrzna.jpg"
+							src={pompaPowietrznaImg}
 							alt="Schemat pompy powietrznej"
 							className="heatpumps_type_image"
 						/>
@@ -114,7 +125,7 @@ const HeatPumps = () => {
 							))}
 						</ul>
 						<img
-							src="/images/pompa-gruntowa.jpg"
+							src={pompaGruntowaImg}
 							alt="Schemat pompy gruntowej"
 							className="heatpumps_type_image"
 						/>
@@ -128,32 +139,20 @@ const HeatPumps = () => {
 					<h2 className="heatpumps_partners_title">Współpracujemy z</h2>
 					<div className="heatpumps_partners_grid">
 						<div className="heatpumps_partner_logo">
-							<img
-								src="/images/logo1.png"
-								alt="Partner 1"
-								className="heatpumps_partner_image"
-							/>
+							{/* <img src={logo1} alt="Partner 1" className="heatpumps_partner_image" /> */}
+							<span>Logo 1</span>
 						</div>
 						<div className="heatpumps_partner_logo">
-							<img
-								src="/images/logo2.png"
-								alt="Partner 2"
-								className="heatpumps_partner_image"
-							/>
+							{/* <img src={logo2} alt="Partner 2" className="heatpumps_partner_image" /> */}
+							<span>Logo 2</span>
 						</div>
 						<div className="heatpumps_partner_logo">
-							<img
-								src="/images/logo3.png"
-								alt="Partner 3"
-								className="heatpumps_partner_image"
-							/>
+							{/* <img src={logo3} alt="Partner 3" className="heatpumps_partner_image" /> */}
+							<span>Logo 3</span>
 						</div>
 						<div className="heatpumps_partner_logo">
-							<img
-								src="/images/logo4.png"
-								alt="Partner 4"
-								className="heatpumps_partner_image"
-							/>
+							{/* <img src={logo4} alt="Partner 4" className="heatpumps_partner_image" /> */}
+							<span>Logo 4</span>
 						</div>
 					</div>
 				</div>

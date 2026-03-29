@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, Zap } from "lucide-react"; // Dodałem nową ikonę Zap
+import { ChevronLeft, ChevronRight, Zap } from "lucide-react";
 import Button from "../ui/Button";
 import "../../styles/components/home/hero.scss";
+
+// --- IMPORTY ZDJĘĆ Z FOLDERU SRC ---
+import heroPompa from "../../images/hero-pompa.jpg";
+import heroFoto from "../../images/hero-foto.jpg";
+import heroKlima from "../../images/hero-klima.jpg";
 
 const Hero = () => {
 	const [currentSlide, setCurrentSlide] = useState(0);
@@ -9,13 +14,12 @@ const Hero = () => {
 	const slides = [
 		{
 			id: 1,
-			productType: "Pompy Ciepła", // NOWE: Dedykowany typ produktu
-			productTitle: "Oszczędne ogrzewanie", // NOWE: Dedykowany tytuł
+			productType: "Pompy Ciepła",
+			productTitle: "Oszczędne ogrzewanie",
 			productDesc:
-				"Ciepło i komfort w Twoim domu przez cały rok dzięki hybrydowej technologii.", // NOWE: Dedykowany opis
-			productLink: "/pompy-ciepla", // POPRAWIONE: czysty link
-			// Pamiętaj, aby zapisać wygenerowany obraz w public/images/hero-pompa.jpg
-			img: "/images/hero-pompa.jpg",
+				"Ciepło i komfort w Twoim domu przez cały rok dzięki hybrydowej technologii.",
+			productLink: "/pompy-ciepla",
+			img: heroPompa,
 		},
 		{
 			id: 2,
@@ -23,8 +27,8 @@ const Hero = () => {
 			productTitle: "Darmowy prąd ze słońca",
 			productDesc:
 				"Zainwestuj w panele fotowoltaiczne i zyskaj niezależność energetyczną.",
-			productLink: "/fotowoltaika", // POPRAWIONE: czysty link
-			img: "/images/hero-foto.jpg",
+			productLink: "/fotowoltaika",
+			img: heroFoto,
 		},
 		{
 			id: 3,
@@ -32,12 +36,11 @@ const Hero = () => {
 			productTitle: "Komfort i świeżość",
 			productDesc:
 				"Nowoczesna klimatyzacja i wentylacja dopasowana do potrzeb Twojej rodziny.",
-			productLink: "/klimatyzacja", // POPRAWIONE: czysty link
-			img: "/images/hero-klima.jpg",
+			productLink: "/klimatyzacja",
+			img: heroKlima,
 		},
 	];
 
-	// Automatyczne przewijanie co 5 sekund
 	useEffect(() => {
 		const timer = setInterval(() => {
 			setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
@@ -51,34 +54,29 @@ const Hero = () => {
 		setCurrentSlide(currentSlide === 0 ? slides.length - 1 : currentSlide - 1);
 
 	return (
-		<section className="hero-slider hero-slider--wrobel">
+		<section className="hero_slider hero_slider_wrobel">
 			{slides.map((slide, index) => (
 				<div
 					key={slide.id}
-					className={`hero-slider__slide ${index === currentSlide ? "hero-slider__slide--active" : ""}`}>
-					{/* Tło zdjęcia szerokie, na całą szerokość, z jasną nakładką (glow) */}
-					<div className="hero-slider__bg">
+					className={`hero_slider_slide ${index === currentSlide ? "active" : ""}`}>
+					<div className="hero_slider_bg">
 						<img src={slide.img} alt={slide.productTitle} />
-						<div className="hero-slider__overlay hero-slider__overlay--glow"></div>
+						<div className="hero_slider_overlay hero_slider_overlay_glow"></div>
 					</div>
 
-					{/* NOWE: Subtelny boczny panel z dedykowaną treścią produktu */}
-					<div className="hero-slider__sidebar">
-						<div className="hero-slider__sidebar-content">
-							{/* Ikona i typ produktu */}
-							<div className="hero-slider__product-meta">
-								<Zap size={20} className="hero-slider__product-icon" />
-								<p className="hero-slider__product-type">{slide.productType}</p>
+					<div className="hero_slider_sidebar">
+						<div className="hero_slider_sidebar_content">
+							<div className="hero_slider_product_meta">
+								<Zap size={20} className="hero_slider_product_icon" />
+								<p className="hero_slider_product_type">{slide.productType}</p>
 							</div>
 
-							{/* Tytuł i opis */}
-							<h1 className="hero-slider__product-title">
+							<h1 className="hero_slider_product_title">
 								{slide.productTitle}
 							</h1>
-							<p className="hero-slider__product-desc">{slide.productDesc}</p>
+							<p className="hero_slider_product_desc">{slide.productDesc}</p>
 
-							{/* JEDEN, główny przycisk, dedykowany do produktu */}
-							<div className="hero-slider__actions">
+							<div className="hero_slider_actions">
 								<Button to={slide.productLink} variant="primary">
 									Dowiedz się więcej
 								</Button>
@@ -88,24 +86,22 @@ const Hero = () => {
 				</div>
 			))}
 
-			{/* Strzałki nawigacyjne (zostawiamy bez zmian) */}
 			<button
-				className="hero-slider__arrow hero-slider__arrow--left"
+				className="hero_slider_arrow hero_slider_arrow_left"
 				onClick={prevSlide}>
 				<ChevronLeft size={36} />
 			</button>
 			<button
-				className="hero-slider__arrow hero-slider__arrow--right"
+				className="hero_slider_arrow hero_slider_arrow_right"
 				onClick={nextSlide}>
 				<ChevronRight size={36} />
 			</button>
 
-			{/* Kropki nawigacyjne (zostawiamy bez zmian) */}
-			<div className="hero-slider__dots">
+			<div className="hero_slider_dots">
 				{slides.map((_, index) => (
 					<button
 						key={index}
-						className={`hero-slider__dot ${index === currentSlide ? "hero-slider__dot--active" : ""}`}
+						className={`hero_slider_dot ${index === currentSlide ? "active" : ""}`}
 						onClick={() => setCurrentSlide(index)}
 					/>
 				))}

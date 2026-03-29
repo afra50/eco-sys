@@ -1,0 +1,342 @@
+@use "../variables" as *;
+
+.floorheating {
+	background-color: $color-bg-light;
+	overflow-x: hidden;
+
+	&_container {
+		max-width: 1300px;
+		margin: 0 auto;
+		padding: 0 15px;
+		position: relative;
+		z-index: 2;
+		width: 100%;
+
+		@media (min-width: 768px) {
+			padding: 0 20px;
+		}
+	}
+
+	/* --- HERO --- */
+	&_hero {
+		position: relative;
+		height: 55vh;
+		min-height: 450px;
+		max-height: 800px;
+		color: $color-white;
+		background-color: $color-primary;
+		overflow: hidden;
+
+		@media (min-width: 2600px) {
+			height: 45vh;
+			max-height: 900px;
+		}
+	}
+
+	&_hero_container {
+		height: 100%;
+		display: flex;
+		align-items: center;
+		padding-top: 3rem;
+		padding-bottom: 3rem;
+
+		@media (min-width: 768px) {
+			padding-top: 4rem;
+			padding-bottom: 4rem;
+		}
+	}
+
+	&_hero_content {
+		max-width: 630px;
+		text-align: left;
+	}
+
+	&_image_wrapper {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+		z-index: 1;
+
+		@media (min-width: 992px) {
+			width: 65%;
+		}
+	}
+
+	&_hero_image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	&_overlay {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(
+			to right,
+			rgba($color-primary, 1) 0%,
+			rgba($color-primary, 0.8) 20%,
+			rgba($color-primary, 0.1) 60%,
+			transparent 100%
+		);
+
+		@media (max-width: 991px) {
+			background: linear-gradient(
+				to right,
+				rgba($color-primary, 1) 0%,
+				rgba($color-primary, 0.9) 50%,
+				transparent 100%
+			);
+		}
+	}
+
+	&_title {
+		font-family: $font-heading;
+		font-size: clamp(2rem, 8vw, 4.5rem); /* Lekko zmniejszony dół dla 360px */
+		margin-bottom: 0.5rem;
+		font-weight: 800;
+		text-transform: uppercase;
+		line-height: 1.1;
+	}
+
+	&_subtitle {
+		font-family: $font-heading;
+		font-size: clamp(1.1rem, 4vw, 1.8rem);
+		color: $color-secondary;
+		margin-bottom: 1.5rem;
+		font-weight: 600;
+
+		@media (min-width: 992px) {
+			margin-bottom: 2rem;
+		}
+	}
+
+	&_desc {
+		font-family: $font-main;
+		font-size: 0.95rem; /* Ciut mniejszy na mobile */
+		line-height: 1.5;
+		color: rgba($color-white, 0.9);
+
+		@media (min-width: 768px) {
+			font-size: 1rem;
+			line-height: 1.6;
+		}
+
+		@media (min-width: 992px) {
+			font-size: 1.1rem;
+			line-height: 1.7;
+		}
+	}
+
+	/* --- INTRO / SPLIT --- */
+	&_intro,
+	&_control {
+		padding: 3rem 0; /* Zmniejszone dla mobile */
+		background-color: $color-white;
+
+		@media (min-width: 768px) {
+			padding: 4rem 0;
+		}
+	}
+
+	&_control {
+		background-color: $color-bg-light;
+	}
+
+	&_intro_wrapper,
+	&_control_wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem; /* Zmniejszone dla mobile */
+
+		@media (min-width: 768px) {
+			gap: 3rem;
+		}
+
+		@media (min-width: 992px) {
+			flex-direction: row;
+			align-items: stretch;
+		}
+	}
+
+	&_intro_text {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+		@media (min-width: 992px) {
+			flex: 0 0 45%;
+			padding-right: 2rem;
+		}
+	}
+
+	&_control_text {
+		@media (min-width: 992px) {
+			padding-right: 0;
+			padding-left: 2rem;
+		}
+	}
+
+	&_section_title {
+		font-family: $font-heading;
+		font-size: clamp(1.5rem, 7vw, 2.2rem);
+		color: $color-primary;
+		margin-bottom: 1.2rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		position: relative;
+		padding-bottom: 1rem;
+
+		&::after {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 50px;
+			height: 3px;
+			background-color: $color-secondary;
+
+			@media (min-width: 768px) {
+				width: 60px;
+				height: 4px;
+			}
+		}
+	}
+
+	&_intro_desc {
+		font-family: $font-main;
+		font-size: 0.95rem;
+		line-height: 1.5;
+		color: rgba($color-primary, 0.8);
+
+		@media (min-width: 768px) {
+			font-size: 1rem;
+			line-height: 1.6;
+		}
+
+		@media (min-width: 992px) {
+			font-size: 1.1rem;
+			line-height: 1.7;
+		}
+	}
+
+	&_split_image_wrapper {
+		flex: 1;
+		width: 100%;
+		overflow: hidden;
+		border-radius: 4px;
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+
+		@media (max-width: 991px) {
+			aspect-ratio: 16 / 9;
+		}
+
+		&.placeholder_bg {
+			background-color: #e2e8f0;
+			min-height: 250px; /* Zmniejszone dla mobile */
+
+			@media (min-width: 768px) {
+				min-height: 300px;
+			}
+		}
+	}
+
+	&_split_image {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	/* --- KORZYŚCI --- */
+	&_benefits {
+		padding: 3rem 0; /* Zmniejszone dla mobile */
+		background-color: $color-bg-light;
+
+		@media (min-width: 768px) {
+			padding: 5rem 0;
+		}
+	}
+
+	&_benefits_title {
+		font-family: $font-heading;
+		font-size: clamp(1.6rem, 6vw, 2rem);
+		color: $color-primary;
+		margin-bottom: 2rem; /* Zmniejszone dla mobile */
+		text-align: center;
+		text-transform: uppercase;
+		font-weight: 700;
+
+		@media (min-width: 768px) {
+			margin-bottom: 3rem;
+		}
+	}
+
+	&_benefits_grid {
+		display: flex;
+		justify-content: center;
+	}
+
+	&_benefit_card {
+		width: 100%;
+		max-width: 900px;
+		background-color: $color-white;
+		padding: 1.5rem; /* Zmniejszone dla mobile (360px safe) */
+		border-top: 5px solid $color-secondary;
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+
+		@media (min-width: 768px) {
+			padding: 3rem;
+			border-top: 6px solid $color-secondary;
+		}
+	}
+
+	&_benefit_list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.2rem; /* Zmniejszone dla mobile */
+
+		@media (min-width: 768px) {
+			grid-template-columns: 1fr 1fr;
+			column-gap: 3rem;
+			row-gap: 1.5rem;
+		}
+	}
+
+	&_list_item {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.8rem; /* Zmniejszone dla mobile */
+	}
+
+	&_list_icon {
+		color: $color-secondary;
+		flex-shrink: 0;
+		margin-top: 2px;
+		width: 20px; /* Mniejsza ikona na mobile */
+		height: 20px;
+
+		@media (min-width: 768px) {
+			width: 24px;
+			height: 24px;
+		}
+	}
+
+	&_list_text {
+		font-family: $font-main;
+		font-size: 0.95rem; /* Mniejszy tekst na mobile */
+		color: $color-primary;
+		line-height: 1.4;
+
+		@media (min-width: 768px) {
+			font-size: 1rem;
+			line-height: 1.5;
+		}
+	}
+}

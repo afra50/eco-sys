@@ -5,7 +5,7 @@
 	background-color: $color-white;
 	overflow: hidden;
 
-	&__container {
+	&_container {
 		max-width: 1300px;
 		margin: 0 auto;
 		padding: 0 20px;
@@ -20,7 +20,7 @@
 		}
 	}
 
-	&__content {
+	&_content {
 		flex: 1;
 
 		@media (min-width: 992px) {
@@ -28,7 +28,7 @@
 		}
 	}
 
-	&__title {
+	&_title {
 		font-family: $font-heading;
 		font-size: clamp(1.5rem, 3vw, 2rem);
 		color: $color-primary;
@@ -37,7 +37,7 @@
 		text-transform: uppercase;
 	}
 
-	&__subtitle {
+	&_subtitle {
 		font-family: $font-main;
 		font-size: 0.95rem;
 		color: rgba($color-primary, 0.7);
@@ -45,26 +45,26 @@
 		line-height: 1.5;
 	}
 
-	&__list {
+	&_list {
 		display: flex;
 		flex-direction: column;
 		gap: 1.5rem;
 	}
 
-	&__item {
+	&_item {
 		display: flex;
 		align-items: flex-start;
 		gap: 1.2rem;
 
 		&:hover {
-			.ecosystem__icon {
+			.ecosystem_icon {
 				background-color: $color-secondary;
 				color: $color-white;
 			}
 		}
 	}
 
-	&__icon {
+	&_icon {
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -78,7 +78,7 @@
 		transition: all 0.3s ease;
 	}
 
-	&__text {
+	&_text {
 		h3 {
 			font-family: $font-heading;
 			font-size: 1.05rem;
@@ -96,7 +96,7 @@
 		}
 	}
 
-	&__image {
+	&_image {
 		flex: 1;
 		display: flex;
 		justify-content: center;

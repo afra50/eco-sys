@@ -4,6 +4,7 @@ import HeatPumps from "./pages/HeatPumps";
 import AirConditioning from "./pages/AirConditioning";
 import Photovoltaics from "./pages/photovoltaics";
 import { Navigate } from "react-router-dom";
+import FloorHeating from "./pages/FloorHeating";
 
 const routes = [
 	// --- CZĘŚĆ PUBLICZNA ---
@@ -15,6 +16,7 @@ const routes = [
 		path: "/przemysl/farmy-fotowoltaiczne",
 		element: <Navigate to="/fotowoltaika" replace />,
 	},
+	{ path: "/dla-klienta/ogrzewanie-podlogowe", element: <FloorHeating /> },
 	// { path: "/o-nas", element: <AboutUs /> },
 	// { path: "kontakt", element: <Contact /> },
 	// --- ROUTY ADMINA ---
