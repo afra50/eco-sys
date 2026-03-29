@@ -1,0 +1,310 @@
+@use "../variables" as *;
+
+.photovoltaics {
+	background-color: $color-bg-light;
+	overflow-x: hidden;
+
+	&_container {
+		max-width: 1300px;
+		margin: 0 auto;
+		padding: 0 15px;
+		position: relative;
+		z-index: 2;
+		width: 100%;
+
+		@media (min-width: 768px) {
+			padding: 0 20px;
+		}
+	}
+
+	/* --- HERO --- */
+	&_hero {
+		position: relative;
+		height: 55vh;
+		min-height: 450px;
+		max-height: 800px;
+		color: $color-white;
+		background-color: $color-primary;
+		overflow: hidden;
+
+		@media (min-width: 2600px) {
+			height: 45vh;
+			max-height: 900px;
+		}
+	}
+
+	&_hero_container {
+		height: 100%;
+		display: flex;
+		align-items: center;
+		padding-top: 4rem;
+		padding-bottom: 4rem;
+	}
+
+	&_hero_content {
+		max-width: 630px;
+		text-align: left;
+	}
+
+	&_image_wrapper {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+		z-index: 1;
+
+		@media (min-width: 992px) {
+			width: 65%;
+		}
+	}
+
+	&_hero_image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: right center;
+	}
+
+	&_overlay {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(
+			to right,
+			rgba($color-primary, 1) 0%,
+			rgba($color-primary, 0.8) 20%,
+			rgba($color-primary, 0.1) 60%,
+			transparent 100%
+		);
+
+		@media (max-width: 991px) {
+			background: linear-gradient(
+				to right,
+				rgba($color-primary, 1) 0%,
+				rgba($color-primary, 0.9) 50%,
+				transparent 100%
+			);
+		}
+	}
+
+	&_title {
+		font-family: $font-heading;
+		font-size: clamp(2.2rem, 8vw, 4.5rem);
+		margin-bottom: 0.5rem;
+		font-weight: 800;
+		text-transform: uppercase;
+		line-height: 1.1;
+	}
+
+	&_subtitle {
+		font-family: $font-heading;
+		font-size: clamp(1.2rem, 4vw, 1.8rem);
+		color: $color-secondary;
+		margin-bottom: 1.5rem;
+		font-weight: 600;
+
+		@media (min-width: 992px) {
+			margin-bottom: 2rem;
+		}
+	}
+
+	&_desc {
+		font-family: $font-main;
+		font-size: 1rem;
+		line-height: 1.6;
+		color: rgba($color-white, 0.9);
+
+		@media (min-width: 992px) {
+			font-size: 1.1rem;
+			line-height: 1.7;
+		}
+	}
+
+	/* --- INTRO --- */
+	&_intro {
+		padding: 4rem 0;
+		background-color: $color-white;
+	}
+
+	&_intro_wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+
+		@media (min-width: 992px) {
+			flex-direction: row;
+			align-items: center;
+		}
+	}
+
+	&_intro_text {
+		flex: 1;
+
+		@media (min-width: 992px) {
+			flex: 0 0 40%;
+			padding-right: 2rem;
+		}
+	}
+
+	&_section_title {
+		font-family: $font-heading;
+		font-size: clamp(1.6rem, 7vw, 2.2rem);
+		color: $color-primary;
+		margin-bottom: 1.5rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		position: relative;
+		padding-bottom: 1rem;
+
+		&::after {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 60px;
+			height: 4px;
+			background-color: $color-secondary;
+		}
+	}
+
+	&_intro_desc {
+		font-family: $font-main;
+		font-size: 1rem;
+		line-height: 1.6;
+		color: rgba($color-primary, 0.8);
+
+		@media (min-width: 992px) {
+			font-size: 1.1rem;
+			line-height: 1.7;
+		}
+	}
+
+	&_video {
+		flex: 1;
+		width: 100%;
+		aspect-ratio: 16 / 9;
+		background-color: $color-bg-light;
+	}
+
+	&_video_iframe {
+		width: 100%;
+		height: 100%;
+		border: none;
+	}
+
+	/* --- RODZAJE (TYPES) --- */
+	&_types {
+		padding: 5rem 0;
+	}
+
+	&_types_grid {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+
+		@media (min-width: 992px) {
+			flex-direction: row;
+		}
+	}
+
+	&_type_card {
+		flex: 1;
+		background-color: $color-white;
+		padding: 3rem;
+		border-top: 6px solid $color-secondary;
+		border-radius: 0;
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+	}
+
+	&_type_title {
+		font-family: $font-heading;
+		font-size: 1.4rem;
+		color: $color-primary;
+		margin-bottom: 1rem;
+		text-transform: uppercase;
+		font-weight: 700;
+	}
+
+	&_type_desc {
+		font-family: $font-main;
+		font-size: 1rem;
+		color: rgba($color-primary, 0.7);
+		margin-bottom: 2.5rem;
+		line-height: 1.6;
+	}
+
+	&_type_list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.2rem;
+	}
+
+	/* --- ELEMENTY LISTY --- */
+	&_list_item {
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+	}
+
+	&_list_icon {
+		color: $color-secondary;
+		flex-shrink: 0;
+		margin-top: 2px;
+	}
+
+	&_list_text {
+		font-family: $font-main;
+		font-size: 1rem;
+		color: $color-primary;
+		line-height: 1.5;
+	}
+
+	/* --- PARTNERZY --- */
+	&_partners {
+		padding: 4rem 0 6rem;
+		background-color: $color-bg-light;
+		text-align: center;
+	}
+
+	&_partners_title {
+		font-family: $font-heading;
+		font-size: 1.5rem;
+		color: $color-primary;
+		margin-bottom: 3rem;
+		text-transform: uppercase;
+		font-weight: 700;
+	}
+
+	&_partners_grid {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 1.5rem;
+
+		@media (min-width: 992px) {
+			gap: 3rem;
+		}
+	}
+
+	&_partner_logo {
+		width: 160px;
+		height: 80px;
+		background-color: $color-white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-family: $font-heading;
+		color: rgba($color-primary, 0.3);
+		font-size: 0.85rem;
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+	}
+
+	&_partner_image {
+		max-width: 80%;
+		max-height: 70%;
+		object-fit: contain;
+	}
+}

@@ -1,17 +1,20 @@
 I. PODZIAŁ PRACY
     KRZYSIEK
-        - Logo, favicon, og image
+       
         - Kontakt - Formularz kontaktowy + wysyłka
         - Panel do logowania admin + obsługa tego
         - Polityka prywatności
-        - Statyczne strony: Home, Wentylacje, Klimatyzacje, Pompy, Wod-kan ogrzewanie podłogowe, Farmy fotowoltaiczne, O nas
+        - Statyczne strony: Wentylacje, Wod-kan ogrzewanie podłogowe, O nas
 
     EMILA
-        - protectedroute - jak bedzie loader to podmienic na inna wersje z, dodac do routes
+        - Autoryzacja - tokeny, ciastka, middleware, protectedroute, endpoint do logowania
         - Zabezpieczenie i konfiguracja backendu
+        - Integracja backend - baza - zmienne env
+        - Integracja front - backend - plik API.js
         - Domena + Hosting
         - index.html, seo, sitemap, googlesearch, manifest.json, og.jpg, JSON-LD
-        - node env production + ciastka secure true
+        - Kompresja zdjęć + Endpointy do Uploadu, Pobierania, Usuwania zdjęć
+        - Baza danych
 
     JULA
         - Variables, app, wgranie czcionek
@@ -19,14 +22,15 @@ I. PODZIAŁ PRACY
         - Galeria - pobieranie i wyświetlanie na froncie (korzystając z API Emili).
         - Galeria Admin (tylko Front): Galeria admin + obsługa zdjęć na froncie
         - Panel admina widok
-        - alert, confirmdialog, scrolltotop, loader
+        - alert, confirmdialog, scrolltotop
         - Header, Button, forms, stopka
+        -do Headera(dla klienta) wrzucić fotowoltaike.
 
 
 
 II. NOTATKI
     1. Zakładki dla przemysłu i dla klienta (chyba w tym mają się zawrzeć Wentylacje Klimatyzje, Pompy ciepła, Wod-Kan Ogrzewanie podłogowe, Farmy fotowoltaiczne), Galeria, Kontakt, o nas (tutaj byśmy dali informację o siedzibie i dane kontaktowe)
     2. W zakładkach stały tekst
-    3. Chatbot (integracja w api.js)
+    3. Chatbot
     4. Kalkulator ofert - osobna wycena 
     5. Formularz kontaktowy
