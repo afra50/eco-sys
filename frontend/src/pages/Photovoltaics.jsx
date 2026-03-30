@@ -1,5 +1,10 @@
 import { Check } from "lucide-react";
 import "../styles/pages/photovoltaics.scss";
+import PageHero from "../components/ui/PageHero";
+
+// --- IMPORTY TYLKO ISTNIEJĄCYCH ZDJĘĆ ---
+import heroImage from "../images/fotowoltaika.webp";
+import fotowDach from "../images/fotow-dach.webp";
 
 const Photovoltaics = () => {
 	const homeAdvantages = [
@@ -22,31 +27,13 @@ const Photovoltaics = () => {
 
 	return (
 		<div className="photovoltaics">
-			{/* --- HERO --- */}
-			<section className="photovoltaics_hero">
-				<div className="photovoltaics_image_wrapper">
-					<img
-						src="/images/fotowoltaika.webp"
-						alt="Panele fotowoltaiczne na dachu"
-						className="photovoltaics_hero_image"
-					/>
-					<div className="photovoltaics_overlay"></div>
-				</div>
-
-				<div className="photovoltaics_container photovoltaics_hero_container">
-					<div className="photovoltaics_hero_content">
-						<h1 className="photovoltaics_title">Fotowoltaika</h1>
-						<p className="photovoltaics_subtitle">
-							Energia Słoneczna prosto do Twojego domu
-						</p>
-						<p className="photovoltaics_desc">
-							Zacznij produkować własny prąd ze słońca. Oferujemy kompleksowe
-							instalacje fotowoltaiczne dla domów oraz wielkoskalowe farmy dla
-							przemysłu, gwarantujące niezależność i wymierne oszczędności.
-						</p>
-					</div>
-				</div>
-			</section>
+			{/* --- HERO W KOMPONENCIE --- */}
+			<PageHero
+				title="Fotowoltaika"
+				subtitle="Energia Słoneczna prosto do Twojego domu"
+				description="Zacznij produkować własny prąd ze słońca. Oferujemy kompleksowe instalacje fotowoltaiczne dla domów oraz wielkoskalowe farmy dla przemysłu, gwarantujące niezależność i wymierne oszczędności."
+				images={[heroImage]}
+			/>
 
 			{/* --- INTRO --- */}
 			<section className="photovoltaics_intro">
@@ -65,7 +52,7 @@ const Photovoltaics = () => {
 					</div>
 					<div className="photovoltaics_video">
 						<img
-							src="/images/fotow-dach.webp"
+							src={fotowDach}
 							alt="Montaż paneli fotowoltaicznych"
 							className="photovoltaics_video_iframe"
 							style={{ objectFit: "cover" }}
@@ -117,39 +104,15 @@ const Photovoltaics = () => {
 				</div>
 			</section>
 
-			{/* --- PARTNERZY --- */}
+			{/* --- PARTNERZY (PUSTE POLA) --- */}
 			<section className="photovoltaics_partners">
 				<div className="photovoltaics_container">
 					<h2 className="photovoltaics_partners_title">Współpracujemy z</h2>
 					<div className="photovoltaics_partners_grid">
-						<div className="photovoltaics_partner_logo">
-							<img
-								src="/images/logo1.png"
-								alt="Partner 1"
-								className="photovoltaics_partner_image"
-							/>
-						</div>
-						<div className="photovoltaics_partner_logo">
-							<img
-								src="/images/logo2.png"
-								alt="Partner 2"
-								className="photovoltaics_partner_image"
-							/>
-						</div>
-						<div className="photovoltaics_partner_logo">
-							<img
-								src="/images/logo3.png"
-								alt="Partner 3"
-								className="photovoltaics_partner_image"
-							/>
-						</div>
-						<div className="photovoltaics_partner_logo">
-							<img
-								src="/images/logo4.png"
-								alt="Partner 4"
-								className="photovoltaics_partner_image"
-							/>
-						</div>
+						<div className="photovoltaics_partner_logo">Partner 1</div>
+						<div className="photovoltaics_partner_logo">Partner 2</div>
+						<div className="photovoltaics_partner_logo">Partner 3</div>
+						<div className="photovoltaics_partner_logo">Partner 4</div>
 					</div>
 				</div>
 			</section>
