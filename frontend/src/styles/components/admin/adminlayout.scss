@@ -1,0 +1,154 @@
+@use "../../variables" as *;
+
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: rgba($color-primary, 0.02);
+
+  &__loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba($color-bg-dark, 0.8);
+    color: $color-white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    font-family: $font-heading;
+    font-size: 1.2rem;
+  }
+}
+
+.admin-sidebar {
+  width: 260px;
+  background-color: $color-primary;
+  color: $color-white;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+
+  &__header {
+    padding: 25px 20px;
+    border-bottom: 1px solid rgba($color-white, 0.1);
+
+    h2 {
+      font-family: $font-heading;
+      font-size: 1.5rem;
+      color: $color-white;
+      margin: 0;
+
+      span {
+        color: $color-secondary;
+        font-weight: 300;
+      }
+    }
+  }
+
+  &__nav {
+    flex-grow: 1;
+    padding: 20px 0;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px 25px;
+      color: rgba($color-white, 0.7);
+      font-family: $font-main;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border-left: 4px solid transparent; // Techniczny wskaźnik
+
+      &:hover {
+        background-color: rgba($color-white, 0.05);
+        color: $color-white;
+      }
+
+      &.active {
+        background-color: rgba($color-white, 0.05);
+        color: $color-white;
+        border-left-color: $color-secondary;
+      }
+
+      .nav-icon {
+        color: $color-secondary;
+      }
+    }
+  }
+
+  &__footer {
+    padding: 20px;
+    border-top: 1px solid rgba($color-white, 0.1);
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      background: none;
+      border: none;
+      color: rgba($color-white, 0.7);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      font-family: $font-main;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $color-secondary;
+      }
+    }
+  }
+
+  @media (max-width: 992px) {
+    width: 80px;
+    &__header h2 {
+      font-size: 1rem;
+      text-align: center;
+      span {
+        display: none;
+      }
+    }
+    &__nav a span {
+      display: none;
+    }
+    &__nav a {
+      justify-content: center;
+      padding: 15px 0;
+    }
+    &__footer {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .btn-text {
+      display: none;
+    }
+  }
+}
+
+.admin-content {
+  flex-grow: 1;
+  padding: 40px;
+  overflow-y: auto;
+
+  @media (max-width: 768px) {
+    padding: 20px;
+  }
+}
+
+.admin-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}

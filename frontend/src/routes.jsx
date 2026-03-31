@@ -12,6 +12,8 @@ import FloorHeating from "./pages/FloorHeating";
 // --- Importy Admina ---
 import Login from "./pages/admin/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
+import AdminLayout from "./components/admin/AdminLayout";
+import AdminDashboard from "./pages/admin/AdminDashboard";
 
 const routes = [
   // ==========================================
@@ -32,16 +34,13 @@ const routes = [
     path: "/admin",
     element: (
       <ProtectedRoute>
-        {/* Tu w przyszłości będzie Twój AdminLayout */}
-        <div>
-          <h1>Panel Admina - jesteś zalogowana!</h1>
-        </div>
+        <AdminLayout />
       </ProtectedRoute>
     ),
     children: [
-      // { index: true, element: <AdminGallery /> },
-      // ❌ 404 DLA ADMINA (Wewnątrz panelu)
-      // { path: "*", element: <NotFound /> },
+      { index: true, element: <AdminDashboard /> },
+      // Tu w przyszłości dodasz kolejne podstrony, np:
+      // { path: "galeria", element: <AdminGallery /> },
     ],
   },
 

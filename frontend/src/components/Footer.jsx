@@ -23,9 +23,9 @@ const Footer = () => {
               <img src={logoWhite} alt="Eco-sys Logo" />
             </Link>
             <p className="footer__desc">
-              Twój sprawdzony partner w drodze do niezależności energetycznej.
-              Zapewniamy kompleksowe rozwiązania z zakresu instalacji dla domów
-              i obiektów przemysłowych.
+              Twój sprawdzony partner w budowaniu energooszczędnych i
+              komfortowych przestrzeni. Projektujemy i wykonujemy kompleksowe
+              instalacje dla domów i przemysłu.
             </p>
             <div className="footer__socials">
               <a
