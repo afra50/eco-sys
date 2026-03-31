@@ -1,0 +1,34 @@
+@use "../../variables" as *;
+
+.eco-toast {
+  background-color: $color-white !important;
+  color: $color-primary !important; // Ciemny, elegancki granat
+  font-family: $font-main !important;
+  font-size: 1.05rem !important; // Nieco większa, bardziej czytelna czcionka
+  font-weight: 500 !important;
+  letter-spacing: 0.02em !important;
+
+  // Zdecydowany, techniczny wygląd
+  border: 1px solid rgba($color-primary, 0.1) !important;
+  border-radius: 0 !important; // Ostre krawędzie
+
+  // Głęboki, ale elegancki cień, który mocno odcina alert od tła
+  box-shadow: 0 15px 40px rgba($color-primary, 0.15) !important;
+  padding: 16px 24px !important; // Więcej "oddechu" w środku
+  min-width: 320px !important; // Gwarantuje, że alert nie będzie za wąski
+
+  // Stylizacja wewnętrznej ikony z biblioteki (tej kręcącej się lub ptaszka)
+  div[role="status"] {
+    margin-right: 12px; // Trochę więcej miejsca między ikoną a tekstem
+  }
+
+  // Wariant Sukcesu (Gruba, techniczna zieleń)
+  &--success {
+    border-left: 5px solid #10b981 !important;
+  }
+
+  // Wariant Błędu (Czerwień ECO-SYS)
+  &--error {
+    border-left: 5px solid $color-secondary !important;
+  }
+}

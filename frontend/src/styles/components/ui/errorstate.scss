@@ -1,0 +1,60 @@
+@use "../../variables" as *;
+
+.error-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem;
+  min-height: 300px;
+  background-color: rgba(
+    $color-secondary,
+    0.02
+  ); // Bardzo delikatny czerwony nalot
+  border: 1px dashed rgba($color-secondary, 0.2); // Techniczna, przerywana linia
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 400px;
+  }
+
+  &__icon {
+    color: $color-secondary;
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: 1.5rem;
+    color: $color-primary;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  &__message {
+    font-family: $font-main;
+    color: rgba($color-text-main, 0.7);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+  }
+
+  &__button {
+    gap: 10px;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}

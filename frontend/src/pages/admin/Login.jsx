@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authApi } from "../../utils/api"; // Upewnij się, że ścieżka jest poprawna
 import Button from "../../components/ui/Button"; // Zaktualizowana ścieżka (według Twojej nowej struktury)
+import toast from "react-hot-toast";
 import "../../styles/pages/admin/login.scss";
 
 const Login = () => {
@@ -25,9 +26,14 @@ const Login = () => {
 
     try {
       await authApi.login(credentials);
-      // Po sukcesie ciasteczko HttpOnly ustawia się automatycznie, przekierowujemy do panelu
+
+      // OTO MAGIA: Odpalamy alert sukcesu
+      toast.success("Zalogowano pomyślnie!");
+
       navigate("/admin");
     } catch (err) {
+      // Zostawiamy błąd pod inputami, bo dotyczy formularza,
+      // ale jeśli chcesz, możesz tu też wywołać: toast.error("Błąd logowania");
       setError(err.response?.data?.error || "Błędny login lub hasło");
     } finally {
       setIsLoading(false);

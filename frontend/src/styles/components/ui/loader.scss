@@ -1,0 +1,48 @@
+@use "../../variables" as *;
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+
+  &--full {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba($color-white, 0.9); // Lekko przezroczyste tło
+    z-index: 9999;
+    backdrop-filter: blur(2px); // Delikatne rozmycie tła pod spodem
+  }
+
+  .loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .loader-spinner {
+    color: $color-secondary; // Twoja czerwień lub zieleń
+    animation: spin 1s linear infinite;
+  }
+
+  .loader-text {
+    font-family: $font-heading;
+    font-size: 1.1rem;
+    color: $color-primary;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

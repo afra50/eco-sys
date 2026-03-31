@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Outlet, NavLink, useNavigate, useLocation } from "react-router-dom";
+import toast from "react-hot-toast";
 import api from "../../utils/api";
+import Loader from "../ui/Loader"; // <-- IMPORT NASZEGO NOWEGO LOADERA
 import {
   LayoutDashboard,
   Images,
@@ -20,9 +22,11 @@ const AdminLayout = () => {
     try {
       setIsLoggingOut(true);
       await api.post("/auth/logout");
+      toast.success("Wylogowano pomyślnie!");
       navigate("/admin/login");
     } catch (error) {
       console.error("Logout failed", error);
+      toast.error("Wystąpił błąd podczas wylogowywania.");
       setIsLoggingOut(false);
     }
   };
@@ -36,10 +40,9 @@ const AdminLayout = () => {
 
   return (
     <div className="admin-layout">
+      {/* <-- UŻYWAMY NOWEGO LOADERA DO BLOKOWANIA EKRANU */}
       {isLoggingOut && (
-        <div className="admin-layout__loader">
-          <p>Trwa wylogowywanie...</p>
-        </div>
+        <Loader fullPage={true} message="Trwa wylogowywanie..." />
       )}
 
       <aside className="admin-sidebar">
