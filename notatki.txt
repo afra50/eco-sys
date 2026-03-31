@@ -13,9 +13,8 @@ I. PODZIAŁ PRACY
         - node env production + ciastka secure true
 
     JULA
+        - na telefonie i tabletach sidebar admina dziwne rzeczy robi + na galerii wychodzi pole na zdjecia kiedy sa dwa buttony
         - Chat + backend
-        - Galeria Admin (tylko Front): Galeria admin + obsługa zdjęć na froncie
-        - confirmdialog
 
 
 II. NOTATKI

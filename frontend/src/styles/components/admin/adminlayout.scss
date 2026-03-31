@@ -1,9 +1,14 @@
 @use "../../variables" as *;
 
+// Definiujemy wysokość headera, żeby użyć jej w obliczeniach
+$header-height: 100px;
+
 .admin-layout {
   display: flex;
-  min-height: 88vh;
+  // Ustawiamy min-height na wysokość ekranu minus header
+  min-height: calc(100vh - #{$header-height});
   background-color: rgba($color-primary, 0.02);
+  overflow: visible; // Bardzo ważne dla sticky!
 }
 
 .admin-sidebar {
@@ -12,9 +17,19 @@
   color: $color-white;
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
+
+  // --- KLUCZOWE ZMIANY ---
   position: sticky;
-  top: 0;
-  height: 88vh;
+
+  // 1. Sidebar przykleja się pod headerem (nie na top: 0)
+  top: $header-height;
+
+  // 2. Wysokość to dokładnie tyle, ile zostaje wolnego miejsca na ekranie
+  height: calc(100vh - #{$header-height});
+
+  // 3. Z-index musi być niższy niż Headera (który ma 1000)
+  z-index: 900;
 
   &__header {
     padding: 25px 20px;
@@ -36,6 +51,8 @@
   &__nav {
     flex-grow: 1;
     padding: 20px 0;
+    // Wewnętrzny scroll tylko dla linków, jeśli ich lista byłaby dłuższa niż ekran
+    overflow-y: auto;
 
     ul {
       list-style: none;
@@ -52,7 +69,7 @@
       font-family: $font-main;
       text-decoration: none;
       transition: all 0.2s ease;
-      border-left: 4px solid transparent; // Techniczny wskaźnik
+      border-left: 4px solid transparent;
 
       &:hover {
         background-color: rgba($color-white, 0.05);
@@ -72,10 +89,13 @@
   }
 
   &__footer {
-    padding: 20px;
-    border-top: 1px solid rgba($color-white, 0.1);
     display: flex;
     justify-content: space-between;
+    padding: 20px;
+    border-top: 1px solid rgba($color-white, 0.1);
+    // Dzięki flex-direction: column i flex-grow: 1 wyżej,
+    // stopka sidebaru (Wyloguj) zawsze będzie "przyklejona" do dołu tych 88vh.
+    background-color: $color-primary;
 
     button {
       background: none;
@@ -125,7 +145,6 @@
 .admin-content {
   flex-grow: 1;
   padding: 40px;
-  overflow-y: auto;
 
   @media (max-width: 768px) {
     padding: 20px;
@@ -135,4 +154,6 @@
 .admin-page-container {
   max-width: 1200px;
   margin: 0 auto;
+  // Opcjonalnie: dodaj padding-bottom, żeby ostatnie elementy siatki nie "leżały" na krawędzi ekranu
+  padding-bottom: 60px;
 }

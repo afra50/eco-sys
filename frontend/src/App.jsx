@@ -23,7 +23,7 @@ export default function App() {
         position="top-center"
         toastOptions={{
           className: "eco-toast",
-          duration: 6000,
+          duration: 3000,
           style: {
             maxWidth: "500px",
           },

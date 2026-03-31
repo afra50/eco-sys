@@ -1,0 +1,82 @@
+@use "../../variables" as *;
+
+.confirm-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($color-primary, 0.8);
+  backdrop-filter: blur(4px);
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  animation: fadeIn 0.2s ease;
+}
+
+.confirm-dialog {
+  background-color: $color-white;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  border: 1px solid rgba($color-primary, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  padding: 40px 30px 30px;
+
+  &__close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: rgba($color-primary, 0.3);
+    cursor: pointer;
+    &:hover {
+      color: $color-secondary;
+    }
+  }
+
+  &__content {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  &__icon {
+    color: $color-secondary;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    text-transform: uppercase;
+    font-size: 1.25rem;
+    color: $color-primary;
+    margin-bottom: 10px;
+  }
+
+  &__message {
+    font-family: $font-main;
+    font-size: 0.95rem;
+    color: rgba($color-text-main, 0.7);
+    line-height: 1.6;
+  }
+
+  &__actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
