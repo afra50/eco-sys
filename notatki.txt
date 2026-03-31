@@ -14,7 +14,6 @@ I. PODZIAŁ PRACY
 
     JULA
         - Chat + backend
-        - Galeria - pobieranie i wyświetlanie na froncie (korzystając z API Emili).
         - Galeria Admin (tylko Front): Galeria admin + obsługa zdjęć na froncie
         - confirmdialog
 

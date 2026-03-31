@@ -7,6 +7,7 @@ import HeatPumps from "./pages/HeatPumps";
 import AirConditioning from "./pages/AirConditioning";
 import Photovoltaics from "./pages/Photovoltaics";
 import FloorHeating from "./pages/FloorHeating";
+import Gallery from "./pages/Gallery";
 // import NotFound from "./pages/NotFound";
 
 // --- Importy Admina ---
@@ -24,6 +25,7 @@ const routes = [
   { path: "/klimatyzacja", element: <AirConditioning /> },
   { path: "/fotowoltaika", element: <Photovoltaics /> },
   { path: "/dla-klienta/ogrzewanie-podlogowe", element: <FloorHeating /> },
+  { path: "/galeria", element: <Gallery /> },
 
   // ==========================================
   // 🔐 CZĘŚĆ ADMINA
