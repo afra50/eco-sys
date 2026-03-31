@@ -1,5 +1,6 @@
 import { Check } from "lucide-react";
 import "../styles/pages/floorheating.scss";
+import PageHero from "../components/ui/PageHero";
 
 // Import tylko do baneru
 import heroImage from "../images/podlogowe.webp";
@@ -20,31 +21,13 @@ const FloorHeating = () => {
 
 	return (
 		<div className="floorheating">
-			{/* --- HERO --- */}
-			<section className="floorheating_hero">
-				<div className="floorheating_image_wrapper">
-					<img
-						src={heroImage}
-						alt="Nowoczesne wnętrze z ogrzewaniem podłogowym"
-						className="floorheating_hero_image"
-					/>
-					<div className="floorheating_overlay"></div>
-				</div>
-
-				<div className="floorheating_container floorheating_hero_container">
-					<div className="floorheating_hero_content">
-						<h1 className="floorheating_title">Ogrzewanie podłogowe</h1>
-						<p className="floorheating_subtitle">
-							Komfort cieplny na nowym poziomie
-						</p>
-						<p className="floorheating_desc">
-							Zainwestuj w system, który gwarantuje idealny rozkład temperatury
-							i maksymalną efektywność energetyczną. To optymalne rozwiązanie
-							szczególnie w połączeniu z nowoczesnymi pompami ciepła.
-						</p>
-					</div>
-				</div>
-			</section>
+			{/* --- HERO W KOMPONENCIE --- */}
+			<PageHero
+				title="Ogrzewanie podłogowe"
+				subtitle="Komfort cieplny na nowym poziomie"
+				description="Zainwestuj w system, który gwarantuje idealny rozkład temperatury i maksymalną efektywność energetyczną. To optymalne rozwiązanie szczególnie w połączeniu z nowoczesnymi pompami ciepła."
+				images={[heroImage]}
+			/>
 
 			{/* --- ZASADA DZIAŁANIA (SPLIT) --- */}
 			<section className="floorheating_intro">

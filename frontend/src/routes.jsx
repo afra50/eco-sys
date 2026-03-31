@@ -8,6 +8,7 @@ import AirConditioning from "./pages/AirConditioning";
 import Photovoltaics from "./pages/Photovoltaics";
 import FloorHeating from "./pages/FloorHeating";
 import Gallery from "./pages/Gallery";
+import NotFound from "./pages/NotFound";
 // import NotFound from "./pages/NotFound";
 
 // --- Importy Admina ---
@@ -18,38 +19,40 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminGallery from "./pages/admin/AdminGallery";
 
 const routes = [
-  // ==========================================
-  // 🌍 CZĘŚĆ PUBLICZNA
-  // ==========================================
-  { path: "/", element: <Home /> },
-  { path: "/pompy-ciepla", element: <HeatPumps /> },
-  { path: "/klimatyzacja", element: <AirConditioning /> },
-  { path: "/fotowoltaika", element: <Photovoltaics /> },
-  { path: "/dla-klienta/ogrzewanie-podlogowe", element: <FloorHeating /> },
-  { path: "/galeria", element: <Gallery /> },
+	// ==========================================
+	// 🌍 CZĘŚĆ PUBLICZNA
+	// ==========================================
+	{ path: "/", element: <Home /> },
+	{ path: "/pompy-ciepla", element: <HeatPumps /> },
+	{ path: "/klimatyzacja", element: <AirConditioning /> },
+	{ path: "/fotowoltaika", element: <Photovoltaics /> },
+	{ path: "/ogrzewanie-podlogowe", element: <FloorHeating /> },
+	{ path: "/galeria", element: <Gallery /> },
+	{ path: "*", element: <NotFound /> },
 
-  // ==========================================
-  // 🔐 CZĘŚĆ ADMINA
-  // ==========================================
-  { path: "/admin/login", element: <Login /> },
+	// ==========================================
+	// 🔐 CZĘŚĆ ADMINA
+	// ==========================================
+	{ path: "/admin/login", element: <Login /> },
 
-  {
-    path: "/admin",
-    element: (
-      <ProtectedRoute>
-        <AdminLayout />
-      </ProtectedRoute>
-    ),
-    children: [
-      { index: true, element: <AdminDashboard /> },
-      { path: "galeria", element: <AdminGallery /> },
-    ],
-  },
+	{
+		path: "/admin",
+		element: (
+			<ProtectedRoute>
+				<AdminLayout />
+			</ProtectedRoute>
+		),
+		children: [
+			{ index: true, element: <AdminDashboard /> },
+			// Tu w przyszłości dodasz kolejne podstrony, np:
+			{ path: "galeria", element: <AdminGallery /> },
+		],
+	},
 
-  // ==========================================
-  // ❌ 404 GLOBALNE (Dla części publicznej)
-  // ==========================================
-  // { path: "*", element: <NotFound /> },
+	// ==========================================
+	// ❌ 404 GLOBALNE (Dla części publicznej)
+	// ==========================================
+	// { path: "*", element: <NotFound /> },
 ];
 
 export default routes;
