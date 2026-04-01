@@ -19,40 +19,35 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminGallery from "./pages/admin/AdminGallery";
 
 const routes = [
-	// ==========================================
-	// 🌍 CZĘŚĆ PUBLICZNA
-	// ==========================================
-	{ path: "/", element: <Home /> },
-	{ path: "/pompy-ciepla", element: <HeatPumps /> },
-	{ path: "/klimatyzacja", element: <AirConditioning /> },
-	{ path: "/fotowoltaika", element: <Photovoltaics /> },
-	{ path: "/ogrzewanie-podlogowe", element: <FloorHeating /> },
-	{ path: "/galeria", element: <Gallery /> },
-	{ path: "*", element: <NotFound /> },
+  // ==========================================
+  // 🌍 CZĘŚĆ PUBLICZNA
+  // ==========================================
+  { path: "/", element: <Home /> },
+  { path: "/pompy-ciepla", element: <HeatPumps /> },
+  { path: "/klimatyzacja", element: <AirConditioning /> },
+  { path: "/fotowoltaika", element: <Photovoltaics /> },
+  { path: "/ogrzewanie-podlogowe", element: <FloorHeating /> },
+  { path: "/galeria", element: <Gallery /> },
+  { path: "*", element: <NotFound /> },
 
-	// ==========================================
-	// 🔐 CZĘŚĆ ADMINA
-	// ==========================================
-	{ path: "/admin/login", element: <Login /> },
+  // ==========================================
+  // 🔐 CZĘŚĆ ADMINA
+  // ==========================================
+  { path: "/admin/login", element: <Login /> },
 
-	{
-		path: "/admin",
-		element: (
-			<ProtectedRoute>
-				<AdminLayout />
-			</ProtectedRoute>
-		),
-		children: [
-			{ index: true, element: <AdminDashboard /> },
-			// Tu w przyszłości dodasz kolejne podstrony, np:
-			{ path: "galeria", element: <AdminGallery /> },
-		],
-	},
-
-	// ==========================================
-	// ❌ 404 GLOBALNE (Dla części publicznej)
-	// ==========================================
-	// { path: "*", element: <NotFound /> },
+  {
+    path: "/admin",
+    element: (
+      <ProtectedRoute>
+        <AdminLayout />
+      </ProtectedRoute>
+    ),
+    children: [
+      { index: true, element: <AdminDashboard /> },
+      // Tu w przyszłości dodasz kolejne podstrony, np:
+      { path: "galeria", element: <AdminGallery /> },
+    ],
+  },
 ];
 
 export default routes;

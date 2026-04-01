@@ -1,5 +1,5 @@
 @use "../../variables" as *;
-// Importujemy style dashboardu, aby mieć dostęp do klasy __intro
+@use "sass:color";
 @use "./admindashboard.scss";
 
 .admin-gallery {
@@ -64,6 +64,20 @@
   &__actions {
     display: flex;
     gap: 15px;
+    // KLUCZOWE: pozwalamy przyciskom przenieść się do nowej linii
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+
+    // Na wąskich ekranach układamy przyciski jeden pod drugim na pełną szerokość
+    @media (max-width: 576px) {
+      flex-direction: column;
+
+      > * {
+        // Wymusza 100% szerokości na Twoich komponentach Button
+        width: 100%;
+      }
+    }
   }
 }
 
@@ -130,7 +144,7 @@
     border-radius: 0;
 
     &:hover {
-      background-color: darken(#e53935, 10%);
+      background-color: color.adjust(#e53935, $lightness: -10%);
     }
   }
 
@@ -226,7 +240,7 @@
 
     &:hover {
       transform: scale(1.1);
-      background-color: darken($color-secondary, 10%);
+      background-color: color.adjust($color-secondary, $lightness: -10%);
     }
   }
 
