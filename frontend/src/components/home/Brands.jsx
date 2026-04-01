@@ -1,3 +1,6 @@
+import React from "react";
+import "../../styles/components/home/brands.scss";
+
 const Brands = () => {
   const brands = [
     { name: "Panasonic", logo: "/images/brands/panasonic.svg" },
@@ -27,3 +30,6 @@ const Brands = () => {
     </section>
   );
 };
+
+// TEJ LINII BRAKOWAŁO:
+export default Brands;
