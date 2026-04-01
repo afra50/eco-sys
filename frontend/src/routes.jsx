@@ -20,37 +20,37 @@ import AdminGallery from "./pages/admin/AdminGallery";
 import AboutUs from "./pages/AboutUs";
 
 const routes = [
-  // ==========================================
-  // 🌍 CZĘŚĆ PUBLICZNA
-  // ==========================================
-  { path: "/", element: <Home /> },
-  { path: "/pompy-ciepla", element: <HeatPumps /> },
-  { path: "/klimatyzacja", element: <AirConditioning /> },
-  { path: "/fotowoltaika", element: <Photovoltaics /> },
-  { path: "/ogrzewanie-podlogowe", element: <FloorHeating /> },
-  { path: "/galeria", element: <Gallery /> },
-  { path: "/o-nas", element: <AboutUs /> },
-  { path: "*", element: <NotFound /> },
+	// ==========================================
+	// 🌍 CZĘŚĆ PUBLICZNA
+	// ==========================================
+	{ path: "/", element: <Home /> },
+	{ path: "/pompy-ciepla", element: <HeatPumps /> },
+	{ path: "/klimatyzacja", element: <AirConditioning /> },
+	{ path: "/fotowoltaika", element: <Photovoltaics /> },
+	{ path: "/ogrzewanie-podlogowe", element: <FloorHeating /> },
+	{ path: "/galeria", element: <Gallery /> },
+	{ path: "/o-nas", element: <AboutUs /> },
+	{ path: "*", element: <NotFound /> },
 
-  // ==========================================
-  // 🔐 CZĘŚĆ ADMINA
-  // ==========================================
-  { path: "/admin/login", element: <Login /> },
+	// ==========================================
+	// 🔐 CZĘŚĆ ADMINA
+	// ==========================================
+	{ path: "/admin/login", element: <Login /> },
 
-  {
-    path: "/admin",
-    element: (
-      <ProtectedRoute>
-        <AdminLayout />
-      </ProtectedRoute>
-    ),
-    children: [
-      { index: true, element: <AdminDashboard /> },
-      // Tu w przyszłości dodasz kolejne podstrony, np:
-      { path: "galeria", element: <AdminGallery /> },
-      { path: "*", element: <NotFound /> },
-    ],
-  },
+	{
+		path: "/admin",
+		element: (
+			<ProtectedRoute>
+				<AdminLayout />
+			</ProtectedRoute>
+		),
+		children: [
+			{ index: true, element: <AdminDashboard /> },
+			// Tu w przyszłości dodasz kolejne podstrony, np:
+			{ path: "galeria", element: <AdminGallery /> },
+			{ path: "*", element: <NotFound /> },
+		],
+	},
 ];
 
 export default routes;
