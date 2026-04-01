@@ -16,6 +16,8 @@ import Login from "./pages/admin/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminLayout from "./components/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminGallery from "./pages/admin/AdminGallery";
+import AboutUs from "./pages/AboutUs";
 
 const routes = [
 	// ==========================================
@@ -27,6 +29,7 @@ const routes = [
 	{ path: "/fotowoltaika", element: <Photovoltaics /> },
 	{ path: "/ogrzewanie-podlogowe", element: <FloorHeating /> },
 	{ path: "/galeria", element: <Gallery /> },
+	{ path: "/o-nas", element: <AboutUs /> },
 	{ path: "*", element: <NotFound /> },
 
 	// ==========================================
@@ -44,14 +47,10 @@ const routes = [
 		children: [
 			{ index: true, element: <AdminDashboard /> },
 			// Tu w przyszłości dodasz kolejne podstrony, np:
-			// { path: "galeria", element: <AdminGallery /> },
+			{ path: "galeria", element: <AdminGallery /> },
+			{ path: "*", element: <NotFound /> },
 		],
 	},
-
-	// ==========================================
-	// ❌ 404 GLOBALNE (Dla części publicznej)
-	// ==========================================
-	// { path: "*", element: <NotFound /> },
 ];
 
 export default routes;

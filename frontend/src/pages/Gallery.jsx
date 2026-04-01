@@ -134,36 +134,60 @@ const Gallery = () => {
     });
   };
 
-  // Obsługa ładowania całej strony
-  if (isLoading) {
-    return (
-      <div
-        className="gallery-page"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Loader message="Wczytywanie galerii..." />
-      </div>
-    );
-  }
-
-  // Obsługa błędu pobierania
-  if (hasFetchError) {
-    return (
-      <div className="gallery-page">
-        <div className="gallery-page__container" style={{ paddingTop: "60px" }}>
-          <ErrorState
-            title="Błąd połączenia"
-            message="Nie udało się wczytać galerii. Spróbuj odświeżyć stronę."
-            onRetry={fetchGallery}
-          />
+  // Renderowanie odpowiedniego stanu pod nagłówkiem
+  const renderContent = () => {
+    if (isLoading) {
+      return (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            padding: "60px 0",
+          }}
+        >
+          <Loader message="Wczytywanie galerii..." />
         </div>
+      );
+    }
+
+    if (hasFetchError) {
+      return (
+        <ErrorState
+          title="Błąd połączenia"
+          message="Nie udało się wczytać galerii. Spróbuj odświeżyć stronę."
+          onRetry={fetchGallery}
+        />
+      );
+    }
+
+    if (images.length === 0) {
+      return (
+        <div
+          style={{
+            textAlign: "center",
+            color: "rgba(0,0,0,0.5)",
+            marginTop: "40px",
+            fontFamily: "inherit",
+          }}
+        >
+          Brak zdjęć do wyświetlenia.
+        </div>
+      );
+    }
+
+    return (
+      <div className="gallery__grid">
+        {images.map((image, index) => (
+          <GalleryImage
+            key={image.name} // Używamy unikalnej nazwy z backendu jako klucza
+            src={image.url}
+            alt={`Realizacja ECO-SYS ${index + 1}`}
+            onClick={() => setSelectedIndex(index)}
+          />
+        ))}
       </div>
     );
-  }
+  };
 
   return (
     <div className="gallery-page">
@@ -173,30 +197,8 @@ const Gallery = () => {
           <div className="separator"></div>
         </header>
 
-        {/* Informacja o braku zdjęć */}
-        {images.length === 0 ? (
-          <div
-            style={{
-              textAlign: "center",
-              color: "rgba(0,0,0,0.5)",
-              marginTop: "40px",
-              fontFamily: "inherit",
-            }}
-          >
-            Brak zdjęć do wyświetlenia.
-          </div>
-        ) : (
-          <div className="gallery__grid">
-            {images.map((image, index) => (
-              <GalleryImage
-                key={image.name} // Używamy unikalnej nazwy z backendu jako klucza
-                src={image.url}
-                alt={`Realizacja ECO-SYS ${index + 1}`}
-                onClick={() => setSelectedIndex(index)}
-              />
-            ))}
-          </div>
-        )}
+        {/* Dynamicznie wymieniająca się zawartość, nagłówek zostaje na stałe */}
+        {renderContent()}
       </div>
 
       {/* LIGHTBOX */}

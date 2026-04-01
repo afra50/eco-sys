@@ -1,0 +1,138 @@
+@use "../../variables" as *;
+
+.process {
+  padding: 5rem 0 7rem;
+  background-color: $color-bg-light;
+  overflow: hidden; // Zabezpieczenie przed wystającymi liniami
+
+  &_container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  &_header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  &_label {
+    font-family: $font-heading;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: $color-secondary;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  &_title {
+    font-family: $font-heading;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: $color-primary;
+    font-weight: 800;
+  }
+
+  &_grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem 2rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &_item {
+    position: relative;
+    text-align: center;
+    padding: 0 10px;
+    transition: transform 0.3s ease;
+
+    // --- LINIA ŁĄCZĄCA (Desktop) ---
+    @media (min-width: 1024px) {
+      &:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        top: 50px; // Połowa wysokości kółka
+        left: calc(50% + 60px); // Start za kółkiem
+        width: calc(100% - 100px); // Długość do następnego kółka
+        height: 2px;
+        border-top: 2px dashed rgba($color-primary, 0.1);
+        z-index: 1;
+      }
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+
+      .process_icon_wrapper {
+        border-color: $color-secondary;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+
+  &_icon_wrapper {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-white;
+    border-radius: 50%;
+    border: 2px solid transparent; // Rezerwacja miejsca pod hover
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+    z-index: 2; // Nad linią łączącą
+    transition: all 0.3s ease;
+  }
+
+  &_icon {
+    color: $color-secondary;
+    transition: transform 0.3s ease;
+  }
+
+  &_number {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(15%, -15%);
+    background-color: $color-primary;
+    color: $color-white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: $font-heading;
+    font-size: 0.85rem;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba($color-primary, 0.3);
+  }
+
+  &_item_title {
+    font-family: $font-heading;
+    font-size: 1.25rem; // Delikatnie mniejszy, by był lżejszy
+    color: $color-primary;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-transform: uppercase; // Dla spójności z innymi nagłówkami
+  }
+
+  &_item_desc {
+    font-family: $font-main;
+    font-size: 0.9rem;
+    color: rgba($color-primary, 0.7);
+    line-height: 1.6;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}

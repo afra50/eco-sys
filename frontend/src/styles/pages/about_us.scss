@@ -1,0 +1,422 @@
+@use "../variables" as *;
+
+.about_us {
+	width: 100%;
+	overflow-x: hidden;
+	background-color: $color-white;
+
+	// --- BAZOWE KLASY (Trzymają układ 1300px) ---
+	&_block {
+		display: flex;
+		align-items: center;
+		gap: 6rem;
+		width: 100%;
+		max-width: 1300px;
+		margin: 4rem auto 8rem;
+		padding: 0 20px;
+
+		@media (min-width: 2500px) {
+			max-width: 1800px;
+			gap: 8rem;
+		}
+
+		@media (max-width: 360px) {
+			margin-top: 2rem;
+		}
+	}
+
+	&_contener {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	&_subtitle {
+		font-size: clamp(1.6rem, 3vw, 2rem);
+		font-weight: 500;
+		margin-bottom: 1.2rem;
+		color: $color-primary;
+		line-height: 1.2;
+		font-family: $font-heading;
+
+		em {
+			font-style: italic;
+			font-weight: 400;
+			color: $color-secondary;
+		}
+	}
+
+	&_text {
+		font-size: 0.95rem;
+		line-height: 1.8;
+		color: rgba($color-primary, 0.7);
+		font-family: $font-main;
+	}
+
+	&_image {
+		flex: 1;
+		position: relative;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+	}
+
+	&_label {
+		font-size: 0.7rem;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		color: $color-secondary;
+		margin-bottom: 1rem;
+		display: block;
+		font-weight: 600;
+		font-family: $font-heading;
+	}
+
+	// --- SEKCJA HERO (Z MECHANIKĄ Z BLISS MEBLE) ---
+	&_block_hero {
+		display: block;
+		position: relative;
+		margin-bottom: 12rem;
+		margin-top: 3rem;
+	}
+
+	&_block_hero &_image {
+		// ZDJĘCIE WYŁAMUJE SIĘ Z KONTENERA 1300px
+		width: 92vw;
+		max-width: 1500px;
+		height: 550px;
+		position: relative;
+		left: 50%;
+		transform: translateX(-50%);
+
+		img {
+			object-position: center 25%;
+		}
+	}
+
+	&_overlap_box {
+		position: absolute;
+		// BOKS SIEDZI W KONTENERZE 1300px (dlatego right: 20px wyrównuje go idealnie z resztą)
+		right: 20px;
+		bottom: -5rem;
+		width: 50%;
+		padding: 0;
+		z-index: 2;
+		text-align: left;
+	}
+
+	&_overlap_content {
+		background-color: $color-white;
+		padding: 4rem;
+		box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+	}
+
+	// --- PLAKIETKA CERTYFIKOWANY MONTAŻ ---
+	&_badge {
+		position: absolute;
+		top: -20px;
+		left: -20px;
+		background-color: $color-secondary;
+		color: $color-white;
+		padding: 1.2rem 1.8rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		z-index: 2;
+		box-shadow: 0 10px 20px rgba($color-secondary, 0.3);
+	}
+
+	&_badge_number {
+		font-size: 0.75rem;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		font-family: $font-main;
+		margin-bottom: 0.2rem;
+	}
+
+	&_badge_text {
+		font-size: 1.6rem;
+		font-weight: 600;
+		line-height: 1.2;
+		font-family: $font-heading;
+	}
+
+	// --- PAS Z FUNKCJAMI (100% ekranu) ---
+	&_features {
+		width: 100vw;
+		margin-left: calc(50% - 50vw);
+		background-color: $color-primary;
+		color: $color-white;
+		padding: 5rem 20px;
+	}
+
+	&_features_grid {
+		max-width: 1300px;
+		width: 100%;
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 4rem;
+		text-align: center;
+
+		@media (min-width: 2500px) {
+			max-width: 1800px;
+		}
+	}
+
+	&_feature_title {
+		font-size: 1.3rem;
+		font-family: $font-heading;
+		margin-bottom: 0.8rem;
+		font-weight: 600;
+	}
+
+	&_feature_desc {
+		font-size: 0.95rem;
+		line-height: 1.6;
+		opacity: 0.8;
+		font-family: $font-main;
+	}
+
+	// --- WIEDZA I KWALIFIKACJE ---
+	&_qualifications {
+		width: 100%;
+		max-width: 1300px;
+		margin: 5rem auto 2rem;
+		padding: 0 20px;
+
+		@media (min-width: 2500px) {
+			max-width: 1800px;
+		}
+
+		&_container {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 4rem;
+
+			@media (min-width: 992px) {
+				grid-template-columns: 1fr 1fr;
+				gap: 6rem;
+			}
+		}
+
+		&_col {
+			display: flex;
+			flex-direction: column;
+			text-align: center;
+		}
+
+		&_title {
+			font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+			font-family: $font-heading;
+			font-weight: 600;
+			color: $color-primary;
+			margin-bottom: 1.2rem;
+		}
+
+		&_text {
+			margin: 0 auto;
+		}
+
+		&_docs {
+			display: flex;
+			gap: 1.5rem;
+			margin-top: 1.5rem;
+			align-items: center;
+			justify-content: center;
+			flex-wrap: wrap;
+
+			img {
+				width: 100%;
+				max-width: 180px;
+				height: auto;
+				object-fit: contain;
+				cursor: pointer;
+				box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+				transition: transform 0.2s ease-in-out;
+				background-color: $color-white;
+
+				&:hover {
+					transform: scale(1.02);
+				}
+
+				@media (max-width: 768px) {
+					max-width: 140px;
+				}
+
+				&:only-child {
+					max-width: 250px;
+				}
+			}
+		}
+	}
+
+	// --- LIGHTBOX (Okienko modala z powiększeniem) ---
+	&_lightbox {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background-color: rgba(0, 0, 0, 0.85);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		z-index: 9999;
+		padding: 20px;
+		cursor: pointer;
+
+		&_content {
+			position: relative;
+			max-width: 90vw;
+			max-height: 90vh;
+			cursor: default;
+
+			img {
+				max-width: 100%;
+				max-height: 90vh;
+				object-fit: contain;
+				display: block;
+			}
+		}
+
+		&_close {
+			position: absolute;
+			top: -40px;
+			right: 0;
+			background: none;
+			border: none;
+			color: $color-white;
+			font-size: 2rem;
+			cursor: pointer;
+			padding: 0;
+			line-height: 1;
+
+			&:hover {
+				color: $color-secondary;
+			}
+		}
+	}
+
+	// --- BIAŁY PAS Z PRZYCISKIEM ---
+	&_cta {
+		width: 100%;
+		max-width: 1300px;
+		margin: 0 auto;
+		padding: 3rem 20px 6rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&_cta_title {
+		font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+		font-family: $font-heading;
+		font-weight: 500;
+		color: $color-primary;
+		margin-bottom: 2rem;
+		text-align: center;
+	}
+
+	// --- RWD (Dopasowane z logiki Bliss) ---
+	@media (max-width: 1024px) {
+		&_block {
+			margin-bottom: 6rem;
+			gap: 3rem;
+		}
+
+		&_block_hero {
+			margin-top: 3rem;
+		}
+
+		&_block_hero &_image {
+			width: 95vw;
+			height: 450px;
+		}
+
+		&_overlap_box {
+			width: 65%;
+			right: 20px;
+			.about_us_overlap_content {
+				padding: 3rem;
+			}
+		}
+
+		&_features_grid {
+			gap: 2rem;
+		}
+	}
+
+	@media (max-width: 768px) {
+		&_block {
+			margin-bottom: 4rem;
+		}
+
+		&_block,
+		&_block_hero {
+			flex-direction: column;
+			gap: 2rem;
+		}
+
+		&_block_hero &_image {
+			width: 100%;
+			left: 0;
+			transform: none;
+			height: auto;
+			aspect-ratio: 4 / 3;
+		}
+
+		&_block_hero {
+			margin-bottom: 5rem;
+		}
+
+		&_overlap_box {
+			position: relative;
+			width: 100%;
+			max-width: 100%;
+			right: auto;
+			bottom: auto;
+			margin-top: -3rem;
+			padding: 0;
+
+			.about_us_overlap_content {
+				width: 100%;
+				padding: 2rem;
+				box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+			}
+		}
+
+		&_badge {
+			top: -15px;
+			left: -15px;
+			padding: 0.8rem 1.2rem;
+
+			&_badge_number {
+				font-size: 0.65rem;
+			}
+			&_badge_text {
+				font-size: 1.3rem;
+			}
+		}
+
+		&_features {
+			padding: 3.5rem 20px;
+		}
+
+		&_features_grid {
+			grid-template-columns: 1fr;
+			gap: 2.5rem;
+		}
+
+		&_cta {
+			padding: 1.5rem 20px 4rem;
+		}
+	}
+}
