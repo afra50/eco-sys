@@ -1,12 +1,12 @@
 I. PODZIAŁ PRACY
     KRZYSIEK
-    
         - Kontakt - Formularz kontaktowy + wysyłka
         - Polityka prywatności
         - Statyczne strony: Wentylacje, Wod-kan
+        - Na Home dodac do banera jeszcze inne rzeczy
+        - Na home dodac przykladowe marki w Brands
 
     EMILA
-        - protectedroute - jak bedzie loader to podmienic na inna wersje z
         - Zabezpieczenie i konfiguracja backendu
         - Hosting, .htaccess, wyl. cacheowanie
         - sitemap do poprawy, googlesearch
