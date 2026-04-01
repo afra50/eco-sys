@@ -1,9 +1,9 @@
 I. PODZIAŁ PRACY
     KRZYSIEK
-        - not found
+    
         - Kontakt - Formularz kontaktowy + wysyłka
         - Polityka prywatności
-        - Statyczne strony: Wentylacje, Wod-kan ogrzewanie podłogowe, O nas
+        - Statyczne strony: Wentylacje, Wod-kan
 
     EMILA
         - protectedroute - jak bedzie loader to podmienic na inna wersje z
