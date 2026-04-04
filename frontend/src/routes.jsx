@@ -9,6 +9,7 @@ import Photovoltaics from "./pages/Photovoltaics";
 import FloorHeating from "./pages/FloorHeating";
 import Gallery from "./pages/Gallery";
 import NotFound from "./pages/NotFound";
+import Contact from "./pages/Contact";
 // import NotFound from "./pages/NotFound";
 
 // --- Importy Admina ---
@@ -30,6 +31,7 @@ const routes = [
 	{ path: "/ogrzewanie-podlogowe", element: <FloorHeating /> },
 	{ path: "/galeria", element: <Gallery /> },
 	{ path: "/o-nas", element: <AboutUs /> },
+	{ path: "/kontakt", element: <Contact /> },
 	{ path: "*", element: <NotFound /> },
 
 	// ==========================================
