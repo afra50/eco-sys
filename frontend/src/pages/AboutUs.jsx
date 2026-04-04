@@ -163,7 +163,6 @@ const AboutUs = () => {
 					przekłada się na bezpieczeństwo i bezawaryjność Twojej instalacji.
 				</p>
 				<div className="about_us_certificates_docs">
-					{/* Tutaj podmienisz src na cert2, cert3, itp. gdy już je zaimportujesz */}
 					<img
 						src={cert2}
 						alt="Certyfikat Autoryzacyjny 1"

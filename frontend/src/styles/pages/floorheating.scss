@@ -4,140 +4,44 @@
 	background-color: $color-bg-light;
 	overflow-x: hidden;
 
+	// ==========================================
+	// 1. KONTENER GŁÓWNY (1000px)
+	// ==========================================
 	&_container {
-		max-width: 1300px;
+		max-width: 1000px; // Wyrównane do O nas i Kontakt
 		margin: 0 auto;
-		padding: 0 15px;
+		padding: 0 20px;
 		position: relative;
 		z-index: 2;
 		width: 100%;
 
-		@media (min-width: 768px) {
-			padding: 0 20px;
+		@media (max-width: 360px) {
+			padding: 0 15px;
+		}
+
+		@media (min-width: 2500px) {
+			max-width: 1400px;
 		}
 	}
 
-	/* --- HERO --- */
-	&_hero {
-		position: relative;
-		height: 55vh;
-		min-height: 450px;
-		max-height: 800px;
-		color: $color-white;
-		background-color: $color-primary;
-		overflow: hidden;
-
-		@media (min-width: 2600px) {
-			height: 45vh;
-			max-height: 900px;
-		}
-	}
-
-	&_hero_container {
-		height: 100%;
-		display: flex;
-		align-items: center;
-		padding-top: 3rem;
-		padding-bottom: 3rem;
-
-		@media (min-width: 768px) {
-			padding-top: 4rem;
-			padding-bottom: 4rem;
-		}
-	}
-
-	&_hero_content {
-		max-width: 630px;
-		text-align: left;
-	}
-
-	&_image_wrapper {
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		width: 100%;
-		z-index: 1;
-
-		@media (min-width: 992px) {
-			width: 65%;
-		}
-	}
-
-	&_hero_image {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		object-position: center;
-	}
-
-	&_overlay {
-		position: absolute;
-		inset: 0;
-		background: linear-gradient(
-			to right,
-			rgba($color-primary, 1) 0%,
-			rgba($color-primary, 0.8) 20%,
-			rgba($color-primary, 0.1) 60%,
-			transparent 100%
-		);
-
-		@media (max-width: 991px) {
-			background: linear-gradient(
-				to right,
-				rgba($color-primary, 1) 0%,
-				rgba($color-primary, 0.9) 50%,
-				transparent 100%
-			);
-		}
-	}
-
-	&_title {
-		font-family: $font-heading;
-		font-size: clamp(2rem, 8vw, 4.5rem); /* Lekko zmniejszony dół dla 360px */
-		margin-bottom: 0.5rem;
-		font-weight: 800;
-		text-transform: uppercase;
-		line-height: 1.1;
-	}
-
-	&_subtitle {
-		font-family: $font-heading;
-		font-size: clamp(1.1rem, 4vw, 1.8rem);
-		color: $color-secondary;
-		margin-bottom: 1.5rem;
-		font-weight: 600;
-
-		@media (min-width: 992px) {
-			margin-bottom: 2rem;
-		}
-	}
-
-	&_desc {
-		font-family: $font-main;
-		font-size: 0.95rem; /* Ciut mniejszy na mobile */
-		line-height: 1.5;
-		color: rgba($color-white, 0.9);
-
-		@media (min-width: 768px) {
-			font-size: 1rem;
-			line-height: 1.6;
-		}
-
-		@media (min-width: 992px) {
-			font-size: 1.1rem;
-			line-height: 1.7;
-		}
-	}
-
-	/* --- INTRO / SPLIT --- */
+	// ==========================================
+	// 2. SEKCJE (INTRO / CONTROL)
+	// ==========================================
 	&_intro,
 	&_control {
-		padding: 3rem 0; /* Zmniejszone dla mobile */
+		padding: 3rem 0;
 		background-color: $color-white;
+
+		@media (max-width: 360px) {
+			padding: 2rem 0;
+		}
 
 		@media (min-width: 768px) {
 			padding: 4rem 0;
+		}
+
+		@media (min-width: 2500px) {
+			padding: 6rem 0;
 		}
 	}
 
@@ -149,7 +53,11 @@
 	&_control_wrapper {
 		display: flex;
 		flex-direction: column;
-		gap: 2rem; /* Zmniejszone dla mobile */
+		gap: 2rem;
+
+		@media (max-width: 360px) {
+			gap: 1.5rem;
+		}
 
 		@media (min-width: 768px) {
 			gap: 3rem;
@@ -221,6 +129,10 @@
 			font-size: 1.1rem;
 			line-height: 1.7;
 		}
+
+		@media (min-width: 2500px) {
+			font-size: 1.2rem;
+		}
 	}
 
 	&_split_image_wrapper {
@@ -236,7 +148,11 @@
 
 		&.placeholder_bg {
 			background-color: #e2e8f0;
-			min-height: 250px; /* Zmniejszone dla mobile */
+			min-height: 250px;
+
+			@media (max-width: 360px) {
+				min-height: 200px;
+			}
 
 			@media (min-width: 768px) {
 				min-height: 300px;
@@ -251,13 +167,23 @@
 		object-fit: cover;
 	}
 
-	/* --- KORZYŚCI --- */
+	// ==========================================
+	// 3. KORZYŚCI (BENEFITS)
+	// ==========================================
 	&_benefits {
-		padding: 3rem 0; /* Zmniejszone dla mobile */
+		padding: 3rem 0;
 		background-color: $color-bg-light;
+
+		@media (max-width: 360px) {
+			padding: 2rem 0;
+		}
 
 		@media (min-width: 768px) {
 			padding: 5rem 0;
+		}
+
+		@media (min-width: 2500px) {
+			padding: 7rem 0;
 		}
 	}
 
@@ -265,7 +191,7 @@
 		font-family: $font-heading;
 		font-size: clamp(1.6rem, 6vw, 2rem);
 		color: $color-primary;
-		margin-bottom: 2rem; /* Zmniejszone dla mobile */
+		margin-bottom: 2rem;
 		text-align: center;
 		text-transform: uppercase;
 		font-weight: 700;
@@ -284,9 +210,13 @@
 		width: 100%;
 		max-width: 900px;
 		background-color: $color-white;
-		padding: 1.5rem; /* Zmniejszone dla mobile (360px safe) */
+		padding: 1.5rem;
 		border-top: 5px solid $color-secondary;
 		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+
+		@media (max-width: 360px) {
+			padding: 1.2rem;
+		}
 
 		@media (min-width: 768px) {
 			padding: 3rem;
@@ -300,7 +230,11 @@
 		margin: 0;
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: 1.2rem; /* Zmniejszone dla mobile */
+		gap: 1.2rem;
+
+		@media (max-width: 360px) {
+			gap: 1rem;
+		}
 
 		@media (min-width: 768px) {
 			grid-template-columns: 1fr 1fr;
@@ -312,14 +246,14 @@
 	&_list_item {
 		display: flex;
 		align-items: flex-start;
-		gap: 0.8rem; /* Zmniejszone dla mobile */
+		gap: 0.8rem;
 	}
 
 	&_list_icon {
 		color: $color-secondary;
 		flex-shrink: 0;
 		margin-top: 2px;
-		width: 20px; /* Mniejsza ikona na mobile */
+		width: 20px;
 		height: 20px;
 
 		@media (min-width: 768px) {
@@ -330,13 +264,21 @@
 
 	&_list_text {
 		font-family: $font-main;
-		font-size: 0.95rem; /* Mniejszy tekst na mobile */
+		font-size: 0.95rem;
 		color: $color-primary;
 		line-height: 1.4;
+
+		@media (max-width: 360px) {
+			font-size: 0.9rem;
+		}
 
 		@media (min-width: 768px) {
 			font-size: 1rem;
 			line-height: 1.5;
+		}
+
+		@media (min-width: 2500px) {
+			font-size: 1.1rem;
 		}
 	}
 }

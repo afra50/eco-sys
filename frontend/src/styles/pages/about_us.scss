@@ -13,19 +13,19 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		align-items: center;
-		gap: 6rem;
+		gap: 2.5rem;
 		width: 100%;
-		max-width: 1040px;
-		margin: 4rem auto 8rem;
+		max-width: 950px;
+		margin: 2rem auto 4rem;
 		padding: 0 20px;
 
 		@media (min-width: 2500px) {
-			max-width: 1440px;
-			gap: 8rem;
+			max-width: 1400px;
+			gap: 5rem;
 		}
 
 		@media (max-width: 360px) {
-			margin-top: 2rem;
+			margin-top: 1.5rem;
 		}
 	}
 
@@ -33,13 +33,13 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		max-width: 500px;
+		max-width: 420px;
 	}
 
 	&_subtitle {
-		font-size: clamp(1.6rem, 3vw, 2rem);
-		font-weight: 500;
-		margin-bottom: 1.2rem;
+		font-size: clamp(1.2rem, 2vw, 1.6rem);
+		font-weight: 700;
+		margin-bottom: 0.8rem;
 		color: $color-primary;
 		line-height: 1.2;
 		font-family: $font-heading;
@@ -52,8 +52,8 @@
 	}
 
 	&_text {
-		font-size: 0.95rem;
-		line-height: 1.8;
+		font-size: 0.85rem;
+		line-height: 1.6;
 		color: rgba($color-primary, 0.7);
 		font-family: $font-main;
 	}
@@ -70,71 +70,80 @@
 	}
 
 	&_label {
-		font-size: 0.7rem;
+		font-size: 0.6rem;
 		text-transform: uppercase;
-		letter-spacing: 2px;
+		letter-spacing: 1px;
 		color: $color-secondary;
-		margin-bottom: 1rem;
+		margin-bottom: 0.6rem;
 		display: block;
-		font-weight: 600;
+		font-weight: 700;
 		font-family: $font-heading;
 	}
 
 	&_badge {
 		position: absolute;
-		top: -16px;
-		left: -16px;
+		top: -10px;
+		left: -10px;
 		background-color: $color-secondary;
 		color: $color-white;
-		padding: 1rem 1.4rem;
+		padding: 0.6rem 1rem;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 		text-align: center;
 		z-index: 2;
-		box-shadow: 0 10px 20px rgba($color-secondary, 0.3);
+		box-shadow: 0 5px 15px rgba($color-secondary, 0.2);
 	}
 
 	&_badge_number {
-		font-size: 0.6rem;
+		font-size: 0.5rem;
 		letter-spacing: 1px;
 		text-transform: uppercase;
 		font-family: $font-main;
-		margin-bottom: 0.2rem;
+		margin-bottom: 0.1rem;
 	}
 
 	&_badge_text {
-		font-size: 1.3rem;
-		font-weight: 600;
+		font-size: 1rem;
+		font-weight: 700;
 		line-height: 1.2;
 		font-family: $font-heading;
 	}
 
 	// ==========================================
-	// 2. SEKCJA GŁÓWNA (HERO)
+	// 2. SEKCJA GŁÓWNA (HERO) - ZMIENIONA
 	// ==========================================
 
 	&_block_hero {
 		display: block;
 		position: relative;
-		margin: 3rem auto 8rem;
+		margin: 1.5rem auto 4rem;
 		width: 100%;
-		max-width: 1040px;
+		max-width: 950px;
 		padding: 0 20px;
 
 		@media (min-width: 2500px) {
-			max-width: 1440px;
+			max-width: 1400px;
 		}
 	}
 
 	&_block_hero &_image {
-		width: 90vw;
-		max-width: 1800px;
-		height: 550px;
+		width: 80vw;
+		max-width: 1200px;
+		height: 450px;
 		position: relative;
 		left: 50%;
 		transform: translateX(-50%);
+
+		@media (max-width: 1024px) {
+			height: 400px;
+			width: 95vw;
+		}
+
+		@media (max-width: 768px) {
+			height: 300px;
+		}
 
 		img {
 			object-position: center 25%;
@@ -145,9 +154,9 @@
 		position: absolute;
 		right: auto;
 		left: 50%;
-		bottom: -5rem;
+		bottom: -3rem;
 		width: 50%;
-		max-width: calc(500px + 6rem);
+		max-width: calc(420px + 3rem);
 		padding: 0;
 		z-index: 2;
 		text-align: left;
@@ -160,8 +169,8 @@
 
 	&_overlap_content {
 		background-color: $color-white;
-		padding: 3rem;
-		box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+		padding: 2rem;
+		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 	}
 
 	// ==========================================
@@ -173,32 +182,32 @@
 		margin-left: calc(50% - 50vw);
 		background-color: $color-primary;
 		color: $color-white;
-		padding: 5rem 20px;
+		padding: 3rem 20px;
 	}
 
 	&_features_grid {
-		max-width: 1300px;
+		max-width: 1000px;
 		width: 100%;
 		margin: 0 auto;
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		gap: 4rem;
+		gap: 2rem;
 		text-align: center;
 
 		@media (min-width: 2500px) {
-			max-width: 1800px;
+			max-width: 1400px;
 		}
 	}
 
 	&_feature_title {
-		font-size: 1.3rem;
+		font-size: 1.05rem;
 		font-family: $font-heading;
-		margin-bottom: 0.8rem;
-		font-weight: 600;
+		margin-bottom: 0.5rem;
+		font-weight: 700;
 	}
 
 	&_feature_desc {
-		font-size: 0.95rem;
+		font-size: 0.8rem;
 		line-height: 1.6;
 		opacity: 0.8;
 		font-family: $font-main;
@@ -210,22 +219,22 @@
 
 	&_qualifications {
 		width: 100%;
-		max-width: 1300px;
-		margin: 5rem auto 2rem;
+		max-width: 1000px;
+		margin: 3rem auto 2rem;
 		padding: 0 20px;
 
 		@media (min-width: 2500px) {
-			max-width: 1800px;
+			max-width: 1400px;
 		}
 
 		&_container {
 			display: grid;
 			grid-template-columns: 1fr;
-			gap: 4rem;
+			gap: 2.5rem;
 
 			@media (min-width: 992px) {
 				grid-template-columns: 1fr 1fr;
-				gap: 6rem;
+				gap: 4rem;
 			}
 		}
 
@@ -236,32 +245,33 @@
 		}
 
 		&_title {
-			font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+			font-size: clamp(1.1rem, 2vw, 1.3rem);
 			font-family: $font-heading;
-			font-weight: 600;
+			font-weight: 700;
 			color: $color-primary;
-			margin-bottom: 1.2rem;
+			margin-bottom: 0.8rem;
 		}
 
 		&_text {
 			margin: 0 auto;
+			font-size: 0.85rem;
 		}
 
 		&_docs {
 			display: flex;
-			gap: 1.5rem;
-			margin-top: 1.5rem;
+			gap: 1rem;
+			margin-top: 1.2rem;
 			align-items: center;
 			justify-content: center;
 			flex-wrap: wrap;
 
 			img {
 				width: 100%;
-				max-width: 180px;
+				max-width: 120px;
 				height: auto;
 				object-fit: contain;
 				cursor: pointer;
-				box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+				box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 				transition: transform 0.2s ease-in-out;
 				background-color: $color-white;
 
@@ -270,11 +280,11 @@
 				}
 
 				@media (max-width: 768px) {
-					max-width: 140px;
+					max-width: 100px;
 				}
 
 				&:only-child {
-					max-width: 250px;
+					max-width: 180px;
 				}
 			}
 		}
@@ -286,8 +296,8 @@
 
 	&_certificates {
 		width: 100%;
-		max-width: 1300px;
-		margin: 0 auto 6rem;
+		max-width: 1000px;
+		margin: 0 auto 4rem;
 		padding: 0 20px;
 		display: flex;
 		flex-direction: column;
@@ -295,40 +305,40 @@
 		text-align: center;
 
 		@media (min-width: 2500px) {
-			max-width: 1800px;
+			max-width: 1400px;
 		}
 
 		&_title {
-			font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+			font-size: clamp(1.1rem, 2vw, 1.3rem);
 			font-family: $font-heading;
-			font-weight: 600;
+			font-weight: 700;
 			color: $color-primary;
-			margin-bottom: 1.2rem;
+			margin-bottom: 0.8rem;
 		}
 
 		&_text {
-			font-size: 0.95rem;
-			line-height: 1.8;
+			font-size: 0.85rem;
+			line-height: 1.6;
 			color: rgba($color-primary, 0.7);
 			font-family: $font-main;
-			max-width: 850px;
-			margin-bottom: 2.5rem;
+			max-width: 700px;
+			margin-bottom: 1.5rem;
 		}
 
 		&_docs {
 			display: flex;
-			gap: 1.5rem;
+			gap: 1rem;
 			align-items: center;
 			justify-content: center;
 			flex-wrap: wrap;
 
 			img {
 				width: 100%;
-				max-width: 180px;
+				max-width: 120px;
 				height: auto;
 				object-fit: contain;
 				cursor: pointer;
-				box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+				box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 				transition: transform 0.2s ease-in-out;
 				background-color: $color-white;
 
@@ -337,7 +347,7 @@
 				}
 
 				@media (max-width: 768px) {
-					max-width: 140px;
+					max-width: 100px;
 				}
 			}
 		}
@@ -399,20 +409,20 @@
 
 	&_cta {
 		width: 100%;
-		max-width: 1300px;
+		max-width: 1000px;
 		margin: 0 auto;
-		padding: 3rem 20px 6rem;
+		padding: 1.5rem 20px 4rem;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 	}
 
 	&_cta_title {
-		font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+		font-size: clamp(1.1rem, 3vw, 1.3rem);
 		font-family: $font-heading;
-		font-weight: 500;
+		font-weight: 700;
 		color: $color-primary;
-		margin-bottom: 2rem;
+		margin-bottom: 1rem;
 		text-align: center;
 	}
 
@@ -422,107 +432,54 @@
 
 	@media (max-width: 1024px) {
 		&_block {
-			margin-bottom: 6rem;
-			gap: 3rem;
+			margin-bottom: 4rem;
+			gap: 2rem;
 		}
 
 		&_contener {
-			max-width: 420px;
-		}
-
-		&_block_hero {
-			margin-top: 3rem;
-		}
-
-		&_block_hero &_image {
-			width: 95vw;
-			height: 400px;
-		}
-
-		&_overlap_box {
-			left: calc(50% - 1rem);
-			width: calc(50% + 1rem);
-			right: auto;
-			max-width: calc(420px + 5rem);
-			bottom: -4rem;
-
-			.about_us_overlap_content {
-				padding: 2.5rem;
-			}
+			max-width: 380px;
 		}
 
 		&_features_grid {
-			gap: 2rem;
+			gap: 1.2rem;
 		}
 	}
 
 	@media (max-width: 768px) {
 		&_block {
 			grid-template-columns: 1fr;
-			margin-bottom: 4rem;
-			gap: 2rem;
+			margin-bottom: 2.5rem;
+			gap: 1.5rem;
 		}
 
 		&_contener {
 			max-width: 100%;
 		}
 
-		&_block_hero {
-			display: flex;
-			flex-direction: column;
-			gap: 2rem;
-			margin-bottom: 4rem;
-		}
-
-		&_block_hero &_image {
-			width: 100%;
-			max-width: 100%;
-			height: 300px;
-			left: 0;
-			transform: none;
-		}
-
-		&_overlap_box {
-			position: relative;
-			width: 100%;
-			max-width: 100%;
-			left: auto;
-			right: auto;
-			bottom: auto;
-			margin-top: -3rem;
-			padding: 0;
-
-			.about_us_overlap_content {
-				width: 100%;
-				padding: 2rem;
-				box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-			}
-		}
-
 		&_badge {
-			top: -15px;
-			left: -15px;
-			padding: 0.8rem 1.2rem;
+			top: -8px;
+			left: -8px;
+			padding: 0.5rem 0.8rem;
 
 			&_badge_number {
-				font-size: 0.65rem;
+				font-size: 0.45rem;
 			}
 			&_badge_text {
-				font-size: 1.3rem;
+				font-size: 0.9rem;
 			}
 		}
 
 		&_features {
-			padding: 3.5rem 20px;
+			padding: 2.5rem 20px;
 		}
 
 		&_features_grid {
 			grid-template-columns: 1fr;
-			gap: 2.5rem;
+			gap: 1.5rem;
 		}
 
 		&_cta {
-			padding: 1.5rem 20px 4rem;
+			padding: 1rem 20px 2.5rem;
 		}
 	}
 }
