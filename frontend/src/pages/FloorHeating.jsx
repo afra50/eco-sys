@@ -1,13 +1,21 @@
-import { Check } from "lucide-react";
+import React from "react";
+import {
+	Check,
+	ShieldCheck,
+	Thermometer,
+	Wrench,
+	ArrowRight,
+} from "lucide-react";
 import "../styles/pages/floorheating.scss";
 import PageHero from "../components/ui/PageHero";
+import Button from "../components/ui/Button";
 
 // Import tylko do baneru
 import heroImage from "../images/podlogowe.webp";
 
-// Jak będziesz miał zdjęcia, odkomentuj to:
-// import rurkiImage from "../images/podlogowka-rurki.webp";
-// import sterowanieImage from "../images/podlogowka-sterowanie.webp";
+// Zdjęcia z realizacji
+import rurkiImage from "../images/podl1.webp";
+import sterowanieImage from "../images/podl2.webp";
 
 const FloorHeating = () => {
 	const benefits = [
@@ -45,9 +53,12 @@ const FloorHeating = () => {
 							wydajnym odbiornikiem dla pomp ciepła i kotłów kondensacyjnych.
 						</p>
 					</div>
-					{/* Pusty kontener / Placeholder na zdjęcie rurek */}
 					<div className="floorheating_split_image_wrapper placeholder_bg">
-						{/* <img src={rurkiImage} alt="Ułożone rurki ogrzewania podłogowego" className="floorheating_split_image" /> */}
+						<img
+							src={rurkiImage}
+							alt="Ułożone rurki ogrzewania podłogowego"
+							className="floorheating_split_image"
+						/>
 					</div>
 				</div>
 			</section>
@@ -74,9 +85,12 @@ const FloorHeating = () => {
 			{/* --- STEROWANIE (SPLIT REVERSE) --- */}
 			<section className="floorheating_control">
 				<div className="floorheating_container floorheating_control_wrapper">
-					{/* Pusty kontener / Placeholder na zdjęcie sterowania */}
 					<div className="floorheating_split_image_wrapper placeholder_bg">
-						{/* <img src={sterowanieImage} alt="Inteligentny termostat ścienny" className="floorheating_split_image" /> */}
+						<img
+							src={sterowanieImage}
+							alt="Inteligentny termostat ścienny"
+							className="floorheating_split_image"
+						/>
 					</div>
 					<div className="floorheating_intro_text floorheating_control_text">
 						<h2 className="floorheating_section_title">
@@ -91,6 +105,51 @@ const FloorHeating = () => {
 							kosztów ogrzewania.
 						</p>
 					</div>
+				</div>
+			</section>
+
+			{/* --- WĄSKI PASEK (BANNER USPs) --- */}
+			<section className="floorheating_banner">
+				<div className="floorheating_container floorheating_banner_wrapper">
+					<div className="floorheating_banner_item">
+						<ShieldCheck size={36} className="floorheating_banner_icon" />
+						<div className="floorheating_banner_text">
+							<h4>Pełna szczelność</h4>
+							<p>Testy ciśnieniowe układu przed zalaniem posadzek.</p>
+						</div>
+					</div>
+					<div className="floorheating_banner_item">
+						<Thermometer size={36} className="floorheating_banner_icon" />
+						<div className="floorheating_banner_text">
+							<h4>Wysoka wydajność</h4>
+							<p>Precyzyjny projekt i dobór rur pod pompy ciepła.</p>
+						</div>
+					</div>
+					<div className="floorheating_banner_item">
+						<Wrench size={36} className="floorheating_banner_icon" />
+						<div className="floorheating_banner_text">
+							<h4>Kompleksowy montaż</h4>
+							<p>Od układania rur po instalację i kalibrację rozdzielaczy.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{/* --- CTA (WEZWANIE DO DZIAŁANIA) --- */}
+			<section className="floorheating_cta">
+				<div className="floorheating_container floorheating_cta_wrapper">
+					<h2 className="floorheating_cta_title">
+						Gotowy na komfortową, ciepłą podłogę?
+					</h2>
+					<p className="floorheating_cta_desc">
+						Zaprojektujemy i wykonamy nowoczesną instalację dopasowaną do
+						Twojego budynku. Skontaktuj się z nami i odbierz darmową,
+						niezobowiązującą wycenę.
+					</p>
+					<Button to="/kontakt">
+						Darmowa wycena{" "}
+						<ArrowRight size={18} style={{ marginLeft: "8px" }} />
+					</Button>
 				</div>
 			</section>
 		</div>

@@ -1,4 +1,10 @@
+@use "sass:color";
 @use "../variables" as *;
+
+/* =========================================
+   0. REFACTOR NOTE: 
+   Migracja do modułu sass:color (zamiana darken na color.adjust)
+   ========================================= */
 
 /* =========================================
    1. MAIN WRAPPER & BACKGROUND
@@ -174,7 +180,7 @@
 	transition: all 0.3s ease;
 
 	&:hover {
-		background: darken($color_secondary, 10%);
+		background: color.adjust($color_secondary, $lightness: -10%);
 		transform: translateY(-3px);
 	}
 }
@@ -205,6 +211,31 @@
 		font-weight: 800;
 		color: $color_primary;
 		font-size: 0.9rem;
+	}
+}
+
+/* --- FACEBOOK LINK STYLES --- */
+.contact_social_link {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	margin-top: 10px;
+	color: $color_primary;
+	text-decoration: none;
+	font-weight: 700;
+	transition: color 0.3s ease;
+
+	&:hover {
+		color: $color_secondary;
+
+		.contact_social_icon {
+			color: $color_primary;
+		}
+	}
+
+	.contact_social_icon {
+		color: $color_secondary;
+		transition: color 0.3s ease;
 	}
 }
 
@@ -279,6 +310,15 @@
 	.form_textarea,
 	.contact_info_text {
 		font-size: 1.2rem;
+	}
+
+	.contact_social_link {
+		font-size: 1.2rem;
+
+		.contact_social_icon {
+			width: 24px;
+			height: 24px;
+		}
 	}
 
 	.contact_info_map {

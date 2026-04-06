@@ -14,7 +14,7 @@ import Button from "../components/ui/Button"; // Pamiętaj o imporcie Buttona!
 
 // --- IMPORTY ZDJĘĆ ---
 import heroImage from "../images/wodkan.webp"; // Do dodania w folderze
-import introImg from "../images/wodkan.webp"; // Do dodania w folderze
+import introImg from "../images/wodkan1.webp"; // Do dodania w folderze
 
 const Plumbing = () => {
 	return (
