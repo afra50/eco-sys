@@ -64,7 +64,13 @@ const Contact = () => {
 								<span className="form_checkbox_mark"></span>
 								<span className="form_checkbox_text">
 									Zapoznałem/am się i akceptuję{" "}
-									<a href="/polityka-prywatnosci">politykę prywatności</a>.
+									<a
+										href="/polityka_prywatnosci.pdf"
+										target="_blank"
+										rel="noopener noreferrer"
+										className="highlight">
+										politykę prywatności
+									</a>
 								</span>
 							</label>
 

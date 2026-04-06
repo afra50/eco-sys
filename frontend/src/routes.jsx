@@ -19,6 +19,8 @@ import AdminLayout from "./components/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminGallery from "./pages/admin/AdminGallery";
 import AboutUs from "./pages/AboutUs";
+import Ventilation from "./pages/Ventilation";
+import Plumbing from "./pages/Plumbing";
 
 const routes = [
 	// ==========================================
@@ -32,6 +34,8 @@ const routes = [
 	{ path: "/galeria", element: <Gallery /> },
 	{ path: "/o-nas", element: <AboutUs /> },
 	{ path: "/kontakt", element: <Contact /> },
+	{ path: "/wentylacje", element: <Ventilation /> },
+	{ path: "/wod-kan", element: <Plumbing /> },
 	{ path: "*", element: <NotFound /> },
 
 	// ==========================================

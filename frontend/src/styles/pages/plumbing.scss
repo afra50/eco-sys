@@ -1,0 +1,336 @@
+@use "../variables" as *;
+
+.plumbing {
+	background-color: $color-white;
+	overflow-x: hidden;
+
+	// ==========================================
+	// 1. KONTENERY I BAZA
+	// ==========================================
+	&_container {
+		max-width: 1000px;
+		margin: 0 auto;
+		padding: 0 20px;
+		position: relative;
+		z-index: 2;
+		width: 100%;
+
+		@media (max-width: 360px) {
+			padding: 0 15px;
+		}
+
+		@media (min-width: 2500px) {
+			max-width: 1400px;
+		}
+	}
+
+	&_section {
+		padding: 5rem 0;
+
+		@media (max-width: 360px) {
+			padding: 3rem 0;
+		}
+
+		@media (min-width: 2500px) {
+			padding: 8rem 0;
+		}
+	}
+
+	&_section_light {
+		background-color: $color-bg-light;
+	}
+
+	&_fluid_image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 0; // SZTYWNE 0
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+		min-height: 350px;
+
+		@media (min-width: 992px) {
+			min-height: 450px;
+		}
+	}
+
+	// ==========================================
+	// 2. UKŁADY SPLIT (ZDJĘCIE + TEKST)
+	// ==========================================
+	&_split {
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+		align-items: center;
+
+		@media (max-width: 360px) {
+			gap: 2rem;
+		}
+
+		@media (min-width: 992px) {
+			flex-direction: row;
+			gap: 4rem;
+		}
+	}
+
+	&_text_box {
+		flex: 1;
+		width: 100%;
+
+		@media (min-width: 992px) {
+			flex: 0 0 45%; // Zmienione z 40% na 45%, żeby tekst miał ciut więcej miejsca
+		}
+	}
+
+	&_image_box {
+		flex: 1;
+		width: 100%;
+
+		@media (min-width: 992px) {
+			flex: 0 0 55%;
+		}
+	}
+
+	// ==========================================
+	// 3. TYPOGRAFIA I LISTY
+	// ==========================================
+	&_section_title {
+		font-family: $font-heading;
+		font-size: clamp(1.6rem, 5vw, 2.2rem);
+		color: $color-primary;
+		margin-bottom: 1.5rem;
+		font-weight: 700;
+		position: relative;
+		padding-bottom: 1rem;
+
+		&::after {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 60px;
+			height: 4px;
+			background-color: $color-secondary;
+		}
+	}
+
+	&_center_title {
+		font-family: $font-heading;
+		font-size: clamp(1.8rem, 5vw, 2.4rem);
+		color: $color-primary;
+		margin-bottom: 3.5rem;
+		font-weight: 700;
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	&_section_desc {
+		font-family: $font-main;
+		font-size: 1rem;
+		color: rgba($color-primary, 0.8);
+		margin-bottom: 1.5rem;
+		line-height: 1.6;
+
+		@media (min-width: 2500px) {
+			font-size: 1.15rem;
+		}
+	}
+
+	&_list {
+		list-style: none;
+		padding: 0;
+		margin: 2rem 0 0 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.2rem;
+	}
+
+	&_item {
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+	}
+
+	&_icon {
+		color: $color-secondary;
+		flex-shrink: 0;
+		margin-top: 2px;
+	}
+
+	&_list_text {
+		font-family: $font-main;
+		font-size: 1rem;
+		color: $color-primary;
+		line-height: 1.5;
+		font-weight: 500;
+	}
+
+	// ==========================================
+	// 4. KARTY ZAKRESU USŁUG
+	// ==========================================
+	&_cards_grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+
+		@media (min-width: 768px) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	&_card {
+		background-color: $color-white;
+		padding: 2.5rem 1.5rem;
+		border-top: 5px solid $color-secondary;
+		border-radius: 0; // SZTYWNE 0
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+		transition: transform 0.3s ease;
+
+		&:hover {
+			transform: translateY(-5px);
+		}
+
+		&_icon {
+			color: $color-secondary;
+			margin-bottom: 1.5rem;
+		}
+
+		&_title {
+			font-family: $font-heading;
+			font-size: 1.15rem;
+			color: $color-primary;
+			margin-bottom: 1rem;
+			font-weight: 700;
+		}
+
+		&_desc {
+			font-family: $font-main;
+			font-size: 0.95rem;
+			line-height: 1.6;
+			color: rgba($color-primary, 0.7);
+		}
+	}
+
+	// ==========================================
+	// 5. WIEDZA EKSPERCKA I CTA
+	// ==========================================
+	&_expertise {
+		background-color: $color-bg-light;
+		padding: 3rem;
+		border-left: 6px solid $color-primary;
+
+		@media (max-width: 768px) {
+			padding: 2rem 1.5rem;
+		}
+
+		&_content {
+			display: flex;
+			flex-direction: column;
+			gap: 2rem;
+		}
+
+		&_text {
+			h3 {
+				font-family: $font-heading;
+				font-size: 1.3rem;
+				color: $color-primary;
+				margin-bottom: 1rem;
+				font-weight: 700;
+			}
+
+			p {
+				font-family: $font-main;
+				font-size: 1rem;
+				line-height: 1.6;
+				color: rgba($color-primary, 0.8);
+				margin-bottom: 1.2rem;
+
+				strong {
+					color: $color-primary;
+					font-weight: 700;
+				}
+			}
+		}
+
+		&_cta {
+			margin-top: 2rem;
+			padding-top: 2rem;
+			border-top: 1px solid rgba($color-primary, 0.1);
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 1rem;
+
+			p {
+				font-weight: 500;
+				margin-bottom: 0;
+			}
+
+			@media (min-width: 768px) {
+				flex-direction: row;
+				align-items: center;
+				justify-content: space-between;
+
+				p {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+
+	// ==========================================
+	// 6. WĄSKI PASEK (BANNER Z IKONAMI)
+	// ==========================================
+	&_banner {
+		background-color: $color-primary;
+		padding: 4rem 0;
+		color: $color-white;
+
+		&_wrapper {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 2.5rem;
+			text-align: center;
+
+			@media (min-width: 768px) {
+				grid-template-columns: repeat(3, 1fr);
+				text-align: left;
+				gap: 2rem;
+			}
+		}
+
+		&_item {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 1rem;
+
+			@media (min-width: 768px) {
+				flex-direction: row;
+				align-items: flex-start;
+			}
+		}
+
+		&_icon {
+			color: $color-secondary;
+			flex-shrink: 0;
+		}
+
+		&_text {
+			h4 {
+				font-family: $font-heading;
+				font-size: 1.1rem;
+				margin-bottom: 0.5rem;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+			}
+
+			p {
+				font-family: $font-main;
+				font-size: 0.9rem;
+				line-height: 1.5;
+				color: rgba($color-white, 0.8);
+			}
+		}
+	}
+}

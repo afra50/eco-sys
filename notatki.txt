@@ -1,8 +1,8 @@
 I. PODZIAŁ PRACY
     KRZYSIEK
-        - Kontakt - Formularz kontaktowy + wysyłka
+        - podłączenie wysyłki w kontakt
         - Polityka prywatności
-        - Statyczne strony: Wentylacje, Wod-kan
+        - Wod-kan
         - Na Home dodac do banera jeszcze inne rzeczy
         - Na home dodac przykladowe marki w Brands
 
