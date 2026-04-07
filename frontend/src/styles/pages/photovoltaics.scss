@@ -25,25 +25,36 @@
 	}
 
 	// ==========================================
-	// 2. INTRO (DLACZEGO WARTO)
+	// 2. SEKCJE BAZOWE I INTRO
 	// ==========================================
+	&_section,
 	&_intro {
-		padding: 4rem 0;
+		padding: 5rem 0;
 		background-color: $color-white;
 
 		@media (max-width: 360px) {
-			padding: 2.5rem 0;
+			padding: 3rem 0;
 		}
 
 		@media (min-width: 2500px) {
-			padding: 6rem 0;
+			padding: 8rem 0;
 		}
 	}
 
-	&_intro_wrapper {
+	&_bg_light {
+		background-color: $color-bg-light;
+	}
+
+	// ==========================================
+	// 3. UKŁAD SPLIT I SPLIT REVERSE
+	// ==========================================
+	&_intro_wrapper,
+	&_split,
+	&_split_reverse {
 		display: flex;
 		flex-direction: column;
 		gap: 3rem;
+		align-items: center;
 
 		@media (max-width: 360px) {
 			gap: 2rem;
@@ -51,19 +62,64 @@
 
 		@media (min-width: 992px) {
 			flex-direction: row;
-			align-items: center;
+			gap: 4rem; // Odstęp między tekstem a zdjęciem
 		}
 	}
 
-	&_intro_text {
-		flex: 1;
+	&_split_reverse {
+		@media (min-width: 992px) {
+			flex-direction: row-reverse;
+		}
+	}
+
+	&_intro_text,
+	&_text_box {
+		width: 100%;
 
 		@media (min-width: 992px) {
-			flex: 0 0 45%;
-			padding-right: 2rem;
+			// Równe 45% minus połowa odstępu (gap), żeby nie wypychało z kontenera
+			flex: 0 0 calc(45% - 2rem);
 		}
 	}
 
+	&_image_box,
+	&_video {
+		width: 100%;
+		aspect-ratio: 4 / 3;
+		background-color: $color-bg-light;
+		border-radius: 0; // SZTYWNE 0
+		overflow: hidden;
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+
+		@media (min-width: 992px) {
+			// Równe 55% minus połowa odstępu
+			flex: 0 0 calc(55% - 2rem);
+		}
+	}
+
+	&_video_iframe {
+		width: 100%;
+		height: 100%;
+		border: none;
+		object-fit: cover;
+	}
+
+	.placeholder_bg {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #e0e0e0;
+		color: rgba($color-primary, 0.5);
+		font-family: $font-main;
+		font-weight: 500;
+		font-size: 1rem;
+		text-align: center;
+		padding: 2rem;
+	}
+
+	// ==========================================
+	// 4. TYPOGRAFIA (Tytuły i Opisy)
+	// ==========================================
 	&_section_title {
 		font-family: $font-heading;
 		font-size: clamp(1.6rem, 7vw, 2.2rem);
@@ -85,11 +141,13 @@
 		}
 	}
 
-	&_intro_desc {
+	&_intro_desc,
+	&_section_desc {
 		font-family: $font-main;
 		font-size: 1rem;
 		line-height: 1.6;
 		color: rgba($color-primary, 0.8);
+		margin-bottom: 1.5rem;
 
 		@media (min-width: 992px) {
 			font-size: 1.1rem;
@@ -101,101 +159,10 @@
 		}
 	}
 
-	&_video {
-		flex: 1;
-		width: 100%;
-		aspect-ratio: 16 / 9;
-		background-color: $color-bg-light;
-		border-radius: 4px;
-		overflow: hidden;
-		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-	}
-
-	&_video_iframe {
-		width: 100%;
-		height: 100%;
-		border: none;
-		object-fit: cover;
-	}
-
 	// ==========================================
-	// 3. RODZAJE INSTALACJI (TYPES)
+	// 5. ELEMENTY LISTY (DOM/PRZEMYSŁ)
 	// ==========================================
-	&_types {
-		padding: 5rem 0;
-
-		@media (max-width: 360px) {
-			padding: 3rem 0;
-		}
-
-		@media (min-width: 2500px) {
-			padding: 7rem 0;
-		}
-	}
-
-	&_types_grid {
-		display: flex;
-		flex-direction: column;
-		gap: 2rem;
-
-		@media (max-width: 360px) {
-			gap: 1.5rem;
-		}
-
-		@media (min-width: 992px) {
-			flex-direction: row;
-		}
-	}
-
-	&_type_card {
-		flex: 1;
-		background-color: $color-white;
-		padding: 3rem;
-		border-top: 6px solid $color-secondary;
-		border-radius: 0;
-		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-		display: flex;
-		flex-direction: column;
-
-		@media (max-width: 360px) {
-			padding: 1.5rem;
-		}
-
-		@media (min-width: 2500px) {
-			padding: 4rem;
-		}
-	}
-
-	&_type_title {
-		font-family: $font-heading;
-		font-size: 1.4rem;
-		color: $color-primary;
-		margin-bottom: 1rem;
-		text-transform: uppercase;
-		font-weight: 700;
-
-		@media (min-width: 2500px) {
-			font-size: 1.6rem;
-		}
-	}
-
-	&_type_desc {
-		font-family: $font-main;
-		font-size: 1rem;
-		color: rgba($color-primary, 0.7);
-		margin-bottom: 2.5rem;
-		line-height: 1.6;
-
-		@media (max-width: 360px) {
-			margin-bottom: 1.5rem;
-		}
-
-		@media (min-width: 2500px) {
-			font-size: 1.1rem;
-		}
-	}
-
-	&_type_list {
+	&_list {
 		list-style: none;
 		padding: 0;
 		margin: 0;
@@ -208,9 +175,6 @@
 		}
 	}
 
-	// ==========================================
-	// 4. ELEMENTY LISTY
-	// ==========================================
 	&_list_item {
 		display: flex;
 		align-items: flex-start;
@@ -243,77 +207,245 @@
 	}
 
 	// ==========================================
-	// 5. PARTNERZY
+	// 6. MINI SLIDER (DLA DOMU I PRZEMYSŁU)
 	// ==========================================
-	&_partners {
-		padding: 4rem 0 6rem;
-		background-color: $color-bg-light;
-		text-align: center;
+	&_mini_slider {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
 
-		@media (max-width: 360px) {
-			padding: 3rem 0 4rem;
+	&_mini_slide {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		opacity: 0;
+		z-index: 1;
+		transition: opacity 1s ease-in-out;
+
+		&.active {
+			opacity: 1;
 		}
+	}
+
+	// ==========================================
+	// 7. SEKCJA "JAK TO DZIAŁA" (NIEBIESKI PASEK)
+	// ==========================================
+	&_steps {
+		background-color: $color-primary;
+		padding: 5rem 0;
+		color: $color-white;
 
 		@media (min-width: 2500px) {
-			padding: 6rem 0 8rem;
-		}
-	}
-
-	&_partners_title {
-		font-family: $font-heading;
-		font-size: 1.5rem;
-		color: $color-primary;
-		margin-bottom: 3rem;
-		text-transform: uppercase;
-		font-weight: 700;
-
-		@media (max-width: 360px) {
-			margin-bottom: 2rem;
-			font-size: 1.3rem;
-		}
-	}
-
-	&_partners_grid {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		gap: 1.5rem;
-
-		@media (max-width: 360px) {
-			gap: 1rem;
+			padding: 8rem 0;
 		}
 
-		@media (min-width: 992px) {
+		&_header {
+			text-align: center;
+			margin-bottom: 4rem;
+
+			h2 {
+				font-family: $font-heading;
+				font-size: clamp(1.8rem, 5vw, 2.4rem);
+				margin-bottom: 1rem;
+				font-weight: 700;
+				color: $color-white;
+			}
+
+			p {
+				font-family: $font-main;
+				font-size: 1.05rem;
+				color: rgba($color-white, 0.8);
+				max-width: 700px;
+				margin: 0 auto;
+				line-height: 1.5;
+			}
+		}
+
+		&_grid {
+			display: grid;
+			grid-template-columns: 1fr;
 			gap: 3rem;
+
+			@media (min-width: 576px) {
+				grid-template-columns: repeat(2, 1fr);
+				gap: 2rem;
+			}
+
+			@media (min-width: 992px) {
+				grid-template-columns: repeat(4, 1fr);
+				gap: 2.5rem;
+			}
+		}
+
+		&_item {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+
+			h3 {
+				font-family: $font-heading;
+				font-size: 1.2rem;
+				color: $color-secondary;
+				margin: 1.5rem 0 1rem;
+				font-weight: 700;
+			}
+
+			p {
+				font-family: $font-main;
+				font-size: 0.95rem;
+				line-height: 1.6;
+				color: rgba($color-white, 0.8);
+			}
+		}
+
+		&_icon {
+			color: $color-secondary;
 		}
 	}
 
-	&_partner_logo {
-		width: 160px;
-		height: 80px;
+	// ==========================================
+	// 8. WĄSKI PASEK (BANNER Z IKONAMI)
+	// ==========================================
+	&_banner {
+		background-color: $color-primary;
+		padding: 4rem 0;
+		color: $color-white;
+
+		&_wrapper {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 2.5rem;
+			text-align: center;
+
+			@media (min-width: 768px) {
+				grid-template-columns: repeat(3, 1fr);
+				text-align: left;
+				gap: 2rem;
+			}
+		}
+
+		&_item {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 1rem;
+
+			@media (min-width: 768px) {
+				flex-direction: row;
+				align-items: flex-start;
+			}
+		}
+
+		&_icon {
+			color: $color-secondary;
+			flex-shrink: 0;
+		}
+
+		&_text {
+			h4 {
+				font-family: $font-heading;
+				font-size: 1.1rem;
+				margin-bottom: 0.5rem;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+			}
+
+			p {
+				font-family: $font-main;
+				font-size: 0.9rem;
+				line-height: 1.5;
+				color: rgba($color-white, 0.8);
+			}
+		}
+	}
+
+	// ==========================================
+	// 9. CTA I "CZY WIEDZIAŁEŚ ŻE"
+	// ==========================================
+	&_cta {
+		padding: 5rem 0;
 		background-color: $color-white;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-family: $font-heading;
-		color: rgba($color-primary, 0.3);
-		font-size: 0.85rem;
-		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
 
-		@media (max-width: 360px) {
-			width: 130px;
-			height: 70px;
+		&_wrapper {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			max-width: 800px;
+			margin: 0 auto;
 		}
 
-		@media (min-width: 2500px) {
-			width: 200px;
-			height: 100px;
+		&_title {
+			font-family: $font-heading;
+			font-size: clamp(1.8rem, 5vw, 2.4rem);
+			color: $color-primary;
+			margin-bottom: 1.5rem;
+			font-weight: 700;
+		}
+
+		&_desc {
+			font-family: $font-main;
+			font-size: 1.05rem;
+			line-height: 1.6;
+			color: rgba($color-primary, 0.8);
+			margin-bottom: 2.5rem;
 		}
 	}
 
-	&_partner_image {
-		max-width: 80%;
-		max-height: 70%;
-		object-fit: contain;
+	&_didyouknow {
+		margin-top: 4rem;
+		padding: 2.5rem;
+		background-color: #f8f9fa;
+		border: 1px solid rgba($color-primary, 0.1);
+		border-radius: 0;
+		text-align: center;
+		width: 100%;
+
+		&_header {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 0.8rem;
+			margin-bottom: 1rem;
+
+			h3 {
+				font-family: $font-heading;
+				font-size: 1.4rem;
+				color: $color-primary;
+				margin: 0;
+			}
+		}
+
+		&_icon {
+			color: $color-secondary;
+		}
+
+		p {
+			font-family: $font-main;
+			font-size: 1rem;
+			line-height: 1.6;
+			color: rgba($color-primary, 0.8);
+			margin-bottom: 1.5rem;
+		}
+
+		&_link {
+			display: inline-block;
+			color: $color-secondary;
+			font-weight: 700;
+			font-family: $font-main;
+			text-decoration: none;
+			border-bottom: 2px solid transparent;
+			transition: border-color 0.3s ease;
+
+			&:hover {
+				border-bottom-color: $color-secondary;
+			}
+		}
 	}
 }
