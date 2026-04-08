@@ -2,20 +2,21 @@
 
 .page_hero {
 	position: relative;
+	width: 100%;
 	height: 55vh;
-	min-height: 450px;
-	max-height: 800px;
+	min-height: 400px;
+	max-height: 650px;
 	color: $color-white;
 	background-color: $color-primary;
 	overflow: hidden;
 
+	@media (max-width: 360px) {
+		height: 320px;
+	}
+
 	@media (min-width: 2500px) {
 		height: 45vh;
 		max-height: 900px;
-	}
-
-	@media (max-width: 360px) {
-		min-height: 350px;
 	}
 
 	&_image_wrapper {
@@ -27,100 +28,102 @@
 		z-index: 1;
 
 		@media (min-width: 992px) {
-			width: 65%;
+			width: 80%; // Fota startuje w 20% szerokości ekranu
 		}
 	}
 
 	&_image {
+		position: absolute;
+		inset: 0;
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		object-position: right center;
-		position: absolute;
-		top: 0;
-		left: 0;
+		object-position: center 25%;
 		opacity: 0;
-		transition: opacity 1s ease-in-out;
+		transition: opacity 1.5s ease-in-out;
+		z-index: 1;
 
 		&.active {
 			opacity: 1;
+			z-index: 2;
 		}
 	}
 
+	// ==========================================
+	// GRADIENT: PERMANENTNY DO 40%, ROZMYCIE DO 75%
+	// ==========================================
 	&_overlay {
 		position: absolute;
 		inset: 0;
-		z-index: 2;
-
+		z-index: 3;
 		background: linear-gradient(
 			to right,
-			rgba($color-primary, 1) 0%,
-			rgba($color-primary, 0.9) 40%,
-			transparent 100%
+			$color-primary 0%,
+			$color-primary 40%,
+			// ROZCIĄGNIĘTY LITY KOLOR DO 40%
+			rgba($color-primary, 0.9) 48%,
+			// Bardzo miękki start wygaszania
+			rgba($color-primary, 0.6) 58%,
+			// Środek "mgły"
+			rgba($color-primary, 0.2) 68%,
+			// Prawie przezroczysty
+			transparent 75% // CAŁKOWICIE CZYSTA FOTA OD 75%
 		);
 
-		@media (min-width: 992px) {
+		@media (max-width: 991px) {
 			background: linear-gradient(
 				to right,
 				rgba($color-primary, 1) 0%,
-				rgba($color-primary, 1) 40%,
-				rgba($color-primary, 0.1) 75%,
+				rgba($color-primary, 0.9) 50%,
 				transparent 100%
 			);
 		}
 	}
 
 	&_container {
-		max-width: 1300px;
-		margin: 0 auto;
-		padding: 4rem 15px;
 		position: relative;
-		z-index: 3;
-		width: 100%;
+		z-index: 4;
 		height: 100%;
+		max-width: 1300px; // Zrównane z Twoim standardem kontenera
+		margin: 0 auto;
+		padding: 0 15px; // Standardowy padding, żeby zrównać z logo
 		display: flex;
 		align-items: center;
 
 		@media (min-width: 768px) {
-			padding: 4rem 20px;
+			padding: 0 20px;
 		}
 	}
 
 	&_content {
-		max-width: 630px;
+		max-width: 650px;
 		text-align: left;
+		margin-left: 0; // Kasujemy to jebane przesunięcie w prawo
+		margin-top: -15px;
 	}
 
 	&_title {
 		font-family: $font-heading;
-		font-size: clamp(2.2rem, 8vw, 4.5rem);
-		margin-bottom: 0.5rem;
+		font-size: clamp(2.4rem, 7vw, 3.8rem); // Powiększony "złoty środek"
+		margin-bottom: 0.8rem;
 		font-weight: 800;
 		text-transform: uppercase;
-		line-height: 1.1;
+		line-height: 1.05;
 	}
 
 	&_subtitle {
 		font-family: $font-heading;
-		font-size: clamp(1.2rem, 4vw, 1.8rem);
+		font-size: clamp(1.2rem, 3.5vw, 1.7rem); // Wyraźniejszy podtytuł
 		color: $color-secondary;
 		margin-bottom: 1.5rem;
 		font-weight: 600;
-
-		@media (min-width: 992px) {
-			margin-bottom: 2rem;
-		}
 	}
 
 	&_desc {
 		font-family: $font-main;
-		font-size: 1rem;
+		font-size: 1.05rem; // Podbita wielkość opisu
 		line-height: 1.6;
-		color: rgba($color-white, 0.9);
-
-		@media (min-width: 992px) {
-			font-size: 1.1rem;
-			line-height: 1.7;
-		}
+		color: rgba($color-white, 0.95);
+		max-width: 520px;
 	}
 }

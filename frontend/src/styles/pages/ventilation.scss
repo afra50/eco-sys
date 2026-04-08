@@ -1,11 +1,11 @@
 @use "../variables" as *;
 
-.floorheating {
+.ventilation {
 	background-color: $color-white;
 	overflow-x: hidden;
 
 	// ==========================================
-	// 1. KONTENERY I SEKCJE BAZOWE
+	// 1. KONTENERY I BAZA
 	// ==========================================
 	&_container {
 		max-width: 1000px;
@@ -24,9 +24,7 @@
 		}
 	}
 
-	&_intro,
-	&_benefits,
-	&_control {
+	&_section {
 		padding: 5rem 0;
 
 		@media (max-width: 360px) {
@@ -38,15 +36,27 @@
 		}
 	}
 
-	&_benefits {
+	&_section_light {
 		background-color: $color-bg-light;
 	}
 
+	&_fluid_image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 0;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+		min-height: 350px;
+
+		@media (min-width: 992px) {
+			min-height: 450px;
+		}
+	}
+
 	// ==========================================
-	// 2. UKŁADY SPLIT (Zdjęcie + Tekst)
+	// 2. UKŁADY SPLIT (ZDJĘCIE + TEKST)
 	// ==========================================
-	&_intro_wrapper,
-	&_control_wrapper {
+	&_split {
 		display: flex;
 		flex-direction: column;
 		gap: 3rem;
@@ -62,50 +72,26 @@
 		}
 	}
 
-	&_intro_text,
-	&_control_text {
+	&_text_box {
 		flex: 1;
 		width: 100%;
 
 		@media (min-width: 992px) {
-			flex: 0 0 45%;
+			flex: 0 0 40%;
 		}
 	}
 
-	&_split_image_wrapper {
+	&_image_box {
 		flex: 1;
 		width: 100%;
-		height: 100%;
-		min-height: 350px;
 
 		@media (min-width: 992px) {
-			flex: 0 0 55%;
-			min-height: 450px;
-		}
-	}
-
-	.placeholder_bg {
-		background-color: #f0f0f0;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-
-	&_split_image {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		border-radius: 0; // SZTYWNE 0
-		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-		min-height: 350px;
-
-		@media (min-width: 992px) {
-			min-height: 450px;
+			flex: 0 0 60%;
 		}
 	}
 
 	// ==========================================
-	// 3. TYPOGRAFIA (Tytuły i Opisy)
+	// 3. TYPOGRAFIA I LISTY
 	// ==========================================
 	&_section_title {
 		font-family: $font-heading;
@@ -127,17 +113,17 @@
 		}
 	}
 
-	&_benefits_title {
+	&_center_title {
 		font-family: $font-heading;
 		font-size: clamp(1.8rem, 5vw, 2.4rem);
 		color: $color-primary;
-		margin-bottom: 3.5rem;
+		margin-bottom: 3rem;
 		font-weight: 700;
 		text-align: center;
 		text-transform: uppercase;
 	}
 
-	&_intro_desc {
+	&_section_desc {
 		font-family: $font-main;
 		font-size: 1rem;
 		color: rgba($color-primary, 0.8);
@@ -149,40 +135,22 @@
 		}
 	}
 
-	// ==========================================
-	// 4. KARTY ZALET I LISTY
-	// ==========================================
-	&_benefits_grid {
-		display: flex;
-		justify-content: center;
-	}
-
-	&_benefit_card {
-		background-color: $color-white;
-		padding: 3rem 2.5rem;
-		border-top: 5px solid $color-secondary;
-		border-radius: 0; // SZTYWNE 0
-		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-		width: 100%;
-		max-width: 850px;
-	}
-
-	&_benefit_list {
+	&_list {
 		list-style: none;
 		padding: 0;
-		margin: 0;
+		margin: 2rem 0 0 0;
 		display: flex;
 		flex-direction: column;
-		gap: 1.5rem;
+		gap: 1.2rem;
 	}
 
-	&_list_item {
+	&_item {
 		display: flex;
 		align-items: flex-start;
 		gap: 1rem;
 	}
 
-	&_list_icon {
+	&_icon {
 		color: $color-secondary;
 		flex-shrink: 0;
 		margin-top: 2px;
@@ -192,8 +160,54 @@
 		font-family: $font-main;
 		font-size: 1rem;
 		color: $color-primary;
-		line-height: 1.6;
+		line-height: 1.5;
 		font-weight: 500;
+	}
+
+	// ==========================================
+	// 4. KARTY RODZAJÓW WENTYLACJI
+	// ==========================================
+	&_cards_grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+
+		@media (min-width: 768px) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	&_card {
+		background-color: $color-white;
+		padding: 3rem 2rem;
+		border-top: 5px solid $color-secondary;
+		border-radius: 0;
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+		transition: transform 0.3s ease;
+
+		&:hover {
+			transform: translateY(-5px);
+		}
+
+		&_icon {
+			color: $color-secondary;
+			margin-bottom: 1.5rem;
+		}
+
+		&_title {
+			font-family: $font-heading;
+			font-size: 1.3rem;
+			color: $color-primary;
+			margin-bottom: 1rem;
+			font-weight: 700;
+		}
+
+		&_desc {
+			font-family: $font-main;
+			font-size: 0.95rem;
+			line-height: 1.6;
+			color: rgba($color-primary, 0.7);
+		}
 	}
 
 	// ==========================================
@@ -254,35 +268,75 @@
 	}
 
 	// ==========================================
-	// 6. CTA (WEZWANIE DO DZIAŁANIA)
+	// 6. KORZYŚCI Z REKUPERACJI (BOX)
 	// ==========================================
-	&_cta {
+	&_benefits {
 		padding: 5rem 0;
-		background-color: $color-white;
+		background-color: $color-bg-light;
+		text-align: center;
 
-		&_wrapper {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			text-align: center;
-			max-width: 800px;
-			margin: 0 auto;
+		@media (max-width: 360px) {
+			padding: 3rem 0;
 		}
 
-		&_title {
+		@media (min-width: 2500px) {
+			padding: 8rem 0;
+		}
+	}
+
+	&_benefits_title {
+		font-family: $font-heading;
+		font-size: clamp(1.8rem, 5vw, 2.4rem);
+		color: $color-primary;
+		margin-bottom: 3.5rem;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+
+	&_benefits_grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+
+		@media (min-width: 576px) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@media (min-width: 1024px) {
+			grid-template-columns: repeat(4, 1fr);
+			gap: 2rem;
+		}
+	}
+
+	&_benefit_card {
+		background-color: $color-white;
+		padding: 2rem 1.5rem;
+		border-top: 5px solid $color-secondary;
+		border-radius: 0;
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+		transition: transform 0.3s ease;
+
+		&:hover {
+			transform: translateY(-5px);
+		}
+
+		h3 {
 			font-family: $font-heading;
-			font-size: clamp(1.8rem, 5vw, 2.4rem);
+			font-size: 1.15rem;
 			color: $color-primary;
-			margin-bottom: 1.5rem;
+			margin: 1.5rem 0 1rem;
 			font-weight: 700;
 		}
 
-		&_desc {
+		p {
 			font-family: $font-main;
-			font-size: 1.05rem;
+			font-size: 0.9rem;
 			line-height: 1.6;
-			color: rgba($color-primary, 0.8);
-			margin-bottom: 2.5rem;
+			color: rgba($color-primary, 0.7);
 		}
+	}
+
+	&_benefit_icon {
+		color: $color-secondary;
 	}
 }

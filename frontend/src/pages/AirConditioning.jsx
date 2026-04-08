@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Check, Wind, Thermometer, Settings, Wrench } from "lucide-react";
+import {
+	Check,
+	Wind,
+	Thermometer,
+	Settings,
+	Wrench,
+	Home,
+	Factory,
+} from "lucide-react";
 import "../styles/pages/airconditioning.scss";
 import Button from "../components/ui/Button";
 import PageHero from "../components/ui/PageHero";
@@ -24,7 +32,6 @@ import vrf7 from "../images/vrf-zdjecie-7.webp";
 
 const AirConditioning = () => {
 	// --- MINI-SLIDER: KLIMATYZACJA DLA DOMU ---
-	// Logika zostaje, bo te slidery są wewnątrz sekcji, nie w Hero
 	const [currentHomeSlide, setCurrentHomeSlide] = useState(0);
 	const homeSlides = [klim1, klim2, klim3, klim4, klim5];
 
@@ -149,6 +156,39 @@ const AirConditioning = () => {
 				</div>
 			</section>
 
+			{/* --- NOWA SEKCJA: GŁÓWNE ZALETY (2 KONTENERY) --- */}
+			<section className="airconditioning_section airconditioning_section_light">
+				<div className="airconditioning_container">
+					<h2 className="airconditioning_center_title">
+						Główne zalety naszych systemów
+					</h2>
+					<div className="airconditioning_benefits_grid">
+						<div className="airconditioning_benefit_card">
+							<Home size={40} className="airconditioning_benefit_icon" />
+							<h3>Wygoda w Twoim domu</h3>
+							<p>
+								Zyskujesz nie tylko ulgę i chłód w upalne dni, ale i niezwykle
+								tanie źródło ciepła w okresach przejściowych. Nasze systemy
+								skutecznie filtrują zanieczyszczenia, kurz i alergeny,
+								gwarantując zdrowe, rześkie powietrze dla Ciebie i Twojej
+								rodziny, zachowując przy tym estetyczny wygląd wnętrza.
+							</p>
+						</div>
+						<div className="airconditioning_benefit_card">
+							<Factory size={40} className="airconditioning_benefit_icon" />
+							<h3>Wydajność dla biznesu</h3>
+							<p>
+								Gwarantujemy niezawodność przy pracy ciągłej i potężną
+								oszczędność energii elektrycznej. Otrzymujesz system pozwalający
+								na niezależne sterowanie temperaturą w dziesiątkach pomieszczeń
+								jednocześnie, wykorzystując do tego zaledwie jeden lub kilka
+								zintegrowanych agregatów zewnętrznych.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
 			<section className="airconditioning_standards">
 				<div className="airconditioning_container">
 					<h2 className="airconditioning_standards_title">Jak pracujemy?</h2>
@@ -188,6 +228,10 @@ const AirConditioning = () => {
 					<h2 className="airconditioning_cta_title">
 						Potrzebujesz pomocy w wyborze systemu?
 					</h2>
+					<p className="airconditioning_cta_desc">
+						Nasz zespół doradców technicznych darmowo dobierze odpowiednie
+						urządzenia i przygotuje wycenę skrojoną pod Twoje potrzeby.
+					</p>
 					<Button to="/kontakt">Skontaktuj się z nami</Button>
 				</div>
 			</section>

@@ -1,0 +1,165 @@
+@use "../../variables" as *;
+
+.recent_projects {
+  padding: 6rem 0;
+  background-color: $color-white;
+
+  &_container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  &_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid rgba($color-primary, 0.1);
+    padding-bottom: 1.5rem;
+
+    @media (max-width: 767px) {
+      flex-direction: column;
+      align-items: flex-start;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+  }
+
+  &_title_wrapper {
+    max-width: 700px;
+  }
+
+  &_label {
+    font-family: $font-heading;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: $color-secondary;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  &_title {
+    font-family: $font-heading;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: $color-primary;
+    font-weight: 800;
+  }
+
+  &_btn_desktop {
+    display: none;
+    @media (min-width: 768px) {
+      display: inline-flex;
+      margin-bottom: 5px;
+    }
+  }
+
+  &_btn_mobile {
+    display: inline-flex;
+    margin-top: 3rem;
+    width: 100%;
+    justify-content: center;
+
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  /* Kontenery stanów (Loader/Error) */
+  &_status {
+    padding: 3rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 250px;
+    .error-state {
+      width: 100%;
+    }
+  }
+
+  /* --- STREFA KARUZELI (nadpisanie stylów react-slick) --- */
+  &_content {
+    position: relative;
+    width: 100%;
+  }
+
+  &_slider_wrapper {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px 0;
+
+    // Triki na stworzenie odstępów (gap) w react-slick
+    .slick-list {
+      margin: 0 -1rem;
+    }
+
+    .slick-slide > div {
+      padding: 0 1rem;
+    }
+
+    .slick-track {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  /* Pudełko na pojedyncze zdjęcie - SUROWE I PROSTE */
+  &_item {
+    display: block;
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 0; // Ostre kąty
+    background-color: rgba($color-primary, 0.05);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  /* --- STRZAŁKI NAWIGACYJNE --- */
+  &_arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 54px;
+    height: 54px;
+    background-color: $color-white;
+    border: none;
+    color: $color-primary;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+
+    box-shadow:
+      0 4px 15px rgba(0, 0, 0, 0.25),
+      0 0 0 1px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+
+    @media (max-width: 991px) {
+      display: none; // Na telefonach ukrywamy strzałki (zostaje swipe)
+    }
+
+    &:hover {
+      background-color: $color-secondary;
+      color: $color-white;
+      transform: translateY(-50%) scale(1.05);
+    }
+
+    &--left {
+      left: -27px;
+    }
+
+    &--right {
+      right: -27px;
+    }
+  }
+}

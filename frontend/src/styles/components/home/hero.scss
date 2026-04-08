@@ -1,190 +1,205 @@
 @use "../../variables" as *;
 
+/* =========================================
+   1. MAIN SLIDER CONTAINER
+   ========================================= */
 .hero_slider {
 	position: relative;
 	width: 100%;
-	height: 60vh;
-	min-height: 400px;
-	max-height: 600px;
+	height: 55vh;
+	min-height: 350px;
+	max-height: 700px; // ZMIANA Z 500px: Daje zdjęciu oddech w pionie i ucina chamski zoom
 	overflow: hidden;
 	background-color: $color-bg-light;
+}
 
-	&_slide {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		opacity: 0;
-		transition: opacity 0.8s ease-in-out;
-		z-index: 1;
+/* =========================================
+   2. SLIDES & BACKGROUND
+   ========================================= */
+.hero_slider_slide {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	transition: opacity 0.8s ease-in-out;
+	z-index: 1;
 
-		&.active {
-			opacity: 1;
-			z-index: 2;
-		}
+	&.active {
+		opacity: 1;
+		z-index: 2;
 	}
+}
 
-	&_bg {
-		width: 100%;
+.hero_slider_bg {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	background-color: $color-primary;
+
+	img {
+		width: 100%; // ZDJĘCIE ZNÓW NA 100%, ŻEBY PANEL Z PRAWEJ MIAŁ NA CZYM PRZEŚWITYWAĆ
 		height: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
+}
+
+.hero_slider_overlay_glow {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+		135deg,
+		rgba($color-white, 0.4) 0%,
+		rgba($color-white, 0.1) 50%,
+		rgba(0, 0, 0, 0) 100%
+	);
+	z-index: 1;
+}
+
+/* =========================================
+   3. SIDEBAR (INFO PANEL)
+   ========================================= */
+.hero_slider_sidebar {
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 32vw;
+	min-width: 340px;
+	background-color: rgba(
+		$color-primary,
+		0.6
+	); // TWÓJ ORYGINALNY KOLOR I PRZEZROCZYSTOŚĆ
+	padding: 3rem 2.5rem;
+	z-index: 5;
+	display: flex;
+	align-items: center;
+	border-left: 2px solid rgba($color-white, 0.1);
+
+	@media (max-width: 992px) {
+		width: 100%;
+		border-left: none;
+		border-top: 2px solid rgba($color-white, 0.1);
+		background-color: rgba($color-primary, 0.85);
+		padding: 2.5rem 1.5rem;
 		position: relative;
-		background-color: $color-primary; // Dodane tło, gdyby zdjęcie nie wypełniało całości
+		transform: none;
+	}
+}
 
-		img {
-			width: 100%;
-			height: 100%;
-			// TUTAJ ZMIANA:
-			// "cover" wypełnia cały obszar (może ucinać boki/górę).
-			// Jeśli chcesz widzieć ZAWSZE całe zdjęcie bez ucinania, zmień "cover" na "contain".
-			object-fit: cover;
-			object-position: center; // Skupia kadr zawsze na środku zdjęcia
-		}
+.hero_slider_sidebar_content {
+	color: $color-white;
+}
+
+/* =========================================
+   4. PRODUCT INFO & TYPOGRAPHY
+   ========================================= */
+.hero_slider_product_meta {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 1.2rem;
+}
+
+.hero_slider_product_icon {
+	color: rgba($color-secondary, 0.9);
+}
+
+.hero_slider_product_type {
+	font-family: $font-main;
+	font-size: 0.8rem;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: rgba($color-white, 0.8);
+}
+
+.hero_slider_product_title {
+	font-family: $font-heading;
+	font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+	font-weight: 700;
+	line-height: 1.1;
+	margin-bottom: 1.5rem;
+	text-transform: uppercase;
+	text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero_slider_product_desc {
+	font-family: $font-main;
+	font-size: 0.95rem;
+	line-height: 1.6;
+	margin-bottom: 2.5rem;
+	color: rgba($color-white, 0.9);
+	max-width: 380px;
+	text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* =========================================
+   5. NAVIGATION (ARROWS & DOTS)
+   ========================================= */
+.hero_slider_actions {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.hero_slider_arrow {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 10;
+	background: rgba(255, 255, 255, 0.1);
+	border: 2px solid transparent;
+	color: $color-white;
+	cursor: pointer;
+	padding: 0.4rem;
+	border-radius: 50%;
+	transition: all 0.3s ease;
+
+	&:hover {
+		background: rgba($color-secondary, 0.9);
+		border-color: rgba($color-secondary, 0.9);
+		transform: translateY(-50%) scale(1.1);
 	}
 
-	&_overlay_glow {
-		position: absolute;
-		inset: 0;
-		background: linear-gradient(
-			135deg,
-			rgba($color-white, 0.4) 0%,
-			rgba($color-white, 0.1) 50%,
-			rgba(0, 0, 0, 0) 100%
-		);
-		z-index: 1;
+	&_left {
+		left: 20px;
 	}
-
-	&_sidebar {
-		position: absolute;
-		right: 0;
-		top: 0;
-		bottom: 0;
-		width: 35vw;
-		min-width: 380px;
-		background-color: rgba($color-primary, 0.6);
-		padding: 4rem 3rem;
-		z-index: 5;
-		display: flex;
-		align-items: center;
-		border-left: 2px solid rgba($color-white, 0.1);
-
+	&_right {
+		right: calc(32vw + 20px);
 		@media (max-width: 992px) {
-			width: 100%;
-			border-left: none;
-			border-top: 2px solid rgba($color-white, 0.1);
-			background-color: rgba($color-primary, 0.85);
-			padding: 3rem 2rem;
-			position: relative;
-			transform: none;
+			right: 20px;
 		}
 	}
+}
 
-	&_sidebar_content {
-		color: $color-white;
+.hero_slider_dots {
+	position: absolute;
+	bottom: 20px;
+	left: calc(34vw);
+	transform: translateX(-50%);
+	display: flex;
+	gap: 8px;
+	z-index: 10;
+
+	@media (max-width: 992px) {
+		left: 50%;
+		bottom: 15px;
 	}
+}
 
-	&_product_meta {
-		display: flex;
-		align-items: center;
-		gap: 10px;
-		margin-bottom: 1.5rem;
-	}
+.hero_slider_dot {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.5);
+	border: none;
+	cursor: pointer;
+	transition: all 0.3s ease;
 
-	&_product_icon {
-		color: rgba($color-secondary, 0.9);
-	}
-
-	&_product_type {
-		font-family: $font-main;
-		font-size: 0.95rem;
-		font-weight: 500;
-		text-transform: uppercase;
-		letter-spacing: 2px;
-		color: rgba($color-white, 0.8);
-	}
-
-	&_product_title {
-		font-family: $font-heading;
-		font-size: clamp(2rem, 5vw, 3.5rem);
-		font-weight: 700;
-		line-height: 1.1;
-		margin-bottom: 2rem;
-		text-transform: uppercase;
-		text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
-	}
-
-	&_product_desc {
-		font-family: $font-main;
-		font-size: 1.1rem;
-		line-height: 1.6;
-		margin-bottom: 3rem;
-		color: rgba($color-white, 0.9);
-		max-width: 420px;
-		text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
-	}
-
-	&_actions {
-		display: flex;
-		justify-content: flex-end;
-	}
-
-	&_arrow {
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
-		z-index: 10;
-		background: rgba(255, 255, 255, 0.1);
-		border: 2px solid transparent;
-		color: $color-white;
-		cursor: pointer;
-		padding: 0.5rem;
-		border-radius: 50%;
-		transition: all 0.3s ease;
-
-		&:hover {
-			background: rgba($color-secondary, 0.9);
-			border-color: rgba($color-secondary, 0.9);
-			transform: translateY(-50%) scale(1.1);
-		}
-
-		&_left {
-			left: 20px;
-		}
-		&_right {
-			right: calc(35vw + 20px);
-			@media (max-width: 992px) {
-				right: 20px;
-			}
-		}
-	}
-
-	&_dots {
-		position: absolute;
-		bottom: 30px;
-		left: calc(32.5vw);
-		transform: translateX(-50%);
-		display: flex;
-		gap: 10px;
-		z-index: 10;
-
-		@media (max-width: 992px) {
-			left: 50%;
-			bottom: 20px;
-		}
-	}
-
-	&_dot {
-		width: 12px;
-		height: 12px;
-		border-radius: 50%;
-		background: rgba(255, 255, 255, 0.5);
-		border: none;
-		cursor: pointer;
-		transition: all 0.3s ease;
-
-		&.active {
-			background: rgba($color-secondary, 0.9);
-			transform: scale(1.3);
-		}
+	&.active {
+		background: rgba($color-secondary, 0.9);
+		transform: scale(1.3);
 	}
 }

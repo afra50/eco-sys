@@ -1,0 +1,99 @@
+@use "../../variables" as *;
+
+.brands {
+  background-color: $color-white;
+  padding: 3rem 0;
+  border-bottom: 1px solid rgba($color-primary, 0.05);
+
+  &_container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    @media (min-width: 992px) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &_intro {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+  }
+
+  &_text {
+    font-family: $font-main;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: rgba($color-primary, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    white-space: nowrap;
+  }
+
+  &_line {
+    width: 40px;
+    height: 1px;
+    background-color: rgba($color-primary, 0.1);
+    display: none;
+    @media (min-width: 992px) {
+      display: block;
+    }
+  }
+
+  &_list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+
+    @media (min-width: 992px) {
+      gap: 4rem;
+    }
+  }
+
+  &_item {
+    // Styl dla tekstu (obecny)
+    span {
+      font-family: $font-heading;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: rgba($color-primary, 0.3);
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+
+    // Styl dla przyszłych logotypów
+    img {
+      max-height: 35px;
+      width: auto;
+      filter: grayscale(100%);
+      opacity: 0.5;
+      transition: all 0.4s ease;
+      cursor: pointer;
+
+      @media (max-width: 768px) {
+        max-height: 25px;
+      }
+    }
+
+    &:hover {
+      span {
+        color: $color-primary;
+        transform: translateY(-2px);
+      }
+      img {
+        filter: grayscale(0%);
+        opacity: 1;
+        transform: scale(1.05);
+      }
+    }
+  }
+}

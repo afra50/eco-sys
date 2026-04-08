@@ -1,21 +1,19 @@
 I. PODZIAŁ PRACY
     KRZYSIEK
-    
-        - Kontakt - Formularz kontaktowy + wysyłka
+        - podłączenie wysyłki w kontakt
         - Polityka prywatności
-        - Statyczne strony: Wentylacje, Wod-kan
+        - Wod-kan
+        - Na Home dodac do banera jeszcze inne rzeczy
+        - Na home dodac przykladowe marki w Brands
 
     EMILA
-        - protectedroute - jak bedzie loader to podmienic na inna wersje z
         - Zabezpieczenie i konfiguracja backendu
         - Hosting, .htaccess, wyl. cacheowanie
         - sitemap do poprawy, googlesearch
         - node env production + ciastka secure true
 
     JULA
-        - na telefonie i tabletach sidebar admina dziwne rzeczy robi + na galerii wychodzi pole na zdjecia kiedy sa dwa buttony
         - Chat + backend
-
 
 II. NOTATKI
     1. Zakładki dla przemysłu i dla klienta (chyba w tym mają się zawrzeć Wentylacje Klimatyzje, Pompy ciepła, Wod-Kan Ogrzewanie podłogowe, Farmy fotowoltaiczne), Galeria, Kontakt, o nas (tutaj byśmy dali informację o siedzibie i dane kontaktowe)

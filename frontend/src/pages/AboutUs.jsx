@@ -10,6 +10,11 @@ import img2 from "../images/about2.webp";
 import doc1 from "../images/about7.webp";
 import doc2 from "../images/about6.webp";
 import cert1 from "../images/about5.webp";
+import cert2 from "../images/about8.webp";
+import cert3 from "../images/about9.webp";
+import cert4 from "../images/about10.webp";
+import cert5 from "../images/about11.webp";
+import cert6 from "../images/about12.webp";
 
 const AboutUs = () => {
 	// Stan do obsługi powiększania zdjęć (Lightbox)
@@ -36,9 +41,9 @@ const AboutUs = () => {
 							Energia, która pracuje <em>dla Ciebie</em>
 						</h2>
 						<p className="about_us_text">
-							W ECO-SYS od 15 lat pomagamy naszym klientom obniżać rachunki za
-							prąd i ogrzewanie, inwestując w sprawdzone i ekologiczne
-							rozwiązania. Stawiamy na jakość, precyzję i Twoje bezpieczeństwo.
+							W ECO-SYS od lat pomagamy naszym klientom obniżać rachunki za prąd
+							i ogrzewanie, inwestując w sprawdzone i ekologiczne rozwiązania.
+							Stawiamy na jakość, precyzję i Twoje bezpieczeństwo.
 						</p>
 					</div>
 				</div>
@@ -96,7 +101,7 @@ const AboutUs = () => {
 				</div>
 			</section>
 
-			{/* SEKCJA 4: Wiedza i Kwalifikacje (Nowy układ) */}
+			{/* SEKCJA 4: Wiedza i Kwalifikacje */}
 			<section className="about_us_qualifications">
 				<div className="about_us_qualifications_container">
 					{/* Lewa kolumna: Prace naukowe */}
@@ -147,7 +152,46 @@ const AboutUs = () => {
 				</div>
 			</section>
 
-			{/* SEKCJA 5: Wezwanie do akcji */}
+			{/* SEKCJA 5: Certyfikaty autoryzacyjne (Dodane) */}
+			<section className="about_us_certificates">
+				<h2 className="about_us_certificates_title">Nasze autoryzacje</h2>
+				<p className="about_us_certificates_text">
+					Nasza firma posiada świadectwa autoryzowanego instalatora czołowych
+					producentów urządzeń na rynku. Regularnie podnosimy nasze kwalifikacje
+					i przechodzimy rygorystyczne szkolenia techniczne, aby gwarantować
+					montaż zgodny z najwyższymi standardami branżowymi, co bezpośrednio
+					przekłada się na bezpieczeństwo i bezawaryjność Twojej instalacji.
+				</p>
+				<div className="about_us_certificates_docs">
+					<img
+						src={cert2}
+						alt="Certyfikat Autoryzacyjny 1"
+						onClick={() => setLightboxImage(cert2)}
+					/>
+					<img
+						src={cert3}
+						alt="Certyfikat Autoryzacyjny 2"
+						onClick={() => setLightboxImage(cert3)}
+					/>
+					<img
+						src={cert4}
+						alt="Certyfikat Autoryzacyjny 3"
+						onClick={() => setLightboxImage(cert4)}
+					/>
+					<img
+						src={cert5}
+						alt="Certyfikat Autoryzacyjny 4"
+						onClick={() => setLightboxImage(cert5)}
+					/>
+					<img
+						src={cert6}
+						alt="Certyfikat Autoryzacyjny 5"
+						onClick={() => setLightboxImage(cert6)}
+					/>
+				</div>
+			</section>
+
+			{/* SEKCJA 6: Wezwanie do akcji */}
 			<section className="about_us_cta">
 				<h2 className="about_us_cta_title">
 					Zacznij oszczędzać na rachunkach już dziś

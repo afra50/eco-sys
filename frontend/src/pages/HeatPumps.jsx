@@ -1,5 +1,7 @@
+import React from "react";
 import { Check } from "lucide-react";
 import "../styles/pages/heatpumps.scss";
+import PageHero from "../components/ui/PageHero"; // Importujemy nowy komponent Hero
 
 // --- IMPORTY ZDJĘĆ Z FOLDERU SRC ---
 import heroImage from "../images/pompa-hero.webp";
@@ -33,29 +35,13 @@ const HeatPumps = () => {
 
 	return (
 		<div className="heatpumps">
-			{/* --- HERO --- */}
-			<section className="heatpumps_hero">
-				<div className="heatpumps_image_wrapper">
-					<img
-						src={heroImage}
-						alt="Nowoczesna pompa ciepła przy budynku"
-						className="heatpumps_hero_image"
-					/>
-					<div className="heatpumps_overlay"></div>
-				</div>
-
-				<div className="heatpumps_container heatpumps_hero_container">
-					<div className="heatpumps_hero_content">
-						<h1 className="heatpumps_title">Pompy Ciepła</h1>
-						<p className="heatpumps_subtitle">Energia z Natury</p>
-						<p className="heatpumps_desc">
-							Zmień sposób ogrzewania na bardziej wydajny i ekologiczny.
-							Oferujemy profesjonalny dobór, montaż oraz serwis pomp ciepła,
-							które zapewnią Ci komfort cieplny przez cały rok.
-						</p>
-					</div>
-				</div>
-			</section>
+			{/* --- HERO W KOMPONENCIE --- */}
+			<PageHero
+				title="Pompy Ciepła"
+				subtitle="Energia z Natury"
+				description="Zmień sposób ogrzewania na bardziej wydajny i ekologiczny. Oferujemy profesjonalny dobór, montaż oraz serwis pomp ciepła, które zapewnią Ci komfort cieplny przez cały rok."
+				images={[heroImage]}
+			/>
 
 			{/* --- INTRO --- */}
 			<section className="heatpumps_intro">
