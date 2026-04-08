@@ -1,4 +1,6 @@
 import React from "react";
+import Button from "../components/ui/Button";
+import "../styles/components/forms.scss";
 import "../styles/pages/contact.scss";
 
 const Contact = () => {
@@ -20,49 +22,51 @@ const Contact = () => {
 						<h2 className="contact_form_title">Napisz do nas</h2>
 						<form className="contact_form" onSubmit={(e) => e.preventDefault()}>
 							<div className="form_group_row">
-								<div className="form_group">
-									<label className="form_label">Imię i nazwisko *</label>
+								<div className="form-group">
+									<label className="form-group__label">Imię i nazwisko *</label>
 									<input
 										type="text"
-										className="form_input"
+										className="form-group__input"
 										placeholder="Jan Kowalski"
 										required
 									/>
 								</div>
-								<div className="form_group">
-									<label className="form_label">Telefon</label>
+								<div className="form-group">
+									<label className="form-group__label">Telefon</label>
 									<input
 										type="tel"
-										className="form_input"
+										className="form-group__input"
 										placeholder="+48 000 000 000"
 									/>
 								</div>
 							</div>
-							<div className="form_group">
-								<label className="form_label">E-mail *</label>
+							<div className="form-group">
+								<label className="form-group__label">E-mail *</label>
 								<input
 									type="email"
-									className="form_input"
+									className="form-group__input"
 									placeholder="email@example.com"
 									required
 								/>
 							</div>
-							<div className="form_group">
-								<label className="form_label">Wiadomość *</label>
+
+							{/* --- WRAPPER DLA ROZCIĄGANIA POLA WIADOMOŚCI --- */}
+							<div className="form-group contact_textarea_wrapper">
+								<label className="form-group__label">Wiadomość *</label>
 								<textarea
-									className="form_textarea"
+									className="form-group__textarea contact_textarea_stretch"
 									placeholder="Napisz, w czym możemy pomóc..."
 									required></textarea>
 							</div>
 
-							<label className="form_checkbox">
+							<label className="form-checkbox">
 								<input
 									type="checkbox"
-									className="form_checkbox_input"
+									className="form-checkbox__input"
 									required
 								/>
-								<span className="form_checkbox_mark"></span>
-								<span className="form_checkbox_text">
+								<span className="form-checkbox__mark"></span>
+								<span className="form-checkbox__text">
 									Zapoznałem/am się i akceptuję{" "}
 									<a
 										href="/polityka_prywatnosci.pdf"
@@ -74,9 +78,9 @@ const Contact = () => {
 								</span>
 							</label>
 
-							<button type="submit" className="btn_submit">
-								Wyślij wiadomość
-							</button>
+							<div className="contact_submit_wrapper">
+								<Button type="submit">Wyślij wiadomość</Button>
+							</div>
 						</form>
 					</div>
 

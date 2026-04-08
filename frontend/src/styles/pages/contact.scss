@@ -2,11 +2,6 @@
 @use "../variables" as *;
 
 /* =========================================
-   0. REFACTOR NOTE: 
-   Migracja do modułu sass:color (zamiana darken na color.adjust)
-   ========================================= */
-
-/* =========================================
    1. MAIN WRAPPER & BACKGROUND
    ========================================= */
 .contact_wrapper {
@@ -74,15 +69,32 @@
 	display: grid;
 	grid-template-columns: 1.2fr 0.8fr;
 	gap: 20px;
-	align-items: flex-start;
+	align-items: stretch;
 }
 
-.contact_form_box,
+.contact_form_box {
+	background-color: $color_white;
+	padding: 2rem;
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+	color: $color_primary;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.contact_info_column {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	height: 100%;
+}
+
 .contact_info_box {
 	background-color: $color_white;
 	padding: 2rem;
 	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 	color: $color_primary;
+	/* PIONOWY PAS USUNIĘTY Z TEGO MIEJSCA */
 }
 
 /* =========================================
@@ -98,106 +110,46 @@
 	padding-bottom: 5px;
 }
 
-.form_group {
+.contact_form {
 	display: flex;
 	flex-direction: column;
-	gap: 5px;
-	margin-bottom: 12px;
-
-	&_row {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 15px;
-	}
+	flex-grow: 1;
 }
 
-.form_label {
-	font-family: $font_heading;
-	font-size: 0.7rem;
-	font-weight: 700;
-	text-transform: uppercase;
+.form_group_row {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 15px;
 }
 
-.form_input,
-.form_textarea {
-	font-family: $font_main;
-	width: 100%;
-	padding: 10px;
-	border: 1px solid rgba($color-primary, 0.2);
-	background-color: #fcfcfc;
-	font-size: 0.85rem;
-	outline: none;
-	transition: 0.3s;
-
-	&:focus {
-		border-color: $color_secondary;
-		background-color: #fff;
-	}
-}
-
-.form_textarea {
-	min-height: 100px;
-	resize: vertical;
-}
-
-.form_checkbox {
+.contact_textarea_wrapper {
+	flex-grow: 1;
 	display: flex;
-	gap: 8px;
-	margin: 15px 0;
-	cursor: pointer;
-	align-items: flex-start;
-
-	&_input {
-		width: 16px;
-		height: 16px;
-		accent-color: $color_secondary;
-	}
-
-	&_text {
-		font-family: $font_main;
-		font-size: 0.75rem;
-		color: rgba($color_primary, 0.8);
-		line-height: 1.4;
-
-		a {
-			color: $color_primary;
-			font-weight: 700;
-			text-decoration: underline;
-		}
-	}
+	flex-direction: column;
 }
 
-.btn_submit {
-	background: $color_secondary;
-	color: $color_white;
-	border: none;
-	padding: 0.8rem 2rem;
-	font-family: $font_heading;
-	font-weight: 700;
-	font-size: 0.85rem;
-	text-transform: uppercase;
-	cursor: pointer;
-	transition: all 0.3s ease;
+.contact_textarea_stretch {
+	flex-grow: 1;
+	min-height: 120px;
+	resize: none;
+}
 
-	&:hover {
-		background: color.adjust($color_secondary, $lightness: -10%);
-		transform: translateY(-3px);
-	}
+.contact_submit_wrapper {
+	margin-top: auto;
+	padding-top: 15px;
 }
 
 /* =========================================
    5. COMPANY INFO & MAP
    ========================================= */
-.contact_info_box {
-	border-left: 4px solid $color_secondary;
-	margin-bottom: 1.5rem;
-}
-
 .contact_info_subtitle {
 	font-family: $font_heading;
 	font-size: 1.1rem;
 	font-weight: 700;
 	margin-bottom: 1rem;
+	border-bottom: 3px solid $color_secondary; /* Podkreślenie TYLKO pod tekstem */
+	display: inline-block;
+	padding-bottom: 5px;
 }
 
 .contact_info_text {
@@ -214,7 +166,6 @@
 	}
 }
 
-/* --- FACEBOOK LINK STYLES --- */
 .contact_social_link {
 	display: inline-flex;
 	align-items: center;
@@ -241,7 +192,8 @@
 
 .contact_info_map {
 	width: 100%;
-	height: 250px;
+	flex-grow: 1;
+	min-height: 250px;
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 
 	iframe {
@@ -305,9 +257,6 @@
 		padding: 3.5rem;
 	}
 
-	.form_label,
-	.form_input,
-	.form_textarea,
 	.contact_info_text {
 		font-size: 1.2rem;
 	}
@@ -322,6 +271,6 @@
 	}
 
 	.contact_info_map {
-		height: 450px;
+		min-height: 450px;
 	}
 }

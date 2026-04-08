@@ -118,7 +118,68 @@
 	}
 
 	// ==========================================
-	// 3. RODZAJE POMP (TYPES)
+	// 3. BANNER (NIEBIESKI PASEK)
+	// ==========================================
+	&_banner {
+		background-color: $color-primary;
+		padding: 4rem 0;
+		color: $color-white;
+
+		&_wrapper {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 2.5rem;
+			text-align: center;
+
+			@media (min-width: 576px) {
+				grid-template-columns: repeat(2, 1fr);
+			}
+
+			@media (min-width: 992px) {
+				grid-template-columns: repeat(4, 1fr);
+				text-align: left;
+				gap: 2rem;
+			}
+		}
+
+		&_item {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 1rem;
+
+			@media (min-width: 992px) {
+				flex-direction: row;
+				align-items: flex-start;
+			}
+		}
+
+		&_icon {
+			color: $color-secondary;
+			flex-shrink: 0;
+		}
+
+		&_text {
+			h4 {
+				font-family: $font-heading;
+				font-size: 1.1rem;
+				margin-bottom: 0.5rem;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+			}
+
+			p {
+				font-family: $font-main;
+				font-size: 0.9rem;
+				line-height: 1.5;
+				color: rgba($color-white, 0.8);
+			}
+		}
+	}
+
+	// ==========================================
+	// 4. RODZAJE POMP (TYPES)
 	// ==========================================
 	&_types {
 		padding: 5rem 0;
@@ -201,6 +262,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 1.2rem;
+		margin-bottom: 2rem;
 
 		@media (max-width: 360px) {
 			gap: 1rem;
@@ -213,11 +275,11 @@
 		height: auto;
 		margin: auto 0 0 0;
 		object-fit: cover;
-		border-radius: 6px;
+		border-radius: 0;
 	}
 
 	// ==========================================
-	// 4. ELEMENTY LISTY
+	// 5. ELEMENTY LISTY
 	// ==========================================
 	&_list_item {
 		display: flex;
@@ -251,7 +313,102 @@
 	}
 
 	// ==========================================
-	// 5. PARTNERZY
+	// 6. FAQ (AKORDEON)
+	// ==========================================
+	&_faq {
+		padding: 4rem 0;
+		background-color: $color-white;
+
+		@media (min-width: 2500px) {
+			padding: 6rem 0;
+		}
+
+		&_title {
+			font-family: $font-heading;
+			font-size: clamp(1.6rem, 5vw, 2.2rem);
+			color: $color-primary;
+			text-align: center;
+			margin-bottom: 3rem;
+			font-weight: 700;
+			text-transform: uppercase;
+		}
+
+		&_wrapper {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+			max-width: 800px;
+			margin: 0 auto;
+		}
+
+		&_item {
+			border: 1px solid rgba($color-primary, 0.1);
+			background-color: #fcfcfc;
+			overflow: hidden;
+			transition: all 0.3s ease;
+
+			&.active {
+				border-color: $color-secondary;
+				box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+			}
+		}
+
+		&_question {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 1.5rem;
+			background: none;
+			border: none;
+			font-family: $font-heading;
+			font-size: 1.1rem;
+			font-weight: 700;
+			color: $color-primary;
+			text-align: left;
+			cursor: pointer;
+			transition: color 0.3s ease;
+
+			&:hover {
+				color: $color-secondary;
+			}
+		}
+
+		&_icon {
+			color: $color-secondary;
+			transition: transform 0.3s ease;
+
+			&.rotated {
+				transform: rotate(180deg);
+			}
+		}
+
+		&_answer {
+			display: grid;
+			grid-template-rows: 0fr;
+			transition: grid-template-rows 0.3s ease;
+
+			.heatpumps_faq_item.active & {
+				grid-template-rows: 1fr;
+			}
+
+			&_inner {
+				overflow: hidden;
+				padding: 0 1.5rem;
+				font-family: $font-main;
+				font-size: 1rem;
+				line-height: 1.6;
+				color: rgba($color-primary, 0.8);
+
+				.heatpumps_faq_item.active & {
+					padding-bottom: 1.5rem;
+				}
+			}
+		}
+	}
+
+	// ==========================================
+	// 7. PARTNERZY
 	// ==========================================
 	&_partners {
 		padding: 4rem 0 6rem;
@@ -308,6 +465,18 @@
 		font-size: 0.85rem;
 		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
 
+		/* Zmiany dla linku i animacji */
+		text-decoration: none;
+		transition:
+			transform 0.3s ease,
+			box-shadow 0.3s ease;
+
+		&:hover {
+			transform: scale(1.08); // Delikatne powiększenie
+			box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); // Mocniejszy cień przy najeździe
+			color: rgba($color-primary, 0.6); // Przyciemnienie tekstu placeholdera
+		}
+
 		@media (max-width: 360px) {
 			width: 130px;
 			height: 70px;
@@ -323,5 +492,89 @@
 		max-width: 80%;
 		max-height: 70%;
 		object-fit: contain;
+	}
+
+	// ==========================================
+	// 8. CTA I "CZY WIEDZIAŁEŚ ŻE"
+	// ==========================================
+	&_cta {
+		padding: 5rem 0;
+		background-color: $color-white;
+
+		&_wrapper {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			max-width: 800px;
+			margin: 0 auto;
+		}
+
+		&_title {
+			font-family: $font-heading;
+			font-size: clamp(1.8rem, 5vw, 2.4rem);
+			color: $color-primary;
+			margin-bottom: 1.5rem;
+			font-weight: 700;
+		}
+
+		&_desc {
+			font-family: $font-main;
+			font-size: 1.05rem;
+			line-height: 1.6;
+			color: rgba($color-primary, 0.8);
+			margin-bottom: 2.5rem;
+		}
+	}
+
+	&_didyouknow {
+		margin-top: 4rem;
+		padding: 2.5rem;
+		background-color: #f8f9fa;
+		border: 1px solid rgba($color-primary, 0.1);
+		border-radius: 0;
+		text-align: center;
+		width: 100%;
+
+		&_header {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 0.8rem;
+			margin-bottom: 1rem;
+
+			h3 {
+				font-family: $font-heading;
+				font-size: 1.4rem;
+				color: $color-primary;
+				margin: 0;
+			}
+		}
+
+		&_icon {
+			color: $color-secondary;
+		}
+
+		p {
+			font-family: $font-main;
+			font-size: 1rem;
+			line-height: 1.6;
+			color: rgba($color-primary, 0.8);
+			margin-bottom: 1.5rem;
+		}
+
+		&_link {
+			display: inline-block;
+			color: $color-secondary;
+			font-weight: 700;
+			font-family: $font-main;
+			text-decoration: none;
+			border-bottom: 2px solid transparent;
+			transition: border-color 0.3s ease;
+
+			&:hover {
+				border-bottom-color: $color-secondary;
+			}
+		}
 	}
 }
