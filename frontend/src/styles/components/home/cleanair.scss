@@ -1,0 +1,332 @@
+@use "../../variables" as *;
+
+.cleanair {
+	padding: 5rem 0;
+	background-color: $color-bg-light;
+	overflow: hidden;
+
+	@media (max-width: 360px) {
+		padding: 3rem 0;
+	}
+
+	@media (min-width: 2500px) {
+		padding: 8rem 0;
+	}
+
+	&_container {
+		max-width: 1100px;
+		margin: 0 auto;
+		padding: 0 20px;
+		width: 100%;
+
+		@media (max-width: 360px) {
+			padding: 0 15px;
+		}
+
+		@media (min-width: 2500px) {
+			max-width: 1400px;
+		}
+	}
+
+	&_wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+
+		@media (min-width: 992px) {
+			flex-direction: row;
+			align-items: center;
+			gap: 4rem;
+		}
+	}
+
+	// ==========================================
+	// LEWA KOLUMNA: ZDJĘCIE
+	// ==========================================
+	&_image_col {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&_image_wrapper {
+		position: relative;
+		width: 100%;
+		max-width: 500px;
+		aspect-ratio: 4 / 5;
+		background-color: $color-white;
+		border-radius: 0;
+		box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+		z-index: 2;
+	}
+
+	&_image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		position: relative;
+		z-index: 2;
+	}
+
+	&_image_glow {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 110%;
+		height: 110%;
+		background: radial-gradient(
+			circle,
+			rgba(76, 175, 80, 0.15) 0%,
+			rgba(255, 255, 255, 0) 70%
+		);
+		z-index: 1;
+		pointer-events: none;
+	}
+
+	&_image_caption {
+		font-family: $font-heading;
+		font-size: 1.1rem;
+		color: $color-primary;
+		font-weight: 700;
+		margin-top: 1.5rem;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		text-align: center;
+	}
+
+	// ==========================================
+	// PRAWA KOLUMNA: TREŚĆ
+	// ==========================================
+	&_content_col {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
+
+	&_title {
+		font-family: $font-heading;
+		font-size: clamp(1.8rem, 5vw, 2.6rem);
+		color: $color-primary;
+		font-weight: 700;
+		margin-bottom: 1.5rem;
+		text-transform: uppercase;
+		line-height: 1.2;
+
+		.highlight {
+			color: $color-secondary;
+			display: block;
+		}
+	}
+
+	&_desc {
+		font-family: $font-main;
+		font-size: 1.05rem;
+		line-height: 1.7;
+		color: rgba($color-primary, 0.8);
+		margin-bottom: 2rem;
+
+		strong {
+			color: $color-primary;
+			font-weight: 700;
+		}
+	}
+
+	&_list {
+		list-style: none;
+		padding: 0;
+		margin: 0 0 2.5rem 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	&_list_item {
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+		font-family: $font-main;
+		font-size: 1rem;
+		color: $color-primary;
+		line-height: 1.5;
+	}
+
+	&_list_icon {
+		color: $color-secondary;
+		flex-shrink: 0;
+		margin-top: 2px;
+	}
+
+	// ==========================================
+	// KARTY LINKUJĄCE
+	// ==========================================
+	&_cards {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	&_card {
+		display: flex;
+		align-items: center;
+		background-color: $color-white;
+		padding: 1.2rem;
+		text-decoration: none;
+		color: $color-primary;
+		border-left: 4px solid transparent;
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+		transition: all 0.3s ease;
+
+		&:hover {
+			transform: translateX(5px);
+			border-left-color: $color-secondary;
+			box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+			.cleanair_card_icon {
+				color: $color-secondary;
+				transform: scale(1.1);
+			}
+
+			.cleanair_card_arrow {
+				color: $color-secondary;
+				transform: translateX(3px);
+			}
+		}
+	}
+
+	&_card_icon_wrapper {
+		width: 50px;
+		height: 50px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: $color-bg-light;
+		margin-right: 1.2rem;
+		flex-shrink: 0;
+	}
+
+	&_card_icon {
+		color: rgba($color-primary, 0.5);
+		transition: all 0.3s ease;
+	}
+
+	&_card_text {
+		flex-grow: 1;
+
+		h4 {
+			font-family: $font-heading;
+			font-size: 1rem;
+			font-weight: 700;
+			margin-bottom: 0.2rem;
+			text-transform: uppercase;
+		}
+
+		p {
+			font-family: $font-main;
+			font-size: 0.85rem;
+			color: rgba($color-primary, 0.6);
+		}
+	}
+
+	&_card_arrow {
+		color: rgba($color-primary, 0.3);
+		transition: all 0.3s ease;
+	}
+
+	// ==========================================
+	// FAQ (AKORDEON) - NA CAŁĄ SZEROKOŚĆ POD SPODEM
+	// ==========================================
+	&_faq {
+		margin-top: 5rem; // Odsunięcie od górnej sekcji
+
+		@media (min-width: 2500px) {
+			margin-top: 7rem;
+		}
+
+		&_title {
+			font-family: $font-heading;
+			font-size: clamp(1.6rem, 5vw, 2.2rem);
+			color: $color-primary;
+			text-align: center;
+			margin-bottom: 3rem;
+			font-weight: 700;
+			text-transform: uppercase;
+		}
+
+		&_wrapper {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+			max-width: 900px; // Ograniczenie szerokości żeby tekst nie był za długi w wierszu
+			margin: 0 auto;
+		}
+
+		&_item {
+			border: 1px solid rgba($color-primary, 0.1);
+			background-color: $color-white;
+			overflow: hidden;
+			transition: all 0.3s ease;
+
+			&.active {
+				border-color: $color-secondary;
+				box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+			}
+		}
+
+		&_question {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 1.5rem;
+			background: none;
+			border: none;
+			font-family: $font-heading;
+			font-size: 1.1rem;
+			font-weight: 700;
+			color: $color-primary;
+			text-align: left;
+			cursor: pointer;
+			transition: color 0.3s ease;
+
+			&:hover {
+				color: $color-secondary;
+			}
+		}
+
+		&_icon {
+			color: $color-secondary;
+			transition: transform 0.3s ease;
+			flex-shrink: 0;
+			margin-left: 15px;
+
+			&.rotated {
+				transform: rotate(180deg);
+			}
+		}
+
+		&_answer {
+			display: grid;
+			grid-template-rows: 0fr;
+			transition: grid-template-rows 0.3s ease;
+
+			.cleanair_faq_item.active & {
+				grid-template-rows: 1fr;
+			}
+
+			&_inner {
+				overflow: hidden;
+				padding: 0 1.5rem;
+				font-family: $font-main;
+				font-size: 1rem;
+				line-height: 1.6;
+				color: rgba($color-primary, 0.8);
+
+				.cleanair_faq_item.active & {
+					padding-bottom: 1.5rem;
+				}
+			}
+		}
+	}
+}

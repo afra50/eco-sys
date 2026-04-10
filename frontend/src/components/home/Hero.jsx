@@ -7,8 +7,10 @@ import "../../styles/components/home/hero.scss";
 import heroPompa from "../../images/hero-pompa.jpg";
 import heroFoto from "../../images/hero-foto.webp";
 import heroKlima from "../../images/hero-klima.jpg";
-// NOWY IMPORT:
 import heroHeat from "../../images/hero-heat.webp";
+import heroWodkan from "../../images/hero-wodkan.webp";
+// NOWY IMPORT:
+import heroWent from "../../images/hero-went.webp";
 
 const Hero = () => {
 	const [currentSlide, setCurrentSlide] = useState(0);
@@ -42,13 +44,31 @@ const Hero = () => {
 			img: heroKlima,
 		},
 		{
-			id: 4, // NOWY SLAJD
+			id: 4,
 			productType: "Ogrzewanie Podłogowe",
 			productTitle: "Komfort ciepłej podłogi",
 			productDesc:
 				"Równomierny rozkład temperatury, brak grzejników i wyższa efektywność współpracy z pompą ciepła.",
 			productLink: "/ogrzewanie-podlogowe",
 			img: heroHeat,
+		},
+		{
+			id: 5,
+			productType: "Instalacje Wod-Kan",
+			productTitle: "Niezawodne instalacje",
+			productDesc:
+				"Kompleksowe wykonawstwo instalacji wodno-kanalizacyjnych z gwarancją bezpieczeństwa i trwałości.",
+			productLink: "/wod-kan",
+			img: heroWodkan,
+		},
+		{
+			id: 6, // NOWY SLAJD WENTYLACJA
+			productType: "Wentylacja i Rekuperacja",
+			productTitle: "Świeże i zdrowe powietrze",
+			productDesc:
+				"Systemy wentylacji z odzyskiem ciepła. Oddychaj czystym powietrzem i obniż koszty ogrzewania budynku.",
+			productLink: "/wentylacje",
+			img: heroWent,
 		},
 	];
 
