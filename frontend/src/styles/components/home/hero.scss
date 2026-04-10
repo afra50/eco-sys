@@ -6,11 +6,16 @@
 .hero_slider {
 	position: relative;
 	width: 100%;
-	height: 55vh;
-	min-height: 350px;
-	max-height: 700px; // ZMIANA Z 500px: Daje zdjęciu oddech w pionie i ucina chamski zoom
+	height: 60vh;
+	min-height: 450px; // Trochę większy min-height żeby tekst na mobile się zmieścił
+	max-height: 700px;
 	overflow: hidden;
 	background-color: $color-bg-light;
+
+	@media (max-width: 768px) {
+		height: 75vh; // Wyższy na mobile żeby zdjęcie mogło oddychać nad panelem
+		min-height: 550px;
+	}
 }
 
 /* =========================================
@@ -39,7 +44,7 @@
 	background-color: $color-primary;
 
 	img {
-		width: 100%; // ZDJĘCIE ZNÓW NA 100%, ŻEBY PANEL Z PRAWEJ MIAŁ NA CZYM PRZEŚWITYWAĆ
+		width: 100%;
 		height: 100%;
 		object-fit: cover;
 		object-position: center;
@@ -68,10 +73,7 @@
 	bottom: 0;
 	width: 32vw;
 	min-width: 340px;
-	background-color: rgba(
-		$color-primary,
-		0.6
-	); // TWÓJ ORYGINALNY KOLOR I PRZEZROCZYSTOŚĆ
+	background-color: rgba($color-primary, 0.6);
 	padding: 3rem 2.5rem;
 	z-index: 5;
 	display: flex;
@@ -80,17 +82,26 @@
 
 	@media (max-width: 992px) {
 		width: 100%;
+		top: auto;
+		bottom: 0; // Kotwica twardo na dole
+		left: 0;
 		border-left: none;
-		border-top: 2px solid rgba($color-white, 0.1);
-		background-color: rgba($color-primary, 0.85);
-		padding: 2.5rem 1.5rem;
-		position: relative;
-		transform: none;
+		border-top: 1px solid rgba($color-white, 0.1);
+
+		// Gradient na mobile - czarny na dole, wygasający w górę
+		background: linear-gradient(
+			to top,
+			rgba($color-primary, 1) 0%,
+			rgba($color-primary, 0.85) 60%,
+			rgba($color-primary, 0) 100%
+		);
+		padding: 5rem 1.5rem 3.5rem; // Zapas od góry na ładne przejście gradientu, od dołu na kropki
 	}
 }
 
 .hero_slider_sidebar_content {
 	color: $color-white;
+	width: 100%;
 }
 
 /* =========================================
@@ -124,6 +135,11 @@
 	margin-bottom: 1.5rem;
 	text-transform: uppercase;
 	text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+
+	@media (max-width: 768px) {
+		font-size: 2.2rem;
+		margin-bottom: 1rem;
+	}
 }
 
 .hero_slider_product_desc {
@@ -134,6 +150,11 @@
 	color: rgba($color-white, 0.9);
 	max-width: 380px;
 	text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+
+	@media (max-width: 768px) {
+		margin-bottom: 1.5rem;
+		font-size: 0.9rem;
+	}
 }
 
 /* =========================================
@@ -141,7 +162,11 @@
    ========================================= */
 .hero_slider_actions {
 	display: flex;
-	justify-content: flex-end;
+	justify-content: flex-start; // Wyrównanie buttona na telefonie
+
+	@media (min-width: 993px) {
+		justify-content: flex-end;
+	}
 }
 
 .hero_slider_arrow {
@@ -166,11 +191,14 @@
 	&_left {
 		left: 20px;
 	}
+
 	&_right {
 		right: calc(32vw + 20px);
-		@media (max-width: 992px) {
-			right: 20px;
-		}
+	}
+
+	// UKRYWANIE STRZAŁEK NA MOBILE
+	@media (max-width: 992px) {
+		display: none;
 	}
 }
 

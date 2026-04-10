@@ -9,11 +9,14 @@ import heroFoto from "../../images/hero-foto.webp";
 import heroKlima from "../../images/hero-klima.jpg";
 import heroHeat from "../../images/hero-heat.webp";
 import heroWodkan from "../../images/hero-wodkan.webp";
-// NOWY IMPORT:
 import heroWent from "../../images/hero-went.webp";
 
 const Hero = () => {
 	const [currentSlide, setCurrentSlide] = useState(0);
+
+	// Stany do obsługi przesunięcia palcem (Swipe) na telefonach
+	const [touchStart, setTouchStart] = useState(0);
+	const [touchEnd, setTouchEnd] = useState(0);
 
 	const slides = [
 		{
@@ -62,7 +65,7 @@ const Hero = () => {
 			img: heroWodkan,
 		},
 		{
-			id: 6, // NOWY SLAJD WENTYLACJA
+			id: 6,
 			productType: "Wentylacja i Rekuperacja",
 			productTitle: "Świeże i zdrowe powietrze",
 			productDesc:
@@ -84,8 +87,35 @@ const Hero = () => {
 	const prevSlide = () =>
 		setCurrentSlide(currentSlide === 0 ? slides.length - 1 : currentSlide - 1);
 
+	// --- FUNKCJE SWIPE ---
+	const handleTouchStart = (e) => {
+		setTouchStart(e.targetTouches[0].clientX);
+	};
+
+	const handleTouchMove = (e) => {
+		setTouchEnd(e.targetTouches[0].clientX);
+	};
+
+	const handleTouchEnd = () => {
+		if (!touchStart || !touchEnd) return;
+		const distance = touchStart - touchEnd;
+		const isLeftSwipe = distance > 50;
+		const isRightSwipe = distance < -50;
+
+		if (isLeftSwipe) nextSlide();
+		if (isRightSwipe) prevSlide();
+
+		// Reset po swipe
+		setTouchStart(0);
+		setTouchEnd(0);
+	};
+
 	return (
-		<section className="hero_slider hero_slider_wrobel">
+		<section
+			className="hero_slider hero_slider_wrobel"
+			onTouchStart={handleTouchStart}
+			onTouchMove={handleTouchMove}
+			onTouchEnd={handleTouchEnd}>
 			{slides.map((slide, index) => (
 				<div
 					key={slide.id}
