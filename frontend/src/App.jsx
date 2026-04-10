@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import routes from "./routes";
+import ChatWidget from "./components/ui/ChatWidget";
 
 import "./styles/components/ui/toast.scss";
 
@@ -39,12 +40,10 @@ export default function App() {
             className: "eco-toast eco-toast--error",
             // Jeśli chcesz, żeby błąd też miał spójną ikonkę,
             // wpisz tu HEX swojego czerwonego $color-secondary (np. '#E53935')
-            /*
             iconTheme: {
-              primary: '#TWÓJ_CZERWONY_HEX',
-              secondary: '#fff',
+              primary: "#ff4d4d",
+              secondary: "#fff",
             },
-            */
           },
         }}
       />
@@ -55,6 +54,8 @@ export default function App() {
         <AppRoutes />
 
         <Footer />
+
+        <ChatWidget />
       </div>
     </Router>
   );

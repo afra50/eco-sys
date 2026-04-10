@@ -13,7 +13,7 @@ I. PODZIAŁ PRACY
         - node env production + ciastka secure true
 
     JULA
-        - Chat + backend
+        - Chat backend
 
 II. NOTATKI
     1. Zakładki dla przemysłu i dla klienta (chyba w tym mają się zawrzeć Wentylacje Klimatyzje, Pompy ciepła, Wod-Kan Ogrzewanie podłogowe, Farmy fotowoltaiczne), Galeria, Kontakt, o nas (tutaj byśmy dali informację o siedzibie i dane kontaktowe)

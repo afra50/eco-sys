@@ -113,7 +113,7 @@ const Header = () => {
                   <NavLink to="/klimatyzacja">Klimatyzacja przemysłowa</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/wentylacja">Wentylacja przemysłowa</NavLink>
+                  <NavLink to="/wentylacje">Wentylacja przemysłowa</NavLink>
                 </li>
                 <li>
                   <NavLink to="/wod-kan">Wod-Kan</NavLink>
