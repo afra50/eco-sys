@@ -77,7 +77,6 @@
 		width: 100%;
 
 		@media (min-width: 992px) {
-			// Równe 45% minus połowa odstępu (gap), żeby nie wypychało z kontenera
 			flex: 0 0 calc(45% - 2rem);
 		}
 	}
@@ -85,15 +84,15 @@
 	&_image_box,
 	&_video {
 		width: 100%;
-		aspect-ratio: 4 / 3;
+		height: 350px; // Zamiast aspect-ratio, żeby było wyższe
 		background-color: $color-bg-light;
 		border-radius: 0; // SZTYWNE 0
 		overflow: hidden;
 		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 
 		@media (min-width: 992px) {
-			// Równe 55% minus połowa odstępu
 			flex: 0 0 calc(55% - 2rem);
+			height: 500px; // Znacznie wyższe slidery na desktopach
 		}
 	}
 
@@ -102,19 +101,6 @@
 		height: 100%;
 		border: none;
 		object-fit: cover;
-	}
-
-	.placeholder_bg {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background-color: #e0e0e0;
-		color: rgba($color-primary, 0.5);
-		font-family: $font-main;
-		font-weight: 500;
-		font-size: 1rem;
-		text-align: center;
-		padding: 2rem;
 	}
 
 	// ==========================================
@@ -225,9 +211,11 @@
 		opacity: 0;
 		z-index: 1;
 		transition: opacity 1s ease-in-out;
+		cursor: pointer; // Pokazuje, że można kliknąć
 
 		&.active {
 			opacity: 1;
+			z-index: 2;
 		}
 	}
 
@@ -445,6 +433,98 @@
 
 			&:hover {
 				border-bottom-color: $color-secondary;
+			}
+		}
+	}
+
+	// ==========================================
+	// 10. LIGHTBOX (PODGLĄD ZDJĘĆ)
+	// ==========================================
+	&_lightbox {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background-color: rgba(0, 0, 0, 0.85);
+		z-index: 9999;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 20px;
+		backdrop-filter: blur(5px);
+		cursor: pointer;
+
+		&_img {
+			max-width: 90%;
+			max-height: 90vh;
+			object-fit: contain;
+			box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+			cursor: default;
+			z-index: 10001;
+			position: relative;
+		}
+
+		&_close {
+			position: absolute;
+			top: 20px;
+			right: 20px;
+			background: none;
+			border: none;
+			color: $color-white;
+			cursor: pointer;
+			z-index: 10002;
+			padding: 10px;
+			transition:
+				color 0.3s ease,
+				transform 0.3s ease;
+
+			&:hover {
+				color: $color-secondary;
+				transform: scale(1.1);
+			}
+
+			@media (min-width: 768px) {
+				top: 40px;
+				right: 40px;
+			}
+		}
+
+		&_nav {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			background: rgba($color-primary, 0.6);
+			border: none;
+			color: $color-white;
+			cursor: pointer;
+			z-index: 10002;
+			padding: 1rem 0.5rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition:
+				background-color 0.3s ease,
+				transform 0.3s ease;
+
+			&:hover {
+				background-color: $color-secondary;
+			}
+
+			&.left {
+				left: 10px;
+				@media (min-width: 768px) {
+					left: 40px;
+					padding: 1rem;
+				}
+			}
+
+			&.right {
+				right: 10px;
+				@media (min-width: 768px) {
+					right: 40px;
+					padding: 1rem;
+				}
 			}
 		}
 	}

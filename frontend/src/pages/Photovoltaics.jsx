@@ -9,13 +9,16 @@ import {
 	Home,
 	Activity,
 	Lightbulb,
+	X,
+	ChevronLeft,
+	ChevronRight,
 } from "lucide-react";
 import "../styles/pages/photovoltaics.scss";
 import PageHero from "../components/ui/PageHero";
 import Button from "../components/ui/Button";
 
 // --- IMPORTY ZDJĘĆ BAZOWYCH ---
-import heroImage from "../images/fotowoltaika.webp";
+import heroImage from "../images/fotoprzem7.webp";
 import fotowDach from "../images/fotow-dach.webp";
 import magazynImg from "../images/magazyn.webp";
 
@@ -23,17 +26,31 @@ import magazynImg from "../images/magazyn.webp";
 import fotoDom1 from "../images/fotodom1.webp";
 import fotoDom2 from "../images/fotodom2.webp";
 import fotoDom3 from "../images/fotodom3.webp";
-import fotoDom4 from "../images/falownik.webp";
+import fotoDom4 from "../images/fotodom4.webp";
+import fotoDom5 from "../images/fotodom5.webp";
+import fotoDom6 from "../images/fotodom6.webp";
 
 // --- IMPORTY DO SLIDERA: PRZEMYSŁ ---
 import fotoFarma1 from "../images/fotoprzem1.webp";
 import fotoFarma2 from "../images/fotoprzem2.webp";
 import fotoFarma3 from "../images/fotoprzem3.webp";
+import fotoFarma4 from "../images/fotoprzem4.webp";
+import fotoFarma5 from "../images/fotoprzem5.webp";
+import fotoFarma6 from "../images/fotoprzem6.webp";
+import fotoFarma7 from "../images/fotoprzem7.webp";
+import fotoFarma8 from "../images/fotoprzem8.webp";
 
 const Photovoltaics = () => {
 	// --- LOGIKA SLIDERA: DOM ---
 	const [currentHomeSlide, setCurrentHomeSlide] = useState(0);
-	const homeSlides = [fotoDom1, fotoDom2, fotoDom3, fotoDom4];
+	const homeSlides = [
+		fotoDom1,
+		fotoDom2,
+		fotoDom3,
+		fotoDom4,
+		fotoDom5,
+		fotoDom6,
+	];
 
 	useEffect(() => {
 		const homeTimer = setInterval(() => {
@@ -46,7 +63,16 @@ const Photovoltaics = () => {
 
 	// --- LOGIKA SLIDERA: PRZEMYSŁ ---
 	const [currentFarmSlide, setCurrentFarmSlide] = useState(0);
-	const farmSlides = [fotoFarma1, fotoFarma2, fotoFarma3];
+	const farmSlides = [
+		fotoFarma1,
+		fotoFarma2,
+		fotoFarma3,
+		fotoFarma4,
+		fotoFarma5,
+		fotoFarma6,
+		fotoFarma7,
+		fotoFarma8,
+	];
 
 	useEffect(() => {
 		const farmTimer = setInterval(() => {
@@ -56,6 +82,54 @@ const Photovoltaics = () => {
 		}, 4000);
 		return () => clearInterval(farmTimer);
 	}, [farmSlides.length]);
+
+	// --- LOGIKA LIGHTBOXA ---
+	const [lightboxData, setLightboxData] = useState({
+		isOpen: false,
+		images: [],
+		currentIndex: 0,
+	});
+
+	useEffect(() => {
+		if (lightboxData.isOpen) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "unset";
+		}
+		return () => {
+			document.body.style.overflow = "unset";
+		};
+	}, [lightboxData.isOpen]);
+
+	const openLightbox = (imagesArray, index) => {
+		setLightboxData({ isOpen: true, images: imagesArray, currentIndex: index });
+	};
+
+	const closeLightbox = () => {
+		setLightboxData({ isOpen: false, images: [], currentIndex: 0 });
+	};
+
+	const nextLightboxImg = (e) => {
+		e.stopPropagation();
+		setLightboxData((prev) => ({
+			...prev,
+			currentIndex:
+				prev.currentIndex === prev.images.length - 1
+					? 0
+					: prev.currentIndex + 1,
+		}));
+	};
+
+	const prevLightboxImg = (e) => {
+		e.stopPropagation();
+		setLightboxData((prev) => ({
+			...prev,
+			currentIndex:
+				prev.currentIndex === 0
+					? prev.images.length - 1
+					: prev.currentIndex - 1,
+		}));
+	};
 
 	const homeAdvantages = [
 		"Zmniejszenie lub eliminacja rachunków za prąd",
@@ -171,6 +245,7 @@ const Photovoltaics = () => {
 								<img
 									key={index}
 									src={img}
+									onClick={() => openLightbox(homeSlides, index)}
 									alt={`Fotowoltaika domowa realizacja ${index + 1}`}
 									className={`photovoltaics_mini_slide ${index === currentHomeSlide ? "active" : ""}`}
 								/>
@@ -208,6 +283,7 @@ const Photovoltaics = () => {
 								<img
 									key={index}
 									src={img}
+									onClick={() => openLightbox(farmSlides, index)}
 									alt={`Fotowoltaika dla przemysłu realizacja ${index + 1}`}
 									className={`photovoltaics_mini_slide ${index === currentFarmSlide ? "active" : ""}`}
 								/>
@@ -327,6 +403,36 @@ const Photovoltaics = () => {
 					</div>
 				</div>
 			</section>
+
+			{/* --- LIGHTBOX MODAL Z NAWIGACJĄ --- */}
+			{lightboxData.isOpen && (
+				<div className="photovoltaics_lightbox" onClick={closeLightbox}>
+					<button
+						className="photovoltaics_lightbox_close"
+						onClick={closeLightbox}>
+						<X size={32} />
+					</button>
+
+					<button
+						className="photovoltaics_lightbox_nav left"
+						onClick={prevLightboxImg}>
+						<ChevronLeft size={36} />
+					</button>
+
+					<img
+						src={lightboxData.images[lightboxData.currentIndex]}
+						alt="Powiększenie"
+						className="photovoltaics_lightbox_img"
+						onClick={(e) => e.stopPropagation()}
+					/>
+
+					<button
+						className="photovoltaics_lightbox_nav right"
+						onClick={nextLightboxImg}>
+						<ChevronRight size={36} />
+					</button>
+				</div>
+			)}
 		</div>
 	);
 };

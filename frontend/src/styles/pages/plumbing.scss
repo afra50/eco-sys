@@ -44,7 +44,7 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		border-radius: 0; // SZTYWNE 0
+		border-radius: 0;
 		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 		min-height: 350px;
 
@@ -54,7 +54,7 @@
 	}
 
 	// ==========================================
-	// 2. UKŁADY SPLIT (ZDJĘCIE + TEKST)
+	// 2. UKŁADY SPLIT
 	// ==========================================
 	&_split {
 		display: flex;
@@ -72,12 +72,18 @@
 		}
 	}
 
+	&_split_reverse {
+		@media (min-width: 992px) {
+			flex-direction: row-reverse;
+		}
+	}
+
 	&_text_box {
 		flex: 1;
 		width: 100%;
 
 		@media (min-width: 992px) {
-			flex: 0 0 45%; // Zmienione z 40% na 45%, żeby tekst miał ciut więcej miejsca
+			flex: 0 0 45%;
 		}
 	}
 
@@ -181,7 +187,7 @@
 		background-color: $color-white;
 		padding: 2.5rem 1.5rem;
 		border-top: 5px solid $color-secondary;
-		border-radius: 0; // SZTYWNE 0
+		border-radius: 0;
 		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
 		transition: transform 0.3s ease;
 
@@ -211,125 +217,200 @@
 	}
 
 	// ==========================================
-	// 5. WIEDZA EKSPERCKA I CTA
+	// 5. MINI SLIDER
 	// ==========================================
-	&_expertise {
+	&_mini_slider {
+		position: relative;
+		width: 100%;
+		aspect-ratio: 4 / 3;
 		background-color: $color-bg-light;
-		padding: 3rem;
-		border-left: 6px solid $color-primary;
+		overflow: hidden;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 
-		@media (max-width: 768px) {
-			padding: 2rem 1.5rem;
+		@media (min-width: 992px) {
+			aspect-ratio: 1 / 1;
 		}
 
-		&_content {
-			display: flex;
-			flex-direction: column;
-			gap: 2rem;
+		&_track {
+			width: 100%;
+			height: 100%;
+			position: relative;
 		}
 
-		&_text {
-			h3 {
-				font-family: $font-heading;
-				font-size: 1.3rem;
-				color: $color-primary;
-				margin-bottom: 1rem;
-				font-weight: 700;
-			}
+		&_img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			opacity: 0;
+			transition: opacity 0.8s ease-in-out;
+			z-index: 1;
+			cursor: pointer;
 
-			p {
-				font-family: $font-main;
-				font-size: 1rem;
-				line-height: 1.6;
-				color: rgba($color-primary, 0.8);
-				margin-bottom: 1.2rem;
-
-				strong {
-					color: $color-primary;
-					font-weight: 700;
-				}
-			}
-		}
-
-		&_cta {
-			margin-top: 2rem;
-			padding-top: 2rem;
-			border-top: 1px solid rgba($color-primary, 0.1);
-			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
-			gap: 1rem;
-
-			p {
-				font-weight: 500;
-				margin-bottom: 0;
-			}
-
-			@media (min-width: 768px) {
-				flex-direction: row;
-				align-items: center;
-				justify-content: space-between;
-
-				p {
-					margin-bottom: 0;
-				}
+			&.active {
+				opacity: 1;
+				z-index: 2;
 			}
 		}
 	}
 
 	// ==========================================
-	// 6. WĄSKI PASEK (BANNER Z IKONAMI)
+	// 6. LEWITUJĄCY BLOK
 	// ==========================================
-	&_banner {
-		background-color: $color-primary;
-		padding: 4rem 0;
-		color: $color-white;
+	&_floating_wrapper {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		padding: 0 20px;
+		margin-bottom: 5rem;
+		position: relative;
+		z-index: 10;
+	}
 
-		&_wrapper {
-			display: grid;
-			grid-template-columns: 1fr;
-			gap: 2.5rem;
-			text-align: center;
+	&_floating_box {
+		background-color: $color-white;
+		padding: 3rem 4rem;
+		max-width: 800px;
+		width: 100%;
+		text-align: center;
+		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+		border-bottom: 4px solid $color-secondary;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		@media (max-width: 768px) {
+			padding: 2rem 1.5rem;
+		}
+
+		@media (min-width: 2500px) {
+			max-width: 1200px;
+			padding: 5rem 6rem;
+		}
+	}
+
+	&_floating_icon {
+		color: $color-secondary;
+		margin-bottom: 1.5rem;
+
+		@media (min-width: 2500px) {
+			transform: scale(1.5);
+			margin-bottom: 2.5rem;
+		}
+	}
+
+	&_floating_title {
+		font-family: $font-heading;
+		font-size: clamp(1.6rem, 4vw, 2.2rem);
+		color: $color-primary;
+		margin-bottom: 1rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		line-height: 1.2;
+	}
+
+	&_floating_desc {
+		font-family: $font-main;
+		font-size: 1.05rem;
+		color: rgba($color-primary, 0.8);
+		line-height: 1.6;
+		margin: 0;
+
+		@media (min-width: 2500px) {
+			font-size: 1.3rem;
+		}
+	}
+
+	// ==========================================
+	// 7. LIGHTBOX
+	// ==========================================
+	&_lightbox {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background-color: rgba(0, 0, 0, 0.85);
+		z-index: 9999;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 20px;
+		backdrop-filter: blur(5px);
+		cursor: pointer;
+
+		&_img {
+			max-width: 90%;
+			max-height: 90vh;
+			object-fit: contain;
+			box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+			cursor: default;
+			z-index: 10001;
+			position: relative;
+		}
+
+		&_close {
+			position: absolute;
+			top: 20px;
+			right: 20px;
+			background: none;
+			border: none;
+			color: $color-white;
+			cursor: pointer;
+			z-index: 10002;
+			padding: 10px;
+			transition:
+				color 0.3s ease,
+				transform 0.3s ease;
+
+			&:hover {
+				color: $color-secondary;
+				transform: scale(1.1);
+			}
 
 			@media (min-width: 768px) {
-				grid-template-columns: repeat(3, 1fr);
-				text-align: left;
-				gap: 2rem;
+				top: 40px;
+				right: 40px;
 			}
 		}
 
-		&_item {
+		&_nav {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			background: rgba($color-primary, 0.6);
+			border: none;
+			color: $color-white;
+			cursor: pointer;
+			z-index: 10002;
+			padding: 1rem 0.5rem;
 			display: flex;
-			flex-direction: column;
 			align-items: center;
-			gap: 1rem;
+			justify-content: center;
+			transition:
+				background-color 0.3s ease,
+				transform 0.3s ease;
 
-			@media (min-width: 768px) {
-				flex-direction: row;
-				align-items: flex-start;
-			}
-		}
-
-		&_icon {
-			color: $color-secondary;
-			flex-shrink: 0;
-		}
-
-		&_text {
-			h4 {
-				font-family: $font-heading;
-				font-size: 1.1rem;
-				margin-bottom: 0.5rem;
-				font-weight: 700;
-				text-transform: uppercase;
-				letter-spacing: 1px;
+			&:hover {
+				background-color: $color-secondary;
 			}
 
-			p {
-				font-family: $font-main;
-				font-size: 0.9rem;
-				line-height: 1.5;
-				color: rgba($color-white, 0.8);
+			&.left {
+				left: 10px;
+				@media (min-width: 768px) {
+					left: 40px;
+					padding: 1rem;
+				}
+			}
+
+			&.right {
+				right: 10px;
+				@media (min-width: 768px) {
+					right: 40px;
+					padding: 1rem;
+				}
 			}
 		}
 	}
