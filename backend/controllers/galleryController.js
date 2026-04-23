@@ -51,6 +51,7 @@ exports.uploadImages = async (req, res) => {
       // - Zmiana szerokości na max 1920px (jeśli większe)
       // - Konwersja na super lekki format WEBP (jakość 80%)
       await sharp(file.buffer)
+        .rotate() // <--- TA JEDNA LINIJKA FIZYCZNIE OBRACA ZDJĘCIE NA PODSTAWIE EXIF
         .resize({ width: 1920, withoutEnlargement: true })
         .webp({ quality: 80 })
         .toFile(filepath);

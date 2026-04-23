@@ -45,20 +45,49 @@ const AdminGallery = () => {
 
   // 2. OBSŁUGA WYBORU PLIKÓW
   const handleFiles = (files) => {
-    const validFiles = Array.from(files).filter((file) =>
-      file.type.startsWith("image/"),
-    );
+    const MAX_FILE_SIZE = 10 * 1024 * 1024; // 5 MB w bajtach
+    const validFiles = [];
 
-    if (validFiles.length !== files.length) {
+    let hasTypeError = false;
+    let hasSizeError = false;
+
+    Array.from(files).forEach((file) => {
+      // 1. Sprawdzamy czy to obraz
+      if (!file.type.startsWith("image/")) {
+        hasTypeError = true;
+      }
+      // 2. Sprawdzamy rozmiar pliku (max 5MB)
+      else if (file.size > MAX_FILE_SIZE) {
+        hasSizeError = true;
+      }
+      // 3. Jeśli wszystko OK, dodajemy do listy
+      else {
+        validFiles.push(file);
+      }
+    });
+
+    // Wyświetlamy dedykowane powiadomienia (Toasty)
+    if (hasTypeError) {
       toast.error("Niektóre pliki nie są obrazami i zostały odrzucone.");
     }
 
-    setSelectedFiles((prev) => [...prev, ...validFiles]);
+    if (hasSizeError) {
+      toast.error("Zdjęcie jest za duże! Maksymalny rozmiar pliku to 10 MB.");
+    }
+
+    // Zapisujemy tylko te pliki, które przeszły walidację
+    if (validFiles.length > 0) {
+      setSelectedFiles((prev) => [...prev, ...validFiles]);
+    }
   };
 
   const onFileChange = (e) => {
     if (e.target.files && e.target.files.length > 0) {
       handleFiles(e.target.files);
+
+      // TA JEDNA LINIJKA ROZWIĄZUJE PROBLEM:
+      // Zerujemy pamięć inputa, dzięki czemu ponowne wybranie tych samych plików zadziała
+      e.target.value = null;
     }
   };
 

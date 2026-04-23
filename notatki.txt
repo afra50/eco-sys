@@ -14,10 +14,6 @@ I. PODZIAŁ PRACY
 
     JULA
         - Chat backend
-        - galeria admin:
-            1. pionowe zdjecia sie psuja
-            2. wyswietielic info, ze za duze zdjecie i trzeba je usunac lub w ogole nie pozwolic takiego wgrac
-            3. przycisk wyczysc wszystko -> nie da sie juz wgrac zdjec i trezba odswiezyc strone
 
 II. NOTATKI
     1. Zakładki dla przemysłu i dla klienta (chyba w tym mają się zawrzeć Wentylacje Klimatyzje, Pompy ciepła, Wod-Kan Ogrzewanie podłogowe, Farmy fotowoltaiczne), Galeria, Kontakt, o nas (tutaj byśmy dali informację o siedzibie i dane kontaktowe)
