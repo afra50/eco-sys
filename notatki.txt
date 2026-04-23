@@ -1,16 +1,15 @@
 I. PODZIAŁ PRACY
     KRZYSIEK
         - podłączenie wysyłki w kontakt
-        - Polityka prywatności
         - Wod-kan
-        - Na Home dodac do banera jeszcze inne rzeczy
-        - Na home dodac przykladowe marki w Brands
+        - polityka prywatonsci poprawic tresc
 
     EMILA
         - Zabezpieczenie i konfiguracja backendu
         - Hosting, .htaccess, wyl. cacheowanie
         - sitemap do poprawy, googlesearch
         - node env production + ciastka secure true
+        - home, fotowoltaika, wodkan, wentylacje, kontakt, o nas, okno czatbot
 
     JULA
         - Chat backend
