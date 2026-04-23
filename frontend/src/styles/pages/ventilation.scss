@@ -339,4 +339,130 @@
 	&_benefit_icon {
 		color: $color-secondary;
 	}
+
+	// ==========================================
+	// 7. MINI SLIDER ZDJĘĆ
+	// ==========================================
+	&_mini_slider {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		min-height: 350px;
+		background-color: $color-bg-light;
+		overflow: hidden;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+
+		@media (min-width: 992px) {
+			min-height: 450px;
+		}
+	}
+
+	&_mini_slide {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		opacity: 0;
+		z-index: 1;
+		transition: opacity 0.8s ease-in-out;
+		cursor: pointer;
+
+		&.active {
+			opacity: 1;
+			z-index: 2;
+		}
+	}
+
+	// ==========================================
+	// 8. LIGHTBOX (PODGLĄD ZDJĘĆ)
+	// ==========================================
+	&_lightbox {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background-color: rgba(0, 0, 0, 0.85);
+		z-index: 9999;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 20px;
+		backdrop-filter: blur(5px);
+		cursor: pointer;
+
+		&_img {
+			max-width: 90%;
+			max-height: 90vh;
+			object-fit: contain;
+			box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+			cursor: default;
+			z-index: 10001;
+			position: relative;
+		}
+
+		&_close {
+			position: absolute;
+			top: 20px;
+			right: 20px;
+			background: none;
+			border: none;
+			color: $color-white;
+			cursor: pointer;
+			z-index: 10002;
+			padding: 10px;
+			transition:
+				color 0.3s ease,
+				transform 0.3s ease;
+
+			&:hover {
+				color: $color-secondary;
+				transform: scale(1.1);
+			}
+
+			@media (min-width: 768px) {
+				top: 40px;
+				right: 40px;
+			}
+		}
+
+		&_nav {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			background: rgba($color-primary, 0.6);
+			border: none;
+			color: $color-white;
+			cursor: pointer;
+			z-index: 10002;
+			padding: 1rem 0.5rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition:
+				background-color 0.3s ease,
+				transform 0.3s ease;
+
+			&:hover {
+				background-color: $color-secondary;
+			}
+
+			&.left {
+				left: 10px;
+				@media (min-width: 768px) {
+					left: 40px;
+					padding: 1rem;
+				}
+			}
+
+			&.right {
+				right: 10px;
+				@media (min-width: 768px) {
+					right: 40px;
+					padding: 1rem;
+				}
+			}
+		}
+	}
 }

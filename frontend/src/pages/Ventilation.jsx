@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
 	Check,
 	Wind,
@@ -9,16 +9,86 @@ import {
 	Thermometer,
 	VolumeX,
 	Zap,
+	X,
+	ChevronLeft,
+	ChevronRight,
 } from "lucide-react";
 import "../styles/pages/ventilation.scss";
 import PageHero from "../components/ui/PageHero";
 
 // --- IMPORTY ZDJĘĆ ---
-import heroImage from "../images/wentylacja.webp";
-import przemyslImg from "../images/wentylacja.webp"; // Do dodania w folderze
-import domImg from "../images/rekup.webp"; // Do dodania w folderze
+import heroImage from "../images/reku5.webp";
+import przemyslImg from "../images/wentylacja.webp";
+
+// --- IMPORTY DO SLIDERA: REKUPERACJA ---
+import reku1 from "../images/reku1.webp";
+import reku2 from "../images/reku2.webp";
+import reku3 from "../images/reku3.webp";
+import reku4 from "../images/reku4.webp";
+import reku5 from "../images/reku5.webp";
 
 const Ventilation = () => {
+	// --- LOGIKA SLIDERA ---
+	const [currentSlide, setCurrentSlide] = useState(0);
+	const rekuImages = [reku1, reku2, reku3, reku4, reku5];
+
+	useEffect(() => {
+		const timer = setInterval(() => {
+			setCurrentSlide((prev) =>
+				prev === rekuImages.length - 1 ? 0 : prev + 1,
+			);
+		}, 4000);
+		return () => clearInterval(timer);
+	}, [rekuImages.length]);
+
+	// --- LOGIKA LIGHTBOXA ---
+	const [lightboxData, setLightboxData] = useState({
+		isOpen: false,
+		images: [],
+		currentIndex: 0,
+	});
+
+	useEffect(() => {
+		if (lightboxData.isOpen) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "unset";
+		}
+		return () => {
+			document.body.style.overflow = "unset";
+		};
+	}, [lightboxData.isOpen]);
+
+	const openLightbox = (imagesArray, index) => {
+		setLightboxData({ isOpen: true, images: imagesArray, currentIndex: index });
+	};
+
+	const closeLightbox = () => {
+		setLightboxData({ isOpen: false, images: [], currentIndex: 0 });
+	};
+
+	const nextLightboxImg = (e) => {
+		e.stopPropagation();
+		setLightboxData((prev) => ({
+			...prev,
+			currentIndex:
+				prev.currentIndex === prev.images.length - 1
+					? 0
+					: prev.currentIndex + 1,
+		}));
+	};
+
+	const prevLightboxImg = (e) => {
+		e.stopPropagation();
+		setLightboxData((prev) => ({
+			...prev,
+			currentIndex:
+				prev.currentIndex === 0
+					? prev.images.length - 1
+					: prev.currentIndex - 1,
+		}));
+	};
+
 	return (
 		<div className="ventilation">
 			{/* --- HERO --- */}
@@ -48,7 +118,7 @@ const Ventilation = () => {
 							Jako eksperci od systemów HVAC, projektujemy i montujemy układy,
 							które skutecznie odsysają zanieczyszczone powietrze i wtłaczają na
 							jego miejsce świeże, przefiltrowane – z zachowaniem odpowiedniej
-							temperatury.
+							temperatura.
 						</p>
 						<ul className="ventilation_list">
 							<li className="ventilation_item">
@@ -166,11 +236,17 @@ const Ventilation = () => {
 						</p>
 					</div>
 					<div className="ventilation_image_box">
-						<img
-							src={domImg}
-							alt="Rekuperator w domu"
-							className="ventilation_fluid_image"
-						/>
+						<div className="ventilation_mini_slider">
+							{rekuImages.map((img, index) => (
+								<img
+									key={index}
+									src={img}
+									onClick={() => openLightbox(rekuImages, index)}
+									alt={`Rekuperacja ${index + 1}`}
+									className={`ventilation_mini_slide ${index === currentSlide ? "active" : ""}`}
+								/>
+							))}
+						</div>
 					</div>
 				</div>
 			</section>
@@ -220,6 +296,36 @@ const Ventilation = () => {
 					</div>
 				</div>
 			</section>
+
+			{/* --- LIGHTBOX MODAL Z NAWIGACJĄ --- */}
+			{lightboxData.isOpen && (
+				<div className="ventilation_lightbox" onClick={closeLightbox}>
+					<button
+						className="ventilation_lightbox_close"
+						onClick={closeLightbox}>
+						<X size={32} />
+					</button>
+
+					<button
+						className="ventilation_lightbox_nav left"
+						onClick={prevLightboxImg}>
+						<ChevronLeft size={36} />
+					</button>
+
+					<img
+						src={lightboxData.images[lightboxData.currentIndex]}
+						alt="Powiększenie"
+						className="ventilation_lightbox_img"
+						onClick={(e) => e.stopPropagation()}
+					/>
+
+					<button
+						className="ventilation_lightbox_nav right"
+						onClick={nextLightboxImg}>
+						<ChevronRight size={36} />
+					</button>
+				</div>
+			)}
 		</div>
 	);
 };
