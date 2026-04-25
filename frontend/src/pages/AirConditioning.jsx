@@ -7,6 +7,9 @@ import {
 	Wrench,
 	Home,
 	Factory,
+	X,
+	ChevronLeft,
+	ChevronRight,
 } from "lucide-react";
 import "../styles/pages/airconditioning.scss";
 import Button from "../components/ui/Button";
@@ -22,13 +25,14 @@ import klim3 from "../images/klim-3.webp";
 import klim4 from "../images/klim-4.webp";
 import klim5 from "../images/klim-5.webp";
 
+// Nowe zdjęcia dołożone na początek
+import vrfNew1 from "../images/vrf-1.webp";
+import vrfNew2 from "../images/vrf-2.webp";
+
 import vrf1 from "../images/vrf-zdjecie-1.webp";
 import vrf2 from "../images/vrf-zdjecie-2.webp";
 import vrf3 from "../images/vrf-zdjecie-3.webp";
 import vrf4 from "../images/vrf-zdjecie-4.webp";
-import vrf5 from "../images/vrf-zdjecie-5.webp";
-import vrf6 from "../images/vrf-zdjecie-6.webp";
-import vrf7 from "../images/vrf-zdjecie-7.webp";
 
 const AirConditioning = () => {
 	// --- MINI-SLIDER: KLIMATYZACJA DLA DOMU ---
@@ -46,7 +50,8 @@ const AirConditioning = () => {
 
 	// --- MINI-SLIDER: KLIMATYZACJA PRZEMYSŁOWA (VRF) ---
 	const [currentVrfSlide, setCurrentVrfSlide] = useState(0);
-	const vrfSlides = [vrf1, vrf2, vrf3, vrf4, vrf5, vrf6, vrf7];
+	// Usunąłem nieistniejące vrf5, vrf6, vrf7, żeby nie wywalało błędu i dodałem nowe na początek
+	const vrfSlides = [vrfNew1, vrfNew2, vrf1, vrf2, vrf3, vrf4];
 
 	useEffect(() => {
 		const vrfTimer = setInterval(() => {
@@ -56,6 +61,54 @@ const AirConditioning = () => {
 		}, 4000);
 		return () => clearInterval(vrfTimer);
 	}, [vrfSlides.length]);
+
+	// --- LOGIKA LIGHTBOXA (Powiększanie zdjęć) ---
+	const [lightboxData, setLightboxData] = useState({
+		isOpen: false,
+		images: [],
+		currentIndex: 0,
+	});
+
+	useEffect(() => {
+		if (lightboxData.isOpen) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "unset";
+		}
+		return () => {
+			document.body.style.overflow = "unset";
+		};
+	}, [lightboxData.isOpen]);
+
+	const openLightbox = (imagesArray, index) => {
+		setLightboxData({ isOpen: true, images: imagesArray, currentIndex: index });
+	};
+
+	const closeLightbox = () => {
+		setLightboxData({ isOpen: false, images: [], currentIndex: 0 });
+	};
+
+	const nextLightboxImg = (e) => {
+		e.stopPropagation();
+		setLightboxData((prev) => ({
+			...prev,
+			currentIndex:
+				prev.currentIndex === prev.images.length - 1
+					? 0
+					: prev.currentIndex + 1,
+		}));
+	};
+
+	const prevLightboxImg = (e) => {
+		e.stopPropagation();
+		setLightboxData((prev) => ({
+			...prev,
+			currentIndex:
+				prev.currentIndex === 0
+					? prev.images.length - 1
+					: prev.currentIndex - 1,
+		}));
+	};
 
 	// --- TEKSTY POMOCNICZE ---
 	const homeAdvantages = [
@@ -93,6 +146,7 @@ const AirConditioning = () => {
 								<img
 									key={index}
 									src={img}
+									onClick={() => openLightbox(homeSlides, index)}
 									alt={`Klimatyzacja Domowa ${index + 1}`}
 									className={`airconditioning_mini_slide ${index === currentHomeSlide ? "active" : ""}`}
 								/>
@@ -129,6 +183,7 @@ const AirConditioning = () => {
 								<img
 									key={index}
 									src={img}
+									onClick={() => openLightbox(vrfSlides, index)}
 									alt={`Klimatyzacja Przemysłowa ${index + 1}`}
 									className={`airconditioning_mini_slide ${index === currentVrfSlide ? "active" : ""}`}
 								/>
@@ -156,7 +211,6 @@ const AirConditioning = () => {
 				</div>
 			</section>
 
-			{/* --- NOWA SEKCJA: GŁÓWNE ZALETY (2 KONTENERY) --- */}
 			<section className="airconditioning_section airconditioning_section_light">
 				<div className="airconditioning_container">
 					<h2 className="airconditioning_center_title">
@@ -235,6 +289,36 @@ const AirConditioning = () => {
 					<Button to="/kontakt">Skontaktuj się z nami</Button>
 				</div>
 			</section>
+
+			{/* --- LIGHTBOX MODAL Z NAWIGACJĄ --- */}
+			{lightboxData.isOpen && (
+				<div className="airconditioning_lightbox" onClick={closeLightbox}>
+					<button
+						className="airconditioning_lightbox_close"
+						onClick={closeLightbox}>
+						<X size={32} />
+					</button>
+
+					<button
+						className="airconditioning_lightbox_nav left"
+						onClick={prevLightboxImg}>
+						<ChevronLeft size={36} />
+					</button>
+
+					<img
+						src={lightboxData.images[lightboxData.currentIndex]}
+						alt="Powiększenie"
+						className="airconditioning_lightbox_img"
+						onClick={(e) => e.stopPropagation()}
+					/>
+
+					<button
+						className="airconditioning_lightbox_nav right"
+						onClick={nextLightboxImg}>
+						<ChevronRight size={36} />
+					</button>
+				</div>
+			)}
 		</div>
 	);
 };

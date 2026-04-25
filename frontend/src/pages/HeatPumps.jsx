@@ -19,7 +19,7 @@ import Button from "../components/ui/Button";
 
 // --- IMPORTY ZDJĘĆ Z FOLDERU SRC ---
 
-import heroImage from "../images/pompa-hero.webp";
+import heroImage from "../images/pompa2.webp";
 
 import pompaPowietrznaImg from "../images/pompa-powietrzna.jpg";
 

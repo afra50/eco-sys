@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
 	Check,
 	ShieldCheck,
 	Thermometer,
 	Wrench,
 	ArrowRight,
+	Droplets,
+	Zap,
+	X,
+	ChevronLeft,
+	ChevronRight,
 } from "lucide-react";
 import "../styles/pages/floorheating.scss";
 import PageHero from "../components/ui/PageHero";
@@ -17,7 +22,83 @@ import heroImage from "../images/podlogowe.webp";
 import rurkiImage from "../images/podl1.webp";
 import sterowanieImage from "../images/podl2.webp";
 
+// NOWE IMPORTY (Slider Rodzaje Ogrzewania) - Upewnij się, że masz te zdjęcia lub zmień nazwy!
+import wodne1 from "../images/wodne1.webp";
+import wodne2 from "../images/wodne2.webp";
+import wodne3 from "../images/wodne3.webp";
+import elektryczne1 from "../images/elektryczne1.webp";
+import elektryczne2 from "../images/elektryczne2.webp";
+import elektryczne3 from "../images/elektryczne3.webp";
+
 const FloorHeating = () => {
+	// --- LOGIKA SLIDERA (Rodzaje ogrzewania) ---
+	const [currentSlide, setCurrentSlide] = useState(0);
+	const typesImages = [
+		wodne1,
+		elektryczne1,
+		wodne2,
+		elektryczne2,
+		wodne3,
+		elektryczne3,
+	];
+
+	useEffect(() => {
+		const timer = setInterval(() => {
+			setCurrentSlide((prev) =>
+				prev === typesImages.length - 1 ? 0 : prev + 1,
+			);
+		}, 4000);
+		return () => clearInterval(timer);
+	}, [typesImages.length]);
+
+	// --- LOGIKA LIGHTBOXA ---
+	const [lightboxData, setLightboxData] = useState({
+		isOpen: false,
+		images: [],
+		currentIndex: 0,
+	});
+
+	useEffect(() => {
+		if (lightboxData.isOpen) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "unset";
+		}
+		return () => {
+			document.body.style.overflow = "unset";
+		};
+	}, [lightboxData.isOpen]);
+
+	const openLightbox = (imagesArray, index) => {
+		setLightboxData({ isOpen: true, images: imagesArray, currentIndex: index });
+	};
+
+	const closeLightbox = () => {
+		setLightboxData({ isOpen: false, images: [], currentIndex: 0 });
+	};
+
+	const nextLightboxImg = (e) => {
+		e.stopPropagation();
+		setLightboxData((prev) => ({
+			...prev,
+			currentIndex:
+				prev.currentIndex === prev.images.length - 1
+					? 0
+					: prev.currentIndex + 1,
+		}));
+	};
+
+	const prevLightboxImg = (e) => {
+		e.stopPropagation();
+		setLightboxData((prev) => ({
+			...prev,
+			currentIndex:
+				prev.currentIndex === 0
+					? prev.images.length - 1
+					: prev.currentIndex - 1,
+		}));
+	};
+
 	const benefits = [
 		"Idealna współpraca z pompami ciepła (system niskotemperaturowy)",
 		"Równomierny rozkład temperatury (cieplej w stopy, chłodniej w głowę)",
@@ -77,6 +158,62 @@ const FloorHeating = () => {
 									</li>
 								))}
 							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{/* --- NOWA SEKCJA: RODZAJE OGRZEWANIA (SPLIT REVERSE Z SLIDEREM) --- */}
+			<section className="floorheating_types">
+				<div className="floorheating_container floorheating_control_wrapper">
+					<div className="floorheating_split_image_wrapper">
+						<div className="floorheating_mini_slider">
+							{typesImages.map((img, index) => (
+								<img
+									key={index}
+									src={img}
+									onClick={() => openLightbox(typesImages, index)}
+									alt={`Rodzaj ogrzewania podłogowego ${index + 1}`}
+									className={`floorheating_mini_slide ${index === currentSlide ? "active" : ""}`}
+								/>
+							))}
+						</div>
+					</div>
+					<div className="floorheating_intro_text floorheating_control_text">
+						<h2 className="floorheating_section_title">
+							Wodne czy Elektryczne?
+						</h2>
+						<p className="floorheating_intro_desc">
+							Wybór odpowiedniego systemu ogrzewania podłogowego zależy od
+							specyfiki budynku i Twoich potrzeb. Oferujemy oba rozwiązania,
+							gwarantując najwyższą jakość montażu.
+						</p>
+
+						<div className="floorheating_type_block">
+							<h3 className="floorheating_type_subtitle">
+								<Droplets className="floorheating_type_icon" size={24} />
+								Podłogówka Wodna (PEX)
+							</h3>
+							<p className="floorheating_intro_desc">
+								Klasyczny, najbardziej opłacalny w eksploatacji system
+								dedykowany dla całych budynków. Grube rury zasilane z pompy
+								ciepła zalewane są grubą warstwą wylewki, co tworzy potężny
+								akumulator ciepła dla Twojego domu.
+							</p>
+						</div>
+
+						<div className="floorheating_type_block">
+							<h3 className="floorheating_type_subtitle">
+								<Zap className="floorheating_type_icon" size={24} />
+								Systemy Elektryczne (Maty)
+							</h3>
+							<p className="floorheating_intro_desc">
+								Rozwiązanie premium, idealne przy remontach łazienek. Cienkie
+								kable grzewcze montowane są w specjalnych, czerwonych matach
+								kompensacyjnych (np. Schlüter-DITRA-HEAT). Mata przejmuje
+								naprężenia podłoża chroniąc płytki przed pękaniem, a system
+								nagrzewa się błyskawicznie.
+							</p>
 						</div>
 					</div>
 				</div>
@@ -152,6 +289,36 @@ const FloorHeating = () => {
 					</Button>
 				</div>
 			</section>
+
+			{/* --- LIGHTBOX MODAL Z NAWIGACJĄ --- */}
+			{lightboxData.isOpen && (
+				<div className="floorheating_lightbox" onClick={closeLightbox}>
+					<button
+						className="floorheating_lightbox_close"
+						onClick={closeLightbox}>
+						<X size={32} />
+					</button>
+
+					<button
+						className="floorheating_lightbox_nav left"
+						onClick={prevLightboxImg}>
+						<ChevronLeft size={36} />
+					</button>
+
+					<img
+						src={lightboxData.images[lightboxData.currentIndex]}
+						alt="Powiększenie"
+						className="floorheating_lightbox_img"
+						onClick={(e) => e.stopPropagation()}
+					/>
+
+					<button
+						className="floorheating_lightbox_nav right"
+						onClick={nextLightboxImg}>
+						<ChevronRight size={36} />
+					</button>
+				</div>
+			)}
 		</div>
 	);
 };
