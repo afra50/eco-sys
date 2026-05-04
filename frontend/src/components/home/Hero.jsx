@@ -112,7 +112,7 @@ const Hero = () => {
 
 	return (
 		<section
-			className="hero_slider hero_slider_wrobel"
+			className="hero_slider"
 			onTouchStart={handleTouchStart}
 			onTouchMove={handleTouchMove}
 			onTouchEnd={handleTouchEnd}>

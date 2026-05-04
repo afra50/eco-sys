@@ -37,11 +37,7 @@
 	}
 
 	&_subtitle {
-		font-size: clamp(
-			1.6rem,
-			5vw,
-			2.2rem
-		); // GRUBE PODBICIE - dorównane do innych podstron
+		font-size: clamp(1.6rem, 5vw, 2.2rem);
 		font-weight: 700;
 		margin-bottom: 1.2rem;
 		color: $color-primary;
@@ -56,7 +52,7 @@
 	}
 
 	&_text {
-		font-size: 1rem; // TERAZ JEST KONKRETNIE WIĘKSZE
+		font-size: 1rem;
 		line-height: 1.6;
 		color: rgba($color-primary, 0.7);
 		font-family: $font-main;
@@ -78,7 +74,7 @@
 	}
 
 	&_label {
-		font-size: 0.7rem; // Też minimalnie w górę, żeby nie zginęło
+		font-size: 0.7rem;
 		text-transform: uppercase;
 		letter-spacing: 1px;
 		color: $color-secondary;
@@ -120,7 +116,7 @@
 	}
 
 	// ==========================================
-	// 2. SEKCJA GŁÓWNA (HERO)
+	// 2. SEKCJA GŁÓWNA (HERO BOX Z ZDJĘCIEM)
 	// ==========================================
 
 	&_block_hero {
@@ -151,6 +147,9 @@
 
 		@media (max-width: 768px) {
 			height: 300px;
+			width: 100%; // Blokada szerokości do kontenera
+			left: 0; // Reset
+			transform: none; // Reset
 		}
 
 		img {
@@ -173,12 +172,32 @@
 			left: calc(50% + 1rem);
 			width: calc(50% - 1rem);
 		}
+
+		// --- ZMIANA DLA EKRANÓW MOBILNYCH I TABLETÓW ---
+		@media (max-width: 992px) {
+			position: relative;
+			left: 0;
+			bottom: auto;
+			width: 90%;
+			max-width: 500px;
+			margin: -4rem auto 0; // Wsuwa boks z powrotem na zdjęcie od dołu
+			transform: none;
+		}
+
+		@media (max-width: 360px) {
+			width: 95%;
+			margin-top: -3rem;
+		}
 	}
 
 	&_overlap_content {
 		background-color: $color-white;
 		padding: 2rem;
 		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+
+		@media (max-width: 768px) {
+			padding: 1.5rem; // Trochę mniejszy padding żeby oszczędzić miejsce na 360px
+		}
 	}
 
 	// ==========================================
@@ -208,14 +227,14 @@
 	}
 
 	&_feature_title {
-		font-size: 1.2rem; // PODBITE z 1.05rem
+		font-size: 1.2rem;
 		font-family: $font-heading;
 		margin-bottom: 0.8rem;
 		font-weight: 700;
 	}
 
 	&_feature_desc {
-		font-size: 0.95rem; // PODBITE z 0.8rem
+		font-size: 0.95rem;
 		line-height: 1.6;
 		opacity: 0.8;
 		font-family: $font-main;
@@ -257,7 +276,7 @@
 		}
 
 		&_title {
-			font-size: clamp(1.4rem, 4vw, 1.8rem); // PODBITE, solidny tytuł
+			font-size: clamp(1.4rem, 4vw, 1.8rem);
 			font-family: $font-heading;
 			font-weight: 700;
 			color: $color-primary;
@@ -266,7 +285,7 @@
 
 		&_text {
 			margin: 0 auto;
-			font-size: 1rem; // PODBITE na równo z resztą
+			font-size: 1rem;
 			line-height: 1.6;
 			color: rgba($color-primary, 0.7);
 
@@ -327,7 +346,7 @@
 		}
 
 		&_title {
-			font-size: clamp(1.4rem, 4vw, 1.8rem); // PODBITE
+			font-size: clamp(1.4rem, 4vw, 1.8rem);
 			font-family: $font-heading;
 			font-weight: 700;
 			color: $color-primary;
@@ -335,7 +354,7 @@
 		}
 
 		&_text {
-			font-size: 1rem; // PODBITE
+			font-size: 1rem;
 			line-height: 1.6;
 			color: rgba($color-primary, 0.7);
 			font-family: $font-main;
@@ -440,7 +459,7 @@
 	}
 
 	&_cta_title {
-		font-size: clamp(1.4rem, 4vw, 1.8rem); // PODBITE
+		font-size: clamp(1.4rem, 4vw, 1.8rem);
 		font-family: $font-heading;
 		font-weight: 700;
 		color: $color-primary;
