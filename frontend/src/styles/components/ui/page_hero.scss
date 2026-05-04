@@ -21,7 +21,8 @@
 
 	// --- MOBILE & TABLET ---
 	@media (max-width: 991px) {
-		height: 48vh;
+		height: 48vh; // Fallback
+		height: 48dvh; // <-- DODAJ TO: Płynniejsze skalowanie na telefonach
 		min-height: 380px;
 	}
 
@@ -58,7 +59,7 @@
 		}
 
 		@media (max-width: 991px) {
-			object-position: center;
+			object-position: 75% center;
 		}
 	}
 
@@ -71,27 +72,22 @@
 		z-index: 3;
 
 		@media (min-width: 992px) {
-			background: linear-gradient(
-				to right,
-				$color-primary 0%,
-				$color-primary 40%,
-				rgba($color-primary, 0.9) 48%,
-				rgba($color-primary, 0.6) 58%,
-				rgba($color-primary, 0.2) 68%,
-				transparent 75%
-			);
+			background: linear-gradient(to right,
+					$color-primary 0%,
+					$color-primary 40%,
+					rgba($color-primary, 0.9) 48%,
+					rgba($color-primary, 0.6) 58%,
+					rgba($color-primary, 0.2) 68%,
+					transparent 75%);
 		}
 
 		// MOBILE: Skompresowany i obniżony gradient
 		@media (max-width: 991px) {
-			background: linear-gradient(
-				to top,
-				rgba($color-primary, 1) 0%,
-				rgba($color-primary, 0.9) 30%,
-				// Szybciej przechodzi w przezroczystość
-				rgba($color-primary, 0.4) 50%,
-				transparent 75% // 25% czystego zdjęcia od góry
-			);
+			background: linear-gradient(to top,
+					rgba($color-primary, 1) -5%,
+					rgba($color-primary, 0.85) 35%,
+					rgba($color-primary, 0.2) 60%,
+					transparent 80%);
 		}
 	}
 
