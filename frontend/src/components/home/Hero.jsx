@@ -4,12 +4,12 @@ import Button from "../ui/Button";
 import "../../styles/components/home/hero.scss";
 
 // --- IMPORTY ZDJĘĆ Z FOLDERU SRC ---
-import heroPompa from "../../images/hero-pompa.jpg";
-import heroFoto from "../../images/hero-foto.webp";
-import heroKlima from "../../images/hero-klima.jpg";
+import heroPompa from "../../images/pomp.webp";
+import heroFoto from "../../images/fotoprzem7.webp";
+import heroKlima from "../../images/klim.webp";
 import heroHeat from "../../images/hero-heat.webp";
 import heroWodkan from "../../images/hero-wodkan.webp";
-import heroWent from "../../images/hero-went.webp";
+import heroWent from "../../images/rekup.webp";
 
 const Hero = () => {
 	const [currentSlide, setCurrentSlide] = useState(0);
