@@ -9,7 +9,6 @@ I. PODZIAŁ PRACY
         - Hosting, .htaccess, wyl. cacheowanie
         - sitemap do poprawy, googlesearch
         - node env production + ciastka secure true
-        - home, fotowoltaika, wodkan, wentylacje, kontakt, o nas, okno czatbot
 
     JULA
         - Chat backend
