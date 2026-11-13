@@ -1,6 +1,6 @@
 I. PODZIAŁ PRACY
     KRZYSIEK
-        - podłączenie wysyłki w kontakt
+        - podłączenie wysyłki w kontakt i na stronie glownej
         - polityka prywatonsci poprawic tresc
 
     EMILA
@@ -9,12 +9,8 @@ I. PODZIAŁ PRACY
         - sitemap do poprawy, googlesearch
         - node env production + ciastka secure true
 
-    JULA
-        - Chat backend
-
 II. NOTATKI
-    1. Zakładki dla przemysłu i dla klienta (chyba w tym mają się zawrzeć Wentylacje Klimatyzje, Pompy ciepła, Wod-Kan Ogrzewanie podłogowe, Farmy fotowoltaiczne), Galeria, Kontakt, o nas (tutaj byśmy dali informację o siedzibie i dane kontaktowe)
-    2. W zakładkach stały tekst
-    3. Chatbot (integracja w api.js)
-    4. Kalkulator ofert - osobna wycena 
-    5. Formularz kontaktowy
+    1. Chatbot (integracja w api.js) + backend /Jula
+    2. Formularz kontaktowy na /kontakt i /home /Krzysiek
+    3. Wielojęzyczność (osobna wycena +1200 zł?)
+    4. Kalkulator ofert (osobna wycena)
