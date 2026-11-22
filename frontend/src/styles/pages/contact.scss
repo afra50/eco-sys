@@ -2,7 +2,7 @@
 @use "../variables" as *;
 
 /* =========================================
-   1. MAIN WRAPPER & BACKGROUND
+1. MAIN WRAPPER & BACKGROUND
    ========================================= */
 .contact_wrapper {
 	width: 100%;
@@ -36,7 +36,7 @@
 }
 
 /* =========================================
-   2. HEADER SECTION
+2. HEADER SECTION
    ========================================= */
 .contact_header {
 	text-align: left;
@@ -63,7 +63,7 @@
 }
 
 /* =========================================
-   3. CONTENT LAYOUT & BOXES
+3. CONTENT LAYOUT & BOXES
    ========================================= */
 .contact_content {
 	display: grid;
@@ -98,7 +98,7 @@
 }
 
 /* =========================================
-   4. CONTACT FORM
+4. CONTACT FORM
    ========================================= */
 .contact_form_title {
 	font-family: $font_heading;
@@ -140,7 +140,7 @@
 }
 
 /* =========================================
-   5. COMPANY INFO & MAP
+5. COMPANY INFO & MAP
    ========================================= */
 .contact_info_subtitle {
 	font-family: $font_heading;
@@ -204,7 +204,7 @@
 }
 
 /* =========================================
-   6. MEDIA QUERIES
+6. MEDIA QUERIES
    ========================================= */
 @media (max-width: 360px) {
 	.contact_wrapper {
@@ -273,4 +273,27 @@
 	.contact_info_map {
 		min-height: 450px;
 	}
+}
+
+/* =========================================
+7. STATUS FORMULARZA
+   ========================================= */
+.contact_status {
+	padding: 0.85rem 1rem;
+	margin-bottom: 1.2rem;
+	font-size: 0.9rem;
+	font-family: $font_main;
+	line-height: 1.4;
+}
+
+.contact_status_success {
+	background-color: #d4edda;
+	color: #155724;
+	border: 1px solid #c3e6cb;
+}
+
+.contact_status_error {
+	background-color: #f8d7da;
+	color: #721c24;
+	border: 1px solid #f5c6cb;
 }
