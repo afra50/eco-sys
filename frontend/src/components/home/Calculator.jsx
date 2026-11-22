@@ -191,8 +191,7 @@ ${formData.notes || "Brak uwag"}
           <form className="calc_contact_form" onSubmit={handleSubmit}>
             <h3>Wyślij zapytanie o wycenę</h3>
             <p className="calc_form_desc">
-              Wycena zostanie przygotowana automatycznie i przesłana na Twój
-              e-mail w ciągu 1 godziny roboczej.
+              Gdy przygotujemy wycenę, prześlemy ją na Twój e-mail w ciągu 48h.
             </p>
 
             <div className="calc_form_grid">
